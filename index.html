@@ -128,7 +128,7 @@ td.m { font-family: var(--mono); font-size: 13px; white-space: nowrap; }
 figure { margin: 14px 0 20px; background: var(--paper-2); border: 1px solid var(--rule); border-radius: 4px; padding: 12px; }
 figure.wide { overflow-x: auto; }
 figure.wide img { min-width: 620px; }
-.figs { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 14px; }
+.figs { display: grid; grid-template-columns: 1fr; gap: 14px; }
 .figs figure { margin: 0; }
 figcaption { font-size: 13px; color: var(--ink-2); margin-top: 10px; line-height: 1.5; }
 .zoom { display: block; cursor: zoom-in; }
@@ -211,7 +211,7 @@ dialog.lightbox .lb-close { position: fixed; top: 14px; right: 18px; font: 500 1
     <div><span class="k">Devices today</span><div class="v">116</div><div class="n">one flat /24, no VLANs</div></div>
     <div><span class="k">Planned segments</span><div class="v">8</div><div class="n">VLANs 10 to 99, Trusted keeps its subnet</div></div>
     <div><span class="k">WAN</span><div class="v">1000 / 35</div><div class="n">Spectrum GIG; upload is the constraint</div></div>
-    <div><span class="k">Buy this week</span><div class="v">~$2,150</div><div class="n">of a ~$8,400 to $9,000 program</div></div>
+    <div><span class="k">Buy this week</span><div class="v">~$2,120</div><div class="n">of a ~$8,400 to $8,800 program</div></div>
   </div>
 </header>
 
@@ -250,8 +250,8 @@ dialog.lightbox .lb-close { position: fixed; top: 14px; right: 18px; font: 500 1
   <h2><span class="k">2</span>Target architecture</h2>
   <p class="src">docs/13 · the build-to sheet</p>
   <figure class="wide">
-    <a class="zoom" href="docs/img/signal-path.svg" target="_blank" rel="noopener" title="Open full size"><img src="docs/img/signal-path.svg" alt="Signal path: modem to Gold Pro to Switch X in the closet; fiber to the garage ToR; UNVR Pro, Switch SE, UNAS-Pro and lab hosts behind it"></a>
-    <figcaption>Closet: modem, Gold Pro, Switch X, which serves the six wall drops and the AP7 ceiling units. Three OM4 fiber pairs to the garage cabinet, one per switch there. Production fabric: Switch SE #1 with the eight camera runs and the UNVR Pro; Switch SE #2 with the DXP8800 Plus production NAS at 10G, the Plex host, the DXP4800 Plus backup target, the UNAS-Pro archive, and the TPE-1020WS console switch with Pi-hole #2 and pfSense. Lab fabric: the owned QNAP QSW-M408-4C with the three lab servers and a GiGaPlus 10GBASE-T switch; the QNAP TS-932PX and TS-563 as lab NAS; a second GiGaPlus switch is an isolated storage network between the UGREEN units and the Xeons.</figcaption>
+    <a class="zoom" href="docs/img/signal-path.svg" target="_blank" rel="noopener" title="Open full size"><img src="docs/img/signal-path.svg" alt="Signal path: modem, Gold Pro and Switch X in the closet; three OM4 fiber pairs to the garage cabinet; Switch SE 1 with the cameras and UNVR, Switch SE 2 with the production hosts, and the lab top-of-rack switch with the three servers"></a>
+    <figcaption>Closet: modem, Gold Pro, Switch X, which serves the six wall drops and the AP7 ceiling units. Three OM4 fiber pairs to the garage cabinet, one per switch there. Production fabric: Switch SE #1 with the eight camera runs and the UNVR Pro; Switch SE #2 with the DXP8800 Plus production NAS at 10G, the Plex host, the DXP4800 Plus backup target, the UNAS-Pro archive, and pfSense, and the TPE-1020WS console switch with Pi-hole #2, the three IPMI ports and the PDUs. Lab fabric: the owned QNAP QSW-M408-4C with the three lab servers and a GiGaPlus 10GBASE-T switch; the QNAP TS-932PX and TS-563 as lab NAS; a second GiGaPlus switch is an isolated storage network between the UGREEN units and the Xeons.</figcaption>
   </figure>
   <p>Three principles. The Gold Pro stays the single edge: it routes 10 Gbps with IDS/IPS on, so it is not the bottleneck and every VLAN, including the lab, is routed by it. The garage holds two fabrics that share a cabinet and nothing else: production (cameras, NAS, Plex, a Pi-hole, pfSense) on Firewalla-managed switches, and the lab on its own third-party switch, so tearing the lab down cannot take production with it. Lab east-west traffic never crosses a Firewalla.</p>
 
@@ -317,7 +317,7 @@ dialog.lightbox .lb-close { position: fixed; top: 14px; right: 18px; font: 500 1
   <div class="tw"><table>
     <thead><tr><th>VLAN</th><th>Purpose</th><th>Subnet</th><th>Occupants</th></tr></thead>
     <tbody>
-    <tr><td><span class="chip"><i style="background:var(--fiber)"></i>10 · Mgmt</span></td><td>Infrastructure only</td><td class="m">10.187.10.0/24</td><td>Firewalla boxes, Switch X and SE, AP7s, both PDUs, Domotz, pfSense NIC 2, BMCs and IP-KVMs, both Pi-holes</td></tr>
+    <tr><td><span class="chip"><i style="background:var(--fiber)"></i>10 · Mgmt</span></td><td>Infrastructure only</td><td class="m">10.187.10.0/24</td><td>Firewalla boxes, Switch X and both SEs, the Zyxel XMG-105HP and TPE-1020WS, AP7s, the three PDUs, Domotz, pfSense NIC 2, the three lab servers&#8217; IPMI ports, both Pi-holes</td></tr>
     <tr><td><span class="chip"><i style="background:var(--copper)"></i>20 · Trusted</span></td><td>People and work</td><td class="m">192.168.187.0/24</td><td>Macs, phones, tablets, printers; in the garage the DXP8800 Plus (production NAS), the DXP4800 Plus (backup), the UNAS-Pro (Protect archive), small servers. Unchanged</td></tr>
     <tr><td><span class="chip"><i style="background:var(--ground)"></i>30 · IoT</span></td><td>Cloud-dependent things</td><td class="m">10.187.30.0/23</td><td>All Kasa including KP200s, WiZ, Bond, MyQ, Flume, Rinnai, appliances, Nest doorbell, thermostat and displays, eufy, Neakasa, ESLs, Enphase, Sense, Rainforest, the Teslas and the Wall Connector</td></tr>
     <tr><td><span class="chip"><i style="background:var(--warn)"></i>40 · Cameras</span></td><td>Surveillance; WAN only for UniFi cloud and NTP</td><td class="m">10.187.40.0/24</td><td>UniFi PoE cameras and the UNVR Pro</td></tr>
@@ -393,7 +393,7 @@ dialog.lightbox .lb-close { position: fixed; top: 14px; right: 18px; font: 500 1
 
   <div class="figs">
     <figure><a class="zoom" href="docs/img/closet-rack.svg" target="_blank" rel="noopener" title="Open full size"><img src="docs/img/closet-rack.svg" alt="StarTech 6U wall rack, to scale"></a><figcaption>Closet rack. Gold Pro on its 1U tray, Switch X on a vented shelf with an air gap above its fans, the 802.3bt injector at U2, the DLI Web Power Switch Pro flat on a shelf at U1 (the 13 in strip is longer than the 10.7 in rack). Tower UPS on the floor. About 18 lb of the 44 lb rating.</figcaption></figure>
-    <figure><a class="zoom" href="docs/img/garage-rack.svg" target="_blank" rel="noopener" title="Open full size"><img src="docs/img/garage-rack.svg" alt="UniFi 42U cabinet, to scale"></a><figcaption>Garage cabinet, UniFi 42U at 1,000 mm. Production at the top: both Switch SEs on one shelf, UNVR Pro, UNAS-Pro, the UGREEN DXP8800 Plus and DXP4800 Plus side by side on one shelf, the Plex host, Pi-hole #2 and pfSense, DLI 222, the TPE-1020WS. Lab below: the QNAP QSW-M408-4C as top-of-rack, two GiGaPlus 10GBASE-T switches (lab copper and the storage network), the Supermicro SC216 and 6028U-TR4+ (2U each), the Chenbro NR12001 (1U), the QNAP TS-932PX and TS-563, the Gold gen-1, a second PDU. Rack UPS at the base; 34 of 42 U assigned.</figcaption></figure>
+    <figure><a class="zoom" href="docs/img/garage-rack.svg" target="_blank" rel="noopener" title="Open full size"><img src="docs/img/garage-rack.svg" alt="UniFi 42U cabinet, to scale"></a><figcaption>Garage cabinet, UniFi 42U at 1,000 mm. Production at the top: both Switch SEs on one shelf, UNVR Pro, UNAS-Pro, the UGREEN DXP8800 Plus and DXP4800 Plus side by side on one shelf, the Plex host, Pi-hole #2 and pfSense, DLI 222, the TPE-1020WS. Lab below: the QNAP QSW-M408-4C as top-of-rack, two GiGaPlus 10GBASE-T switches (lab copper and the storage network), the Supermicro SC216 and 6028U-TR4+ (2U each), the Chenbro NR12001 (1U), the QNAP TS-932PX and TS-563, the Gold gen-1, a second PDU. Rack UPS at the base; 36 of 42 U assigned.</figcaption></figure>
   </div>
   <figure class="wide">
     <a class="zoom" href="docs/img/onq-layout.svg" target="_blank" rel="noopener" title="Open full size"><img src="docs/img/onq-layout.svg" alt="Dimensioned shop drawing of the On-Q back panel"></a>
@@ -439,17 +439,17 @@ dialog.lightbox .lb-close { position: fixed; top: 14px; right: 18px; font: 500 1
 <!-- 6 -->
 <section id="s6">
   <h2><span class="k">6</span>What to buy, and when</h2>
-  <p class="src">docs/11 · prices checked 28 to 29 Aug 2026; re-check at checkout, several items are pre-sale</p>
+  <p class="src">docs/11 · prices checked 28 and 29 Aug 2026; re-check at checkout, several items are pre-sale</p>
   <p>Five groups, each with a trigger. Nothing in a later group is worth ordering before its trigger fires. The full line-item lists, with the owned parts, are in <code>docs/11</code>.</p>
   <div class="tw"><table>
     <thead><tr><th>Group</th><th>Trigger</th><th>What</th><th class="n">Once</th></tr></thead>
     <tbody>
     <tr><td><strong>1. This week</strong></td><td>Ships now; needed for the cable weekend and the Wi-Fi cutover</td><td>AP7 Ceiling and Desktop ($369 each), Linovision 10G 802.3bt injector, Cat6 and Cat6A boxes, OM4 fiber, two 1U shelves and a brush panel, DLI Web Power Switch Pro ($229), CyberPower CP1500PFCLCD ($275), brush plate, TII 212 coax arrestor with bonding wire, old-work box, patch cables, right-angle modem leads, coax jumper, hole saw, labels</td><td class="n">~$2,150</td></tr>
-    <tr><td><strong>2. Pre-order</strong></td><td>Holds a place in the queue</td><td>Switch X ($649.20 pre-sale, Sept/Oct), two Switch SEs ($299.30 each, Oct/Nov, early access sold out), six 10GBASE-SR optics, a DAC for the Mgmt breakout, a 10GBASE-T module for the DXP8800 on SE #2</td><td class="n">~$1,430</td></tr>
+    <tr><td><strong>2. Pre-order</strong></td><td>Holds a place in the queue</td><td>Switch X ($649.20 pre-sale, Sept/Oct), two Switch SEs ($299.30 each, Oct/Nov, early access sold out), six 10GBASE-SR optics, a DAC for the Mgmt breakout, a 10GBASE-T module for the DXP8800 on SE #2</td><td class="n">~$1,420</td></tr>
     <tr><td><strong>3. After a test</strong></td><td>Signal survey; two-week coverage test</td><td>802.3bt splitter to 12 V ($90), DC pigtail, 4×4 antenna if the survey needs it. A third AP7 Ceiling with injector ($395) only if the coverage test shows a gap</td><td class="n">~$180 (+$395)</td></tr>
-    <tr><td><strong>4. Cameras and cabinet</strong></td><td>Switch SEs in hand, about November</td><td>UniFi 42U cabinet ($1,199), UNVR Pro ($499), 5 to 7 surveillance drives, 5 cameras sized for 8, DLI 222 (~$249), two DACs, a shelf for the SEs and one for the two UGREENs, brush panel</td><td class="n">~$4,300 to $4,700</td></tr>
-    <tr><td><strong>5. Lab</strong></td><td>Server specs in hand; rack power-on</td><td>Three used 10GBASE-T NICs (two for the 6028U, one for the Chenbro), a DAC, spare optics, lab PDU, rack UPS (sized after a measured draw), a shelf for the QNAPs. All three servers have IPMI, so no JetKVMs. The switches are owned</td><td class="n">~$330 to $530</td></tr>
-    <tr><td><strong>Program</strong></td><td></td><td>Plus NICs, the rack UPS, KVMs, the conditional AP. Excludes the three Xeon hosts (owned), UNAS drives and electrician work. The Calyx SIM is $500/yr and already paid</td><td class="n">~$8,400 to $9,000</td></tr>
+    <tr><td><strong>4. Cameras and cabinet</strong></td><td>Switch SEs in hand, about November</td><td>UniFi 42U cabinet ($1,199), UNVR Pro ($499), 5 to 7 surveillance drives, 5 cameras sized for 8, DLI 222 (~$249), a DAC, two shelves for the SEs, a 5U shelf for the two UGREENs, a brush panel and a basic power strip</td><td class="n">~$4,100 to $4,500</td></tr>
+    <tr><td><strong>5. Lab</strong></td><td>Server specs in hand; rack power-on</td><td>Three used 10GBASE-T NICs (two for the 6028U, one for the Chenbro), a DAC, spare optics, lab PDU, rack UPS (sized after a measured draw), a shelf for the QNAPs, a second DLI 222 and a strip. All three servers have IPMI, so no JetKVMs. The switches are owned</td><td class="n">~$560</td></tr>
+    <tr><td><strong>Program</strong></td><td></td><td>Plus the rack UPS and the conditional AP. Excludes the three lab servers (owned), UNAS drives and electrician work. The Calyx SIM is $500/yr and already paid</td><td class="n">~$8,400 to $8,800</td></tr>
     </tbody>
   </table></div>
   <p>Already owned and in the plan: Gold Pro, Gold gen-1, the pfSense box, the five NAS units above, the three lab servers (Supermicro CSE-216 with X10DRH-iT, Supermicro SYS-6028U-TR4+ with X10DRU-i+, Chenbro NR12001), the Plex host (form factor pending), two Raspberry Pis, the switches listed in section 5, the StarTech rack, the Gold Pro rack tray, the On-Q parts (three AC106A6 modules, relocation kit, two F7526 boxes, AC1031 strip, grommets, clips, D-Line cover, VM1002 splitter, Amerisense outlets), the GL.iNet Puli AX, the Calyx membership, Domotz, and the Spectrum modem.</p>
@@ -467,7 +467,7 @@ dialog.lightbox .lb-close { position: fixed; top: 14px; right: 18px; font: 500 1
 <section id="s7">
   <h2><span class="k">7</span>Phases</h2>
   <p class="src">docs/11 · checklists; docs/09 carries the reasoning</p>
-  <p>Cable before hardware, because it is the only step that gets harder later. Wi-Fi before switches, because injectors decouple them. Trusted before IoT. Cameras after Wi-Fi is stable, and the garage top-of-rack switch with them. Lab hosts and the public DMZ last.</p>
+  <p>Cable before hardware, because it is the only step that gets harder later. Wi-Fi before switches, because injectors decouple them. Trusted before IoT. Cameras after Wi-Fi is stable, with the cabinet and the production fabric. The lab fabric last, because nothing else depends on it.</p>
 
   <div class="phase">
     <div class="hd"><span class="pn">Phase 0</span><span class="pt">Remote prep</span><span class="pw">now, no hardware</span></div>
@@ -592,8 +592,8 @@ Gold Pro WAN2 ──► 802.3bt injector ── one Cat6A spare ────┤ 
   <div class="tw"><table>
     <thead><tr><th>Element</th><th>Configuration</th></tr></thead>
     <tbody>
-    <tr><td>NIC 1, data</td><td>DMZ, static <code>10.187.80.10</code>, on the garage top-of-rack switch. HAProxy listens here. Default gateway is the Firewalla's DMZ interface</td></tr>
-    <tr><td>NIC 2, management</td><td>Mgmt, on the garage Mgmt switch. The pfSense GUI binds only here; Firewalla rules block anything DMZ-sourced toward it</td></tr>
+    <tr><td>NIC 1, data</td><td>DMZ, static <code>10.187.80.10</code>, on Switch SE #2 copper. HAProxy listens here. Default gateway is the Firewalla's DMZ interface</td></tr>
+    <tr><td>NIC 2, management</td><td>Mgmt, on Switch SE #2 copper. The pfSense GUI binds only here; Firewalla rules block anything DMZ-sourced toward it</td></tr>
     <tr><td>Packages</td><td>HAProxy and ACME (Let's Encrypt, DNS-01 through the Cloudflare API, which needs no inbound connectivity and is the only way to get wildcard certificates)</td></tr>
     <tr><td>Routing</td><td>None. No NAT, no gateway role. It is a host</td></tr>
     <tr><td>Firewalla WAN rule</td><td>Forward 443 to <code>10.187.80.10</code>, sourced from Cloudflare IP ranges only</td></tr>
@@ -712,8 +712,8 @@ backend bk_one
     <tr><td><strong>Storage network bypasses the firewall</strong></td><td>The isolated 10G switch between the NAS and the lab hosts is, by design, a path no rule sees</td><td>No gateway on that subnet, no uplink on the switch; the NAS exposes only NFS and iSCSI there; hosts treat it as a storage-only link. Anything else lab-to-NAS takes the routed path</td></tr>
     <tr><td><strong>Plex across VLANs</strong></td><td>Clients in Media and Trusted, library on the NAS in Trusted, remote users through the DMZ; Plex discovery is a broadcast</td><td>Plex host in Media so TVs and Sonos find it natively; Trusted reaches it by the existing allow; one allow to the NAS for the library; remote access through the DMZ proxy, one allow to the Plex host on 32400</td></tr>
     <tr><td><strong>Camera retention</strong></td><td>Continuous 4K on eight cameras writes 690 to 1,040 GB a day; two 11 TB drives last 21 to 34 days, not 60 to 90. Archiving to the UNAS-Pro is a copy, not extra retention</td><td>Five to seven drives in the UNVR Pro. Set the bitrate in Protect and re-check after the first week</td></tr>
-    <tr><td><strong>Copper headroom on Switch X</strong></td><td>Six drops and two AP runs use seven of eight copper ports</td><td>SFP+ 2 feeds the Mgmt breakout; SFP+ 3 and 4 take 10GBASE-T modules for the terminated spares</td></tr>
-    <tr><td><strong>Rack power and heat</strong></td><td>Three Xeon hosts plus the production block will exceed one 20 A circuit; the figure waits on the specs. The closet is 46 cu ft behind a door with three fans</td><td>Dedicated circuits, UPS sizing and the cabinet's roof fans before the lab powers on; louvered closet door</td></tr>
+    <tr><td><strong>Copper headroom on Switch X</strong></td><td>Six drops and two AP runs use seven of eight copper ports</td><td>SFP+ 2 feeds the Mgmt breakout; SFP+ 3 and 4 carry fiber pairs B and C, so the four terminated spares patch onto the Mgmt breakout</td></tr>
+    <tr><td><strong>Rack power and heat</strong></td><td>The three lab servers plus the production block will exceed one 20 A circuit; the figure waits on a measured draw. The closet is 46 cu ft behind a door with three fans</td><td>Dedicated circuits, UPS sizing and the cabinet's roof fans before the lab powers on; louvered closet door</td></tr>
     <tr><td><strong>Re-addressing sprawl</strong></td><td>Static IPs, port forwards or DNS entries pointing at devices that change VLAN will break</td><td>Inventory statics in Phase 0. Trusted keeps its /24, which avoids most of it</td></tr>
     <tr><td><strong>Cheap PoE injectors</strong></td><td>Firewalla warns that an incompatible injector can cause AP reboots or packet loss, and requires 802.3at or bt</td><td>The Linovision 802.3bt unit qualifies; no unbranded listings</td></tr>
     </tbody>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 880" style="background:#f7f7f5" role="img" aria-label="Shop drawing of the On-Q 42 enclosure back panel, interior 14 by 41.75 inches, with eight numbered parts placed to scale, inch rulers on the top and left edges, the top and bottom knockouts, the drilled exit hole on the left wall, and a side-view depth section showing every part clears the 4.31 inch usable depth.">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 880" style="background:#f7f7f5" role="img" aria-label="Shop drawing of the On-Q 42 enclosure back panel, interior 14 by 41.75 inches, with nine numbered parts placed to scale, inch rulers on the top and left edges, the top and bottom knockouts, the drilled exit hole on the left wall, and a side-view depth section showing every part clears the 4.31 inch usable depth.">
 <style>
   svg { font-family: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; }
   .t-title { font-size: 15px; font-weight: 600; fill: #1f2430; letter-spacing: 0.01em; }
@@ -131,7 +131,7 @@
   <path d="M-18,295 L-46,295" class="fb" stroke-width="1.6" marker-end="url(#ar)"/>
 
   <!-- 5a OM4: continuous from the top knockout, down the right edge, into the coil, across to the exit hole -->
-  <path d="M118,-6 L118,4 L160,4 L160,314 L80,314 L42,322" class="fb" stroke-width="1.6" fill="none"/>
+  <path d="M118,-6 L118,4 L142,4 L142,314 L80,314 L42,322" class="fb" stroke-width="1.6" fill="none"/>
   <g class="fb" stroke-width="1.6"><ellipse cx="42" cy="352" rx="30" ry="30"/><ellipse cx="42" cy="357" rx="30" ry="30"/></g>
   <path d="M12,352 L8,348 L8,295 L-18,295" class="fb" stroke-width="1.6" fill="none"/>
   <!-- 5b spare Cat6A: from the top knockout, coiled, dead end -->
@@ -162,7 +162,7 @@
     <circle cx="188" cy="206" r="8"/><text x="188" y="209.5">3</text>
     <circle cx="-30" cy="322" r="8"/><text x="-30" y="325.5">4</text>
     <circle cx="-30" cy="189" r="8"/><text x="-30" y="192.5">9</text>
-    <circle cx="-30" cy="352" r="8"/><text x="-30" y="355.5">5a</text>
+    <circle cx="-36" cy="352" r="8"/><text x="-36" y="355.5">5a</text>
     <circle cx="188" cy="352" r="8"/><text x="188" y="355.5">5b</text>
     <circle cx="188" cy="417" r="8"/><text x="188" y="420.5">6</text>
     <circle cx="-30" cy="458" r="8"/><text x="-30" y="461.5">7</text>
@@ -174,7 +174,7 @@
     <line x1="135" y1="206" x2="180" y2="206"/>
     <line x1="-22" y1="322" x2="-3" y2="306"/>
     <line x1="-22" y1="189" x2="6" y2="189"/>
-    <line x1="-22" y1="352" x2="8" y2="352"/>
+    <line x1="-28" y1="352" x2="8" y2="352"/>
     <line x1="156" y1="352" x2="180" y2="352"/>
     <line x1="163" y1="417" x2="180" y2="417"/>
     <line x1="-22" y1="458" x2="6" y2="458"/>
@@ -194,9 +194,9 @@
   <text x="14" y="110" class="t-sub">coax from 1 · WAN patch to the exit (4) · DC from the brick (6); ports face down</text>
   <text x="0" y="128" class="t-key"><tspan font-weight="600">4</tspan>  Drilled exit, left wall · y 24 · 2.5 in + F2242 ring</text>
   <text x="14" y="142" class="t-sub">8 patch + WAN + fiber → brush plate → rack</text>
-  <text x="0" y="160" class="t-key"><tspan font-weight="600">5a</tspan>  OM4 fiber, pass-through · coil y 27–32 · 5 in dia</text>
+  <text x="0" y="160" class="t-key"><tspan font-weight="600">5a</tspan>  OM4 fiber, pass-through · coil y 27 to 32 · 5 in dia</text>
   <text x="14" y="174" class="t-sub">attic → coil → exit hole → Switch X SFP+ 1; other end in the garage</text>
-  <text x="0" y="192" class="t-key"><tspan font-weight="600">5b</tspan>  Slack of the 13 terminated runs · coil y 27–32</text>
+  <text x="0" y="192" class="t-key"><tspan font-weight="600">5b</tspan>  Slack of the 13 terminated runs · coil y 27 to 32</text>
   <text x="14" y="206" class="t-sub">every run is punched down now (18 positions); this is the</text>
   <text x="14" y="218" class="t-sub">excess length before the modules, clipped with AC103520</text>
   <text x="0" y="236" class="t-key"><tspan font-weight="600">6</tspan>  AC1031 strip · x 7.2  y 32.8 · 6.4 × 3.9 × 2.5 · modem brick x 1  y 24.7</text>
@@ -214,7 +214,7 @@
   <text x="0" y="458" class="t-key">Three modules = 8.7 in. Below them: VM1002 3.6 + 0.5 gap + modem 6.7 = 10.8 in.</text>
   <text x="0" y="472" class="t-key">No plate under the modem: the AC1040F (15.8 × 12) would cover the splitter.</text>
   <text x="0" y="502" class="t-h">STILL TO MEASURE</text>
-  <text x="0" y="522" class="t-key">Slack on the six existing drops (3–4 ft to reach the modules)</text>
+  <text x="0" y="522" class="t-key">Slack on the six existing drops (3 to 4 ft to reach the modules)</text>
 </g>
 
 <!-- ================= DEPTH SECTION ================= -->
@@ -229,17 +229,17 @@
   <text x="66.1" y="138" class="t-dim" text-anchor="middle">+1.2 door</text>
   <!-- bars: modem 2.8 + 0.6 plug; modules 1.5 + 1.0 plug; outlet 0.4 + 1.2 plug -->
   <rect x="0" y="4" width="33.6" height="14" class="depth-bar"/>
-  <text x="46" y="15" class="t-in">3  modem 2.8, ports face down</text>
+  <text x="76" y="15" class="t-in">3  modem 2.8, ports face down</text>
   <rect x="0" y="26" width="18" height="14" class="depth-bar"/><rect x="18" y="26" width="12" height="14" class="depth-plug"/>
-  <text x="46" y="37" class="t-in">2  AC106A6 ≈ 1.5 + patch plug</text>
+  <text x="76" y="37" class="t-in">2  AC106A6 ≈ 1.5 + patch plug</text>
   <rect x="0" y="48" width="39" height="14" class="depth-bar"/>
-  <text x="46" y="59" class="t-in">7  F7526 box 3.25</text>
+  <text x="76" y="59" class="t-in">7  F7526 box 3.25</text>
   <rect x="0" y="70" width="30" height="14" class="depth-bar"/><rect x="30" y="70" width="12" height="14" class="depth-plug"/>
-  <text x="46" y="81" class="t-in">6  AC1031 2.5 + plugs</text>
+  <text x="76" y="81" class="t-in">6  AC1031 2.5 + plugs</text>
   <rect x="0" y="92" width="22.2" height="14" class="depth-bar"/><rect x="22.2" y="92" width="12" height="14" class="depth-plug"/>
-  <text x="46" y="103" class="t-in">9  VM1002 1.85 + F plugs</text>
+  <text x="76" y="103" class="t-in">9  VM1002 1.85 + F plugs</text>
 </g>
 <text x="360" y="770" class="t-sub">Not in the box: Web Power Switch Pro (rack shelf),</text>
-<text x="360" y="784" class="t-sub">UPS (floor by the rack), the old unmanaged switch (now the Mgmt breakout on the rack).</text>
-<text x="360" y="798" class="t-sub">Cords never pass through the wall.</text>
+<text x="360" y="784" class="t-sub">UPS (floor by the rack), the Zyxel XMG-105HP Mgmt breakout</text>
+<text x="360" y="798" class="t-sub">(on the rack). Cords never pass through the wall.</text>
 </svg>

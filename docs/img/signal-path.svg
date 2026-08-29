@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" style="background:#f7f7f5" viewBox="0 0 1170 440" role="img" aria-label="Signal path: modem to Gold Pro to Switch X in the closet; Switch X copper to six wall drops and two AP7Cs; a DAC to the Zyxel XMG-105HP Mgmt breakout; three OM4 fiber pairs to the garage cabinet. Pair B feeds Switch SE 1 with the eight camera runs and the UNVR Pro; pair C feeds Switch SE 2 with the DXP8800 Plus production NAS at 10G, the Plex host, the DXP4800 Plus and UNAS-Pro, and the TPE-1020WS console switch with Pi-hole 2 and pfSense. Pair A feeds the lab fabric: the QNAP QSW-M408-4C with three Xeon hosts, a GiGaPlus copper switch and the QNAP lab NAS units; a second GiGaPlus switch is an isolated storage network between the NAS units and the Xeons.">
+<svg xmlns="http://www.w3.org/2000/svg" style="background:#f7f7f5" viewBox="-16 0 1210 570" role="img" aria-label="Signal path: the modem, Gold Pro and Switch X in the closet, with a DAC to the Zyxel XMG-105HP management breakout and copper to six wall drops and two AP7 ceiling units. Three OM4 fiber pairs cross to the garage cabinet. Pair B feeds Switch SE 1 with the eight camera runs and the UNVR Pro. Pair C feeds Switch SE 2 with the UGREEN DXP8800 Plus production NAS at 10G, the Plex host, the DXP4800 Plus and UNAS-Pro, pfSense, and the TRENDnet TPE-1020WS console switch carrying Pi-hole 2, the three IPMI ports and the PDUs. Pair A feeds the lab fabric: the QNAP QSW-M408-4C top-of-rack switch with the Supermicro SC216 and 6028U-TR4 plus, the Chenbro NR12001, a GiGaPlus copper switch, the two QNAP lab NAS units and the Gold gen-1. A second GiGaPlus switch is an isolated storage network between the NAS units and the servers.">
 <style>
   svg { font-family: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; }
   .lbl { font-size: 12px; fill: #1f2430; }
@@ -15,74 +15,83 @@
 <defs>
   <marker id="a2" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L8,4 L0,8 z" fill="#1f2430"/></marker>
 </defs>
-<text x="0" y="16" class="lane">CLOSET</text>
-<text x="560" y="16" class="lane">GARAGE CABINET · PRODUCTION FABRIC</text>
-<text x="560" y="272" class="lane">GARAGE CABINET · LAB FABRIC</text>
-<line x1="520" y1="4" x2="520" y2="436" stroke="#1f2430" stroke-width="1" stroke-dasharray="6 5"/>
-<line x1="540" y1="258" x2="1160" y2="258" stroke="#9aa2b3" stroke-width="1" stroke-dasharray="3 3"/>
+
+<text x="0" y="20" class="lane">CLOSET</text>
+<text x="600" y="20" class="lane">GARAGE CABINET &#183; PRODUCTION FABRIC</text>
+<text x="600" y="352" class="lane">GARAGE CABINET &#183; LAB FABRIC</text>
+<line x1="560" y1="8" x2="560" y2="540" stroke="#1f2430" stroke-width="1" stroke-dasharray="6 5"/>
+<line x1="580" y1="338" x2="1180" y2="338" stroke="#9aa2b3" stroke-width="1" stroke-dasharray="3 3"/>
 
 <!-- closet -->
-<rect x="0" y="120" width="96" height="40" class="node"/><text x="48" y="144" class="lbl" text-anchor="middle">Modem</text>
-<rect x="150" y="120" width="96" height="40" class="node"/><text x="198" y="144" class="lbl" text-anchor="middle">Gold Pro</text>
-<rect x="300" y="120" width="110" height="40" class="node"/><text x="355" y="144" class="lbl" text-anchor="middle">Switch X</text>
-<line x1="96" y1="140" x2="150" y2="140" class="edge" marker-end="url(#a2)"/>
-<text x="123" y="132" class="lbl-2" text-anchor="middle">WAN</text>
-<line x1="246" y1="140" x2="300" y2="140" class="edge" marker-end="url(#a2)" marker-start="url(#a2)"/>
-<text x="273" y="128" class="lbl-2" text-anchor="middle">10G trunk</text>
-<path d="M355,160 L355,220" class="edge-c" marker-end="url(#a2)"/>
-<text x="355" y="242" class="lbl" text-anchor="middle">6 wall drops + 2 AP7C</text>
-<text x="355" y="258" class="lbl-2" text-anchor="middle">8 copper ports · PoE+ on the APs</text>
-<path d="M355,120 L355,47 L240,47" class="edge" marker-end="url(#a2)"/>
-<text x="308" y="40" class="lbl-2" text-anchor="middle">SFP+ 2 · Mgmt breakout</text>
-<rect x="120" y="30" width="120" height="34" class="node"/><text x="180" y="45" class="lbl" text-anchor="middle">XMG-105HP</text><text x="180" y="58" class="lbl-2" text-anchor="middle">Pi #1, Domotz, PDU</text>
+<rect x="0" y="150" width="96" height="40" class="node"/><text x="48" y="174" class="lbl" text-anchor="middle">Modem</text>
+<rect x="150" y="150" width="96" height="40" class="node"/><text x="198" y="174" class="lbl" text-anchor="middle">Gold Pro</text>
+<rect x="300" y="150" width="110" height="40" class="node"/><text x="355" y="174" class="lbl" text-anchor="middle">Switch X</text>
+<line x1="96" y1="170" x2="150" y2="170" class="edge" marker-end="url(#a2)"/>
+<text x="123" y="162" class="lbl-2" text-anchor="middle">WAN</text>
+<line x1="246" y1="170" x2="300" y2="170" class="edge" marker-end="url(#a2)" marker-start="url(#a2)"/>
+<text x="273" y="142" class="lbl-2" text-anchor="middle">10G trunk</text>
+<path d="M355,190 L355,250" class="edge-c" marker-end="url(#a2)"/>
+<text x="355" y="272" class="lbl" text-anchor="middle">6 wall drops + 2 AP7C</text>
+<text x="355" y="288" class="lbl-2" text-anchor="middle">8 copper ports &#183; PoE+ on the APs</text>
+<path d="M355,150 L355,84 L250,84" class="edge" marker-end="url(#a2)"/>
+<text x="292" y="76" class="lbl-2" text-anchor="end">SFP+ 2 &#183; Mgmt breakout</text>
+<rect x="130" y="66" width="120" height="36" class="node"/><text x="190" y="82" class="lbl" text-anchor="middle">XMG-105HP</text><text x="190" y="95" class="lbl-2" text-anchor="middle">Pi #1, Domotz, PDU</text>
 
 <!-- fiber pairs -->
-<path d="M410,132 L470,132 L470,72 L640,72" class="edge-f" marker-end="url(#a2)"/>
-<text x="575" y="62" class="lbl-2" text-anchor="middle">OM4 pair B · SFP+ 3</text>
-<path d="M410,140 L480,140 L480,150 L640,150" class="edge-f" marker-end="url(#a2)"/>
-<text x="575" y="176" class="lbl-2" text-anchor="middle">OM4 pair C · SFP+ 4</text>
-<path d="M410,148 L470,148 L470,316 L640,316" class="edge-f" marker-end="url(#a2)"/>
-<text x="575" y="306" class="lbl-2" text-anchor="middle">OM4 pair A · SFP+ 1</text>
+<path d="M410,162 L480,162 L480,86 L680,86" class="edge-f" marker-end="url(#a2)"/>
+<text x="620" y="76" class="lbl-2" text-anchor="middle">OM4 pair B &#183; SFP+ 3</text>
+<path d="M410,170 L490,170 L490,200 L680,200" class="edge-f" marker-end="url(#a2)"/>
+<text x="620" y="228" class="lbl-2" text-anchor="middle">OM4 pair C &#183; SFP+ 4</text>
+<path d="M410,178 L500,178 L500,400 L680,400" class="edge-f" marker-end="url(#a2)"/>
+<text x="620" y="390" class="lbl-2" text-anchor="middle">OM4 pair A &#183; SFP+ 1</text>
 
-<!-- production fabric -->
-<rect x="640" y="52" width="110" height="40" class="node"/><text x="695" y="70" class="lbl" text-anchor="middle">Switch SE #1</text><text x="695" y="84" class="lbl-2" text-anchor="middle">cameras</text>
-<rect x="800" y="30" width="110" height="34" class="node"/><text x="855" y="51" class="lbl" text-anchor="middle">UNVR Pro</text>
-<path d="M750,64 L775,64 L775,47 L800,47" class="edge" marker-end="url(#a2)"/>
-<text x="920" y="51" class="lbl-2">10G SFP+ · Cameras</text>
-<path d="M750,80 L940,80" class="edge-c" marker-end="url(#a2)"/>
-<text x="946" y="76" class="lbl">8 camera runs</text>
-<text x="946" y="90" class="lbl-2">5 live · VLAN 40</text>
+<!-- production: SE #1 -->
+<rect x="680" y="66" width="120" height="40" class="node"/><text x="740" y="84" class="lbl" text-anchor="middle">Switch SE #1</text><text x="740" y="98" class="lbl-2" text-anchor="middle">cameras</text>
+<rect x="850" y="44" width="120" height="30" class="node"/><text x="910" y="63" class="lbl" text-anchor="middle">UNVR Pro</text>
+<path d="M800,78 L825,78 L825,59 L850,59" class="edge" marker-end="url(#a2)"/>
+<text x="980" y="63" class="lbl-2">10G SFP+ &#183; Cameras</text>
+<path d="M800,94 L990,94" class="edge-c" marker-end="url(#a2)"/>
+<text x="996" y="90" class="lbl">8 camera runs</text>
+<text x="996" y="104" class="lbl-2">5 live &#183; VLAN 40</text>
 
-<rect x="640" y="130" width="110" height="40" class="node"/><text x="695" y="148" class="lbl" text-anchor="middle">Switch SE #2</text><text x="695" y="162" class="lbl-2" text-anchor="middle">production hosts</text>
-<rect x="800" y="104" width="110" height="30" class="node"/><text x="855" y="123" class="lbl" text-anchor="middle">DXP8800 Plus</text>
-<rect x="800" y="140" width="110" height="30" class="node"/><text x="855" y="159" class="lbl" text-anchor="middle">Plex host</text>
-<rect x="800" y="176" width="110" height="30" class="node"/><text x="855" y="188" class="lbl" text-anchor="middle">DXP4800 Plus</text><text x="855" y="200" class="lbl-2" text-anchor="middle">UNAS-Pro</text>
-<rect x="800" y="212" width="110" height="30" class="node"/><text x="855" y="224" class="lbl" text-anchor="middle">TPE-1020WS</text><text x="855" y="236" class="lbl-2" text-anchor="middle">Pi #2 · pfSense · KVMs</text>
-<path d="M750,140 L775,140 L775,119 L800,119" class="edge" marker-end="url(#a2)"/>
-<path d="M750,148 L780,148 L780,155 L800,155" class="edge" marker-end="url(#a2)"/>
-<path d="M750,156 L775,156 L775,191 L800,191" class="edge" marker-end="url(#a2)"/>
-<path d="M750,164 L770,164 L770,227 L800,227" class="edge" marker-end="url(#a2)"/>
-<text x="920" y="123" class="lbl-2">10G · Trusted · production NAS</text>
-<text x="920" y="159" class="lbl-2">2.5G · Media</text>
-<text x="920" y="195" class="lbl-2">2.5G / 1G · Trusted · backup, archive</text>
-<text x="920" y="231" class="lbl-2">Mgmt · PoE+</text>
+<!-- production: SE #2 -->
+<rect x="680" y="180" width="120" height="40" class="node"/><text x="740" y="198" class="lbl" text-anchor="middle">Switch SE #2</text><text x="740" y="212" class="lbl-2" text-anchor="middle">production hosts</text>
+<rect x="850" y="126" width="120" height="30" class="node"/><text x="910" y="145" class="lbl" text-anchor="middle">DXP8800 Plus</text>
+<rect x="850" y="162" width="120" height="30" class="node"/><text x="910" y="181" class="lbl" text-anchor="middle">Plex host</text>
+<rect x="850" y="198" width="120" height="32" class="node"/><text x="910" y="211" class="lbl" text-anchor="middle">DXP4800 Plus</text><text x="910" y="224" class="lbl-2" text-anchor="middle">UNAS-Pro</text>
+<rect x="850" y="236" width="120" height="32" class="node"/><text x="910" y="249" class="lbl" text-anchor="middle">pfSense</text><text x="910" y="262" class="lbl-2" text-anchor="middle">DMZ + Mgmt NICs</text>
+<rect x="850" y="274" width="120" height="32" class="node"/><text x="910" y="287" class="lbl" text-anchor="middle">TPE-1020WS</text><text x="910" y="300" class="lbl-2" text-anchor="middle">Pi #2 &#183; IPMI &#183; PDUs</text>
+<path d="M800,188 L820,188 L820,141 L850,141" class="edge" marker-end="url(#a2)"/>
+<path d="M800,194 L826,194 L826,177 L850,177" class="edge" marker-end="url(#a2)"/>
+<path d="M800,206 L826,206 L826,214 L850,214" class="edge" marker-end="url(#a2)"/>
+<path d="M800,212 L820,212 L820,252 L850,252" class="edge" marker-end="url(#a2)"/>
+<path d="M800,218 L814,218 L814,290 L850,290" class="edge" marker-end="url(#a2)"/>
+<text x="980" y="145" class="lbl-2">10G &#183; Trusted &#183; production NAS</text>
+<text x="980" y="181" class="lbl-2">2.5G &#183; Media</text>
+<text x="980" y="218" class="lbl-2">2.5G / 1G &#183; Trusted &#183; backup, archive</text>
+<text x="980" y="256" class="lbl-2">2.5G &#183; DMZ and Mgmt</text>
+<text x="980" y="294" class="lbl-2">Mgmt &#183; PoE+</text>
 
-<!-- lab fabric -->
-<rect x="640" y="296" width="110" height="40" class="node"/><text x="695" y="311" class="lbl" text-anchor="middle">QSW-M408-4C</text><text x="695" y="326" class="lbl-2" text-anchor="middle">lab ToR · 10G</text>
-<rect x="800" y="284" width="110" height="30" class="node"/><text x="855" y="303" class="lbl" text-anchor="middle">3× Xeon host</text>
-<rect x="800" y="320" width="110" height="30" class="node"/><text x="855" y="332" class="lbl" text-anchor="middle">GP-2100 #1</text><text x="855" y="344" class="lbl-2" text-anchor="middle">8 × 10GBASE-T</text>
-<rect x="800" y="356" width="110" height="30" class="node"/><text x="855" y="368" class="lbl" text-anchor="middle">TS-932PX</text><text x="855" y="380" class="lbl-2" text-anchor="middle">TS-563 · lab NAS</text>
-<path d="M750,306 L775,306 L775,299 L800,299" class="edge" marker-end="url(#a2)"/>
-<path d="M750,316 L775,316 L775,335 L800,335" class="edge" marker-end="url(#a2)"/>
-<path d="M750,326 L770,326 L770,371 L800,371" class="edge" marker-end="url(#a2)"/>
-<text x="920" y="303" class="lbl-2">VLAN 99</text>
-<text x="920" y="339" class="lbl-2">copper-NIC hosts</text>
-<text x="920" y="375" class="lbl-2">SFP+ · VLAN 99</text>
+<!-- lab -->
+<rect x="680" y="380" width="120" height="40" class="node"/><text x="740" y="398" class="lbl" text-anchor="middle">QSW-M408-4C</text><text x="740" y="412" class="lbl-2" text-anchor="middle">lab ToR &#183; 10G</text>
+<rect x="850" y="366" width="120" height="32" class="node"/><text x="910" y="379" class="lbl" text-anchor="middle">SC216 &#183; 6028U</text><text x="910" y="392" class="lbl-2" text-anchor="middle">Chenbro NR12001</text>
+<rect x="850" y="404" width="120" height="32" class="node"/><text x="910" y="417" class="lbl" text-anchor="middle">GP-2100 #1</text><text x="910" y="430" class="lbl-2" text-anchor="middle">8 &#215; 10GBASE-T</text>
+<rect x="850" y="442" width="120" height="32" class="node"/><text x="910" y="455" class="lbl" text-anchor="middle">TS-932PX</text><text x="910" y="468" class="lbl-2" text-anchor="middle">TS-563 &#183; lab NAS</text>
+<rect x="680" y="452" width="120" height="30" class="node"/><text x="740" y="471" class="lbl" text-anchor="middle">Gold gen-1</text>
+<path d="M800,390 L822,390 L822,382 L850,382" class="edge" marker-end="url(#a2)"/>
+<path d="M800,400 L822,400 L822,420 L850,420" class="edge" marker-end="url(#a2)"/>
+<path d="M800,410 L816,410 L816,458 L850,458" class="edge" marker-end="url(#a2)"/>
+<path d="M740,420 L740,452" class="edge" marker-end="url(#a2)"/>
+<text x="746" y="440" class="lbl-2">GbE</text>
+<text x="980" y="376" class="lbl-2">VLAN 99</text>
+<text x="980" y="420" class="lbl-2">copper-NIC hosts</text>
+<text x="980" y="458" class="lbl-2">SFP+ &#183; VLAN 99</text>
+<text x="740" y="498" class="lbl-2" text-anchor="middle">nested lab firewall</text>
 
 <!-- storage network -->
-<rect x="1000" y="400" width="150" height="26" class="node-s"/><text x="1075" y="417" class="lbl" text-anchor="middle">GP-2100 #2 · storage</text>
-<path d="M910,107 L1158,107 L1158,413 L1150,413" class="edge-s"/>
-<path d="M910,179 L1158,179" class="edge-s"/>
-<path d="M910,287 L1158,287" class="edge-s"/>
-<text x="990" y="417" class="lbl-2" font-size="10" text-anchor="end">2nd 10G NICs · no gateway · NFS, iSCSI</text>
+<rect x="1000" y="508" width="170" height="28" class="node-s"/><text x="1085" y="526" class="lbl" text-anchor="middle">GP-2100 #2 &#183; storage</text>
+<path d="M970,133 L1185,133 L1185,522 L1170,522" class="edge-s"/>
+<path d="M970,206 L1185,206" class="edge-s"/>
+<path d="M970,392 L1185,392" class="edge-s"/>
+<text x="988" y="526" class="lbl-2" text-anchor="end">2nd 10G NICs &#183; no gateway &#183; NFS, iSCSI</text>
 </svg>
