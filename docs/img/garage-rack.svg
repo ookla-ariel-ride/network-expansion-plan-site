@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1020 800" style="background:#f7f7f5" role="img" aria-label="Shop drawing of the garage cabinet: a UniFi 42U 1,000 mm rack holding two fabrics. Production at the top: Switch SE 1 and Switch SE 2 on their own shelves, the UNVR Pro, the UNAS-Pro, the UGREEN DXP8800 Plus and DXP4800 Plus side by side on a 5U shelf, the Plex host, a Raspberry Pi and the pfSense box, a DLI 222 PDU, a basic strip and the TRENDnet TPE-1020WS console switch. Lab below: the QNAP QSW-M408-4C top-of-rack switch, two GiGaPlus 10GBASE-T switches, the Supermicro SC216 and 6028U-TR4 plus servers, the Chenbro NR12001, two QNAP lab NAS units, the Gold gen-1, a second DLI 222 and a strip. A rack UPS at the base. Three fiber pairs from the closet and the eight camera runs from the attic enter at the top.">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1020 800" style="background:#f7f7f5" role="img" aria-label="Shop drawing of the garage cabinet: a UniFi 42U 1,000 mm rack holding two fabrics. Production at the top: Switch SE 1 and Switch SE 2 on their own shelves, the UNVR Pro, the UNAS-Pro, the UGREEN DXP8800 Plus and DXP4800 Plus side by side on a 5U shelf, the Plex host, a Raspberry Pi and the pfSense box, a DLI 222 PDU, a basic strip and the TRENDnet TPE-1020WS console switch. Lab below: the QNAP QSW-M408-4C top-of-rack switch, two GiGaPlus 10GBASE-T switches, the Supermicro SC216 and 6028U-TR4 plus servers, the Chenbro NR12001, a Tripp Lite rack LCD console, two QNAP lab NAS units, the Gold gen-1, a second DLI 222 and a strip. A rack UPS at the base. Three fiber pairs from the closet and the eight camera runs from the attic enter at the top.">
 <style>
   svg { font-family: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; }
   .t-title { font-size: 15px; font-weight: 600; fill: #1f2430; }
@@ -107,8 +107,9 @@
   <text x="94" y="373" class="t-in2" text-anchor="middle">2U &#183; 12 &#215; 3.5 in &#183; 4 &#215; 1GbE</text>
   <rect x="21" y="379" width="147" height="12" class="part-d" rx="1"/>
   <text x="94" y="388" class="t-in2" text-anchor="middle">Chenbro NR12001 &#183; 1U</text>
-  <rect x="21" y="393" width="147" height="12" class="ghost" rx="1"/>
-  <text x="94" y="402" class="t-in2" text-anchor="middle">U15 free</text>
+  <rect x="21" y="393" width="147" height="12" class="part"/>
+  <rect x="30" y="394" width="130" height="10" class="part-d" rx="1"/>
+  <text x="94" y="402" class="t-in2" text-anchor="middle">Tripp Lite 17 in LCD console</text>
   <rect x="21" y="407" width="147" height="54" class="part"/>
   <rect x="26" y="411" width="62" height="46" class="part-d" rx="2"/><text x="57" y="431" class="t-in2" text-anchor="middle">TS-932PX</text><text x="57" y="442" class="t-in2" text-anchor="middle">lab NAS</text>
   <rect x="98" y="411" width="62" height="46" class="part-d" rx="2"/><text x="129" y="431" class="t-in2" text-anchor="middle">TS-563</text><text x="129" y="442" class="t-in2" text-anchor="middle">scratch</text>
@@ -171,9 +172,9 @@
   <text x="0" y="320" class="t-key"><tspan font-weight="600">8</tspan>  Lab switches &#183; U23 to U21, all owned</text>
   <text x="14" y="334" class="t-sub">QNAP QSW-M408-4C ToR on pair A (4 &#215; 10G combo, 8 &#215; GbE); GP-2100 #1 for</text>
   <text x="14" y="346" class="t-sub">copper-NIC hosts; GP-2100 #2 as the isolated storage network</text>
-  <text x="0" y="370" class="t-key"><tspan font-weight="600">9</tspan>  Three lab servers &#183; U20 to U16</text>
+  <text x="0" y="370" class="t-key"><tspan font-weight="600">9</tspan>  Three lab servers &#183; U20 to U16, and the Tripp Lite LCD console &#183; U15</text>
   <text x="14" y="384" class="t-sub">SC216 24.8 in deep, 6028U-TR4+ 28.46 in, Chenbro 1U. The rails adjust</text>
-  <text x="14" y="396" class="t-sub">25.7 to 34.5 in, so both Supermicros fit. Draw still to be measured</text>
+  <text x="14" y="396" class="t-sub">25.7 to 34.5 in, so both Supermicros fit. The console needs 27 in of rail depth</text>
   <text x="0" y="420" class="t-key"><tspan font-weight="600">10</tspan>  QNAP TS-932PX and TS-563 &#183; U14 to U11, on a shelf</text>
   <text x="14" y="434" class="t-sub">TS-932PX on the ToR at 10G, VLAN 99; TS-563 on GP-2100 #1. Both hold Plex</text>
   <text x="14" y="446" class="t-sub">data until the library consolidates on the 8800</text>
@@ -182,7 +183,7 @@
   <text x="14" y="496" class="t-sub">takes both Supermicros' four supplies, the Chenbro, both QNAPs, the Gold</text>
   <text x="0" y="520" class="t-key"><tspan font-weight="600">12</tspan>  Rack UPS &#183; U4 to U1 &#183; 2U to 4U, sized once the draw is measured</text>
 
-  <text x="0" y="556" class="t-h">TWO FABRICS, ONE CABINET &#183; PLUS A STORAGE NETWORK &#183; 36 OF 42 U USED</text>
+  <text x="0" y="556" class="t-h">TWO FABRICS, ONE CABINET &#183; PLUS A STORAGE NETWORK &#183; 37 OF 42 U USED</text>
   <text x="0" y="576" class="t-key">Each garage switch has its own fiber pair to Switch X; production (top) and lab</text>
   <text x="0" y="590" class="t-key">(bottom) each have their own switched PDU. The cameras, the NAS units and the Pi</text>
   <text x="0" y="604" class="t-key">never touch a lab switch. The storage network is a non-routed 10G segment between</text>
