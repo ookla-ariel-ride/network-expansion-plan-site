@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 830" style="background:#f7f7f5" role="img" aria-label="Shop drawing of the garage cabinet: a UniFi 42U 1,000 mm rack holding two fabrics. Production at the top: both Switch SEs on one shelf, the UNVR Pro, the UNAS-Pro, the Plex host, a Raspberry Pi and the pfSense box, and a DLI 222 PDU. Lab below: the 10G top-of-rack switch, three Xeon servers, the Gold gen-1 and a second PDU. A rack UPS at the base. Three fiber pairs from the closet and the eight camera runs from the attic enter at the top.">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 830" style="background:#f7f7f5" role="img" aria-label="Shop drawing of the garage cabinet: a UniFi 42U 1,000 mm rack holding two fabrics. Production at the top: both Switch SEs on one shelf, the UNVR Pro, the UNAS-Pro, the Plex host, a Raspberry Pi and the pfSense box, and a DLI 222 PDU. Lab below: the owned QNAP and GiGaPlus lab switches, a storage switch, three Xeon servers, the Gold gen-1 and a second PDU. A rack UPS at the base. Three fiber pairs from the closet and the eight camera runs from the attic enter at the top.">
 <style>
   svg { font-family: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; }
   .t-title { font-size: 15px; font-weight: 600; fill: #1f2430; }
@@ -82,8 +82,10 @@
   <rect x="21" y="127" width="147" height="13" class="part-d" rx="1"/>
   <g fill="#ffffff" stroke="#3b4252" stroke-width="0.5"><rect x="26" y="130" width="6" height="7"/><rect x="35" y="130" width="6" height="7"/><rect x="44" y="130" width="6" height="7"/><rect x="53" y="130" width="6" height="7"/><rect x="62" y="130" width="6" height="7"/><rect x="71" y="130" width="6" height="7"/><rect x="80" y="130" width="6" height="7"/><rect x="89" y="130" width="6" height="7"/></g>
   <text x="140" y="137" class="t-in2" text-anchor="middle">DLI 222 · production</text>
-  <rect x="21" y="141" width="147" height="41" class="ghost" rx="1"/>
-  <text x="94" y="164" class="t-in2" text-anchor="middle">production growth · small servers</text>
+  <rect x="21" y="141" width="147" height="13" class="part-d" rx="1"/>
+  <text x="94" y="150" class="t-in2" text-anchor="middle">TPE-1020WS · console switch</text>
+  <rect x="21" y="155" width="147" height="27" class="ghost" rx="1"/>
+  <text x="94" y="171" class="t-in2" text-anchor="middle">production growth · small servers</text>
 
   <!-- fabric divider -->
   <line x1="21" y1="182" x2="168" y2="182" stroke="#1f2430" stroke-width="1" stroke-dasharray="3 3"/>
@@ -92,17 +94,21 @@
 
   <!-- LAB BLOCK, U30 down -->
   <rect x="21" y="183" width="147" height="13" class="part-d" rx="1"/>
-  <text x="94" y="192" class="t-in2" text-anchor="middle">lab ToR · 10G SFP+</text>
-  <rect x="21" y="197" width="147" height="27" class="ghost" rx="1"/><text x="94" y="213" class="t-in2" text-anchor="middle">Xeon host 1 · specs pending</text>
-  <rect x="21" y="225" width="147" height="27" class="ghost" rx="1"/><text x="94" y="241" class="t-in2" text-anchor="middle">Xeon host 2</text>
-  <rect x="21" y="253" width="147" height="27" class="ghost" rx="1"/><text x="94" y="269" class="t-in2" text-anchor="middle">Xeon host 3</text>
-  <rect x="21" y="281" width="147" height="13" class="part"/>
-  <rect x="24" y="283" width="52" height="9" class="part-d" rx="1"/><text x="50" y="290" class="t-in2" text-anchor="middle">Gold gen-1</text>
-  <rect x="21" y="295" width="147" height="13" class="part-d" rx="1"/>
-  <g fill="#ffffff" stroke="#3b4252" stroke-width="0.5"><rect x="26" y="298" width="6" height="7"/><rect x="35" y="298" width="6" height="7"/><rect x="44" y="298" width="6" height="7"/><rect x="53" y="298" width="6" height="7"/><rect x="62" y="298" width="6" height="7"/><rect x="71" y="298" width="6" height="7"/><rect x="80" y="298" width="6" height="7"/><rect x="89" y="298" width="6" height="7"/></g>
-  <text x="140" y="305" class="t-in2" text-anchor="middle">second PDU · lab</text>
-  <rect x="21" y="309" width="147" height="237" class="ghost" rx="1"/>
-  <text x="94" y="424" class="t-in2" text-anchor="middle">U21 to U5 free · lab growth</text>
+  <text x="94" y="192" class="t-in2" text-anchor="middle">QSW-M408-4C · lab ToR</text>
+  <rect x="21" y="197" width="147" height="13" class="part-d" rx="1"/>
+  <text x="94" y="206" class="t-in2" text-anchor="middle">GP-S100 #1 · lab 10GBASE-T</text>
+  <rect x="21" y="211" width="147" height="13" class="part-d" rx="1"/>
+  <text x="94" y="220" class="t-in2" text-anchor="middle">GP-S100 #2 · storage net</text>
+  <rect x="21" y="225" width="147" height="27" class="ghost" rx="1"/><text x="94" y="241" class="t-in2" text-anchor="middle">Xeon host 1 · specs pending</text>
+  <rect x="21" y="253" width="147" height="27" class="ghost" rx="1"/><text x="94" y="269" class="t-in2" text-anchor="middle">Xeon host 2</text>
+  <rect x="21" y="281" width="147" height="27" class="ghost" rx="1"/><text x="94" y="297" class="t-in2" text-anchor="middle">Xeon host 3</text>
+  <rect x="21" y="309" width="147" height="13" class="part"/>
+  <rect x="24" y="311" width="52" height="9" class="part-d" rx="1"/><text x="50" y="318" class="t-in2" text-anchor="middle">Gold gen-1</text>
+  <rect x="21" y="323" width="147" height="13" class="part-d" rx="1"/>
+  <g fill="#ffffff" stroke="#3b4252" stroke-width="0.5"><rect x="26" y="326" width="6" height="7"/><rect x="35" y="326" width="6" height="7"/><rect x="44" y="326" width="6" height="7"/><rect x="53" y="326" width="6" height="7"/><rect x="62" y="326" width="6" height="7"/><rect x="71" y="326" width="6" height="7"/><rect x="80" y="326" width="6" height="7"/><rect x="89" y="326" width="6" height="7"/></g>
+  <text x="140" y="333" class="t-in2" text-anchor="middle">second PDU · lab</text>
+  <rect x="21" y="337" width="147" height="209" class="ghost" rx="1"/>
+  <text x="94" y="444" class="t-in2" text-anchor="middle">U19 to U5 free · lab growth</text>
   <rect x="21" y="547" width="147" height="55" class="ghost" rx="1"/>
   <text x="94" y="571" class="t-in2" text-anchor="middle">rack UPS · 2U to 4U</text>
   <text x="94" y="582" class="t-in2" text-anchor="middle">sized after the server specs</text>
@@ -113,14 +119,14 @@
     <circle cx="-40" cy="57" r="8"/><text x="-40" y="60.5">2</text>
     <circle cx="-40" cy="85" r="8"/><text x="-40" y="88.5">3</text>
     <circle cx="-40" cy="119" r="8"/><text x="-40" y="122.5">4</text>
-    <circle cx="-40" cy="134" r="8"/><text x="-40" y="137.5">5</text>
-    <circle cx="-40" cy="190" r="8"/><text x="-40" y="193.5">6</text>
-    <circle cx="-40" cy="238" r="8"/><text x="-40" y="241.5">7</text>
-    <circle cx="-40" cy="294" r="8"/><text x="-40" y="297.5">8</text>
+    <circle cx="-40" cy="141" r="8"/><text x="-40" y="144.5">5</text>
+    <circle cx="-40" cy="204" r="8"/><text x="-40" y="207.5">6</text>
+    <circle cx="-40" cy="266" r="8"/><text x="-40" y="269.5">7</text>
+    <circle cx="-40" cy="322" r="8"/><text x="-40" y="325.5">8</text>
     <circle cx="-40" cy="575" r="8"/><text x="-40" y="578.5">9</text>
   </g>
   <g class="lead">
-    <line x1="-32" y1="35" x2="21" y2="35"/><line x1="-32" y1="57" x2="25" y2="57"/><line x1="-32" y1="85" x2="25" y2="85"/><line x1="-32" y1="119" x2="21" y2="119"/><line x1="-32" y1="134" x2="21" y2="134"/><line x1="-32" y1="190" x2="21" y2="190"/><line x1="-32" y1="238" x2="21" y2="238"/><line x1="-32" y1="294" x2="21" y2="294"/><line x1="-32" y1="575" x2="21" y2="575"/>
+    <line x1="-32" y1="35" x2="21" y2="35"/><line x1="-32" y1="57" x2="25" y2="57"/><line x1="-32" y1="85" x2="25" y2="85"/><line x1="-32" y1="119" x2="21" y2="119"/><line x1="-32" y1="141" x2="21" y2="141"/><line x1="-32" y1="204" x2="21" y2="204"/><line x1="-32" y1="266" x2="21" y2="266"/><line x1="-32" y1="322" x2="21" y2="322"/><line x1="-32" y1="575" x2="21" y2="575"/>
   </g>
 
   <line x1="-60" y1="642" x2="250" y2="642" stroke="#1f2430" stroke-width="1.5"/>
@@ -140,28 +146,30 @@
   <text x="0" y="112" class="t-key"><tspan font-weight="600">3</tspan>  UNAS-Pro · U38 to U37</text>
   <text x="14" y="126" class="t-sub">same 2U chassis; 10G SFP+ to SE #2. Protect archive target and the production NAS</text>
   <text x="0" y="150" class="t-key"><tspan font-weight="600">4</tspan>  Plex host, Pi #2, pfSense · U36 to U35</text>
-  <text x="14" y="164" class="t-sub">Plex host form factor pending. Pi #2: Pi-hole and NUT for the rack UPS. pfSense:</text>
-  <text x="14" y="176" class="t-sub">both NICs on SE #2 (DMZ and Mgmt)</text>
-  <text x="0" y="200" class="t-key"><tspan font-weight="600">5</tspan>  DLI 222 switched PDU, production · U34</text>
-  <text x="14" y="214" class="t-sub">1U, 8 × C13; SEs, UNVR, UNAS, Plex, Pi, pfSense on it</text>
-  <text x="0" y="238" class="t-key"><tspan font-weight="600">6</tspan>  Lab top-of-rack switch · U30</text>
-  <text x="14" y="252" class="t-sub">10G SFP+; uplink fiber pair A; DACs to the Xeon hosts and the Gold gen-1</text>
-  <text x="0" y="276" class="t-key"><tspan font-weight="600">7</tspan>  Three Xeon hosts · U29 to U24, drawn at 2U each</text>
-  <text x="14" y="290" class="t-sub">Specs pending. The cabinet's rails adjust 25.7 to 34.5 in deep, which is what</text>
-  <text x="14" y="302" class="t-sub">rack servers need and the mini racks could not give</text>
-  <text x="0" y="326" class="t-key"><tspan font-weight="600">8</tspan>  Gold gen-1 and the second PDU · U23 to U22</text>
-  <text x="14" y="340" class="t-sub">Gold gen-1 on a shelf as the nested lab firewall; a second DLI 222 or metered strip</text>
-  <text x="14" y="352" class="t-sub">for the lab, so a lab fault cannot trip the production feed</text>
-  <text x="0" y="376" class="t-key"><tspan font-weight="600">9</tspan>  Rack UPS · U4 to U1</text>
-  <text x="14" y="390" class="t-sub">2U to 4U; the 1,000 mm cabinet takes a rack unit. Sized once the servers are known</text>
+  <text x="14" y="164" class="t-sub">Plex host form factor pending. Pi #2: Pi-hole and NUT for the rack UPS, PoE from</text>
+  <text x="14" y="176" class="t-sub">the TPE-1020WS. pfSense: both NICs on SE #2 (DMZ and Mgmt)</text>
+  <text x="0" y="200" class="t-key"><tspan font-weight="600">5</tspan>  DLI 222 and TRENDnet TPE-1020WS · U34 to U33</text>
+  <text x="14" y="214" class="t-sub">222: production PDU, 8 × C13. TPE-1020WS (owned): 8 × GbE PoE+, 75 W, off SE #2;</text>
+  <text x="14" y="226" class="t-sub">Mgmt only: Pi #2, BMCs, JetKVMs, the OOB garage Cat6</text>
+  <text x="0" y="250" class="t-key"><tspan font-weight="600">6</tspan>  Lab switches · U30 to U28, all owned</text>
+  <text x="14" y="264" class="t-sub">QNAP QSW-M408-4C as the ToR on fiber pair A (4 × 10G combo, 8 × GbE); GP-S100-0800T #1</text>
+  <text x="14" y="276" class="t-sub">(8 × 10GBASE-T) for copper-NIC hosts; GP-S100-0800T #2 as the isolated storage network</text>
+  <text x="0" y="300" class="t-key"><tspan font-weight="600">7</tspan>  Three Xeon hosts · U27 to U22, drawn at 2U each</text>
+  <text x="14" y="314" class="t-sub">Specs pending. The cabinet's rails adjust 25.7 to 34.5 in deep, which is what</text>
+  <text x="14" y="326" class="t-sub">rack servers need and the mini racks could not give</text>
+  <text x="0" y="350" class="t-key"><tspan font-weight="600">8</tspan>  Gold gen-1 and the second PDU · U21 to U20</text>
+  <text x="14" y="364" class="t-sub">Gold gen-1 on a shelf as the nested lab firewall; a second DLI 222 or metered strip</text>
+  <text x="14" y="376" class="t-sub">for the lab, so a lab fault cannot trip the production feed</text>
+  <text x="0" y="400" class="t-key"><tspan font-weight="600">9</tspan>  Rack UPS · U4 to U1 · 2U to 4U, sized once the servers are known</text>
 
-  <text x="0" y="426" class="t-h">TWO FABRICS, ONE CABINET</text>
-  <text x="0" y="446" class="t-key">Each garage switch has its own fiber pair to Switch X; production (top) and lab</text>
-  <text x="0" y="460" class="t-key">(bottom) each have their own PDU. The cameras, the NAS and the Pi never touch</text>
-  <text x="0" y="474" class="t-key">the lab switch, so tearing the lab down cannot take them with it.</text>
+  <text x="0" y="430" class="t-h">TWO FABRICS, ONE CABINET · PLUS A STORAGE NETWORK</text>
+  <text x="0" y="450" class="t-key">Each garage switch has its own fiber pair to Switch X; production (top) and lab</text>
+  <text x="0" y="464" class="t-key">(bottom) each have their own PDU. The cameras, the NAS and the Pi never touch</text>
+  <text x="0" y="478" class="t-key">the lab switch. The storage switch is a non-routed 10G segment between second</text>
+  <text x="0" y="492" class="t-key">NICs in the NAS and the Xeons; NFS and iSCSI only, no gateway, no firewall.</text>
 
-  <text x="0" y="510" class="t-h">DEPTH · 34.5 in max rail depth · 6 px = 1 in</text>
-  <g transform="translate(0 520)">
+  <text x="0" y="528" class="t-h">DEPTH · 34.5 in max rail depth · 6 px = 1 in</text>
+  <g transform="translate(0 538)">
     <line x1="0" y1="0" x2="0" y2="64" stroke="#1f2430" stroke-width="1.5"/>
     <line x1="207" y1="-4" x2="207" y2="68" stroke="#6b7280" stroke-width="0.7" stroke-dasharray="3 2"/>
     <rect x="0" y="4" width="76.8" height="12" class="depth-bar"/><text x="82" y="14" class="t-in">UNVR / UNAS-Pro 12.8</text>
