@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 600" style="background:#f7f7f5" role="img" aria-label="Shop drawing of the garage racks: a UniFi 6U toolless mini rack on casters holding the UNVR Pro, Switch SE, lab top-of-rack switch and DLI 222 PDU, with a second mini rack stacked on top for the UNAS Pro and lab hosts, a tower UPS beside them, the fiber from the closet and the eight camera runs from the attic.">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 830" style="background:#f7f7f5" role="img" aria-label="Shop drawing of the garage cabinet: a UniFi 42U 1,000 mm rack holding two fabrics. Production at the top: both Switch SEs on one shelf, the UNVR Pro, the UNAS-Pro, the Plex host, a Raspberry Pi and the pfSense box, and a DLI 222 PDU. Lab below: the 10G top-of-rack switch, three Xeon servers, the Gold gen-1 and a second PDU. A rack UPS at the base. Three fiber pairs from the closet and the eight camera runs from the attic enter at the top.">
 <style>
   svg { font-family: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; }
   .t-title { font-size: 15px; font-weight: 600; fill: #1f2430; }
@@ -9,156 +9,165 @@
   .t-h { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 9.5px; fill: #6b7280; letter-spacing: 0.08em; }
   .t-in { font-size: 9px; fill: #1f2430; }
   .t-in2 { font-size: 8px; fill: #6b7280; }
-  .frame { fill: none; stroke: #1f2430; stroke-width: 2; }
-  .frame-g { fill: none; stroke: #9aa2b3; stroke-width: 1.5; stroke-dasharray: 5 4; }
+  .frame { fill: #ffffff; stroke: #1f2430; stroke-width: 2; }
   .post { fill: #d3d7de; stroke: #1f2430; stroke-width: 1; }
-  .post-g { fill: none; stroke: #9aa2b3; stroke-width: 1; stroke-dasharray: 3 3; }
   .part { fill: #e6e8ec; stroke: #3b4252; stroke-width: 1; }
   .part-d { fill: #d3d7de; stroke: #3b4252; stroke-width: 1; }
   .ghost { fill: none; stroke: #9aa2b3; stroke-width: 1; stroke-dasharray: 4 3; }
   .tick { stroke: #9aa2b3; stroke-width: 0.8; }
   .cu { stroke: #b5652b; fill: none; }
   .fb { stroke: #1c86b0; fill: none; }
-  .pw { stroke: #7a6b2a; fill: none; stroke-dasharray: 4 3; }
   .callout circle { fill: #1f2430; stroke: #f7f7f5; stroke-width: 1.5; }
   .callout text { fill: #ffffff; font-family: ui-monospace, Menlo, monospace; font-size: 9.5px; font-weight: 600; text-anchor: middle; }
   .lead { stroke: #6b7280; stroke-width: 0.7; }
   .dl { stroke: #6b7280; stroke-width: 0.7; }
   .depth-bar { fill: #d3d7de; stroke: #3b4252; stroke-width: 0.8; }
+  .fan { fill: none; stroke: #6b7280; stroke-width: 0.8; }
 </style>
 <defs>
   <marker id="ar" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L8,4 L0,8 z" fill="#6b7280"/></marker>
 </defs>
 
-<text x="40" y="30" class="t-title">Garage racks · UniFi Toolless Mini Rack ×2</text>
-<text x="40" y="46" class="t-sub">U-Rack-6U-TL, stacked with the stacking kit · 20.43 in wide, 18.11 in deep, 19.09 in tall each · 154 lb static stacked · 12 px = 1 in</text>
+<text x="40" y="30" class="t-title">Garage cabinet · UniFi 42U Rack, 1,000 mm</text>
+<text x="40" y="46" class="t-sub">UACC-Rack-42U-1000 · 23.6 in wide, 39.4 in deep, 80.7 in tall on casters · 204 lb empty, 1,764 lb static · four 120 mm fans in the roof · 8 px = 1 in</text>
 <line x1="40" y1="56" x2="900" y2="56" stroke="#1f2430" stroke-width="1"/>
 
-<!-- ============ FRONT VIEW ============ each rack 20.43 x 13.82 in body (245 x 166), posts 19 in => 228 apart; 6U = 10.5 in = 126 px -->
-<g transform="translate(110 150)">
-  <text x="0" y="-74" class="t-h">FRONT</text>
+<!-- ============ FRONT VIEW ============ 8 px/in. Body 23.6 x 77.4 in = 189 x 619; rails 19 in apart = 152; 1U = 14 px; 42U = 588 px from y=14 -->
+<g transform="translate(90 118)">
+  <text x="0" y="-44" class="t-h">FRONT · door open</text>
 
-  <!-- upper rack (second, stacked) -->
-  <g transform="translate(0 0)">
-    <rect x="0" y="0" width="245" height="166" class="frame-g"/>
-    <rect x="8" y="6" width="7" height="154" class="post-g"/>
-    <rect x="230" y="6" width="7" height="154" class="post-g"/>
-    <g class="t-dim" text-anchor="end">
-      <text x="-6" y="30">U6</text><text x="-6" y="51">U5</text><text x="-6" y="72">U4</text><text x="-6" y="93">U3</text><text x="-6" y="114">U2</text><text x="-6" y="135">U1</text>
-    </g>
-    <!-- UNAS Pro 2U: 17.4 in = 209 px -->
-    <rect x="18" y="22" width="209" height="40" class="part" rx="2"/>
-    <text x="122" y="38" class="t-in" text-anchor="middle">UNAS Pro</text>
-    <g fill="#ffffff" stroke="#3b4252" stroke-width="0.6"><rect x="26" y="46" width="24" height="9"/><rect x="53" y="46" width="24" height="9"/><rect x="80" y="46" width="24" height="9"/><rect x="107" y="46" width="24" height="9"/><rect x="134" y="46" width="24" height="9"/><rect x="161" y="46" width="24" height="9"/><rect x="188" y="46" width="24" height="9"/></g>
-    <!-- lab hosts -->
-    <rect x="18" y="64" width="209" height="82" class="ghost" rx="2"/>
-    <text x="122" y="100" class="t-in2" text-anchor="middle">lab hosts · Gold gen-1 · 4U</text>
-    <text x="122" y="112" class="t-in2" text-anchor="middle">as they arrive</text>
+  <!-- fiber and camera runs entering the roof opening -->
+  <path d="M-30,-10 L58,-10 L58,10" class="fb" stroke-width="1.6"/>
+  <path d="M-30,-6 L62,-6 L62,10" class="fb" stroke-width="1.6"/>
+  <path d="M-30,-2 L66,-2 L66,10" class="fb" stroke-width="1.6"/>
+  <text x="0" y="-16" class="t-in2">OM4 pairs A, B, C from Switch X</text>
+  <path d="M230,-36 L120,-36 L120,10" class="cu" stroke-width="3"/>
+  <text x="234" y="-33" class="t-in2">8 camera runs, one bundle from the attic</text>
+
+  <!-- cabinet body -->
+  <rect x="0" y="0" width="189" height="619" class="frame"/>
+  <!-- roof fans -->
+  <g class="fan"><circle cx="40" cy="7" r="5"/><circle cx="76" cy="7" r="5"/><circle cx="112" cy="7" r="5"/><circle cx="148" cy="7" r="5"/></g>
+  <!-- casters -->
+  <circle cx="24" cy="632" r="10" fill="#ffffff" stroke="#1f2430" stroke-width="1.5"/>
+  <circle cx="165" cy="632" r="10" fill="#ffffff" stroke="#1f2430" stroke-width="1.5"/>
+  <!-- posts -->
+  <rect x="15" y="14" width="6" height="588" class="post"/>
+  <rect x="168" y="14" width="6" height="588" class="post"/>
+  <!-- U ticks -->
+  <g class="tick">
+    <line x1="-6" y1="14" x2="0" y2="14"/><line x1="-6" y1="98" x2="0" y2="98"/><line x1="-6" y1="182" x2="0" y2="182"/><line x1="-6" y1="266" x2="0" y2="266"/><line x1="-6" y1="350" x2="0" y2="350"/><line x1="-6" y1="434" x2="0" y2="434"/><line x1="-6" y1="518" x2="0" y2="518"/><line x1="-6" y1="602" x2="0" y2="602"/>
+  </g>
+  <g class="t-dim" text-anchor="end">
+    <text x="-10" y="24">U42</text><text x="-10" y="108">U36</text><text x="-10" y="192">U30</text><text x="-10" y="276">U24</text><text x="-10" y="360">U18</text><text x="-10" y="444">U12</text><text x="-10" y="528">U6</text><text x="-10" y="605">U1</text>
   </g>
 
-  <!-- lower rack (first) -->
-  <g transform="translate(0 176)">
-    <rect x="0" y="0" width="245" height="166" class="frame"/>
-    <rect x="8" y="6" width="7" height="154" class="post"/>
-    <rect x="230" y="6" width="7" height="154" class="post"/>
-    <g class="t-dim" text-anchor="end">
-      <text x="-6" y="30">U6</text><text x="-6" y="51">U5</text><text x="-6" y="72">U4</text><text x="-6" y="93">U3</text><text x="-6" y="114">U2</text><text x="-6" y="135">U1</text>
-    </g>
-    <!-- UNVR Pro 2U -->
-    <rect x="18" y="22" width="209" height="40" class="part-d" rx="2"/>
-    <text x="122" y="38" class="t-in" text-anchor="middle">UNVR Pro</text>
-    <g fill="#ffffff" stroke="#3b4252" stroke-width="0.6"><rect x="26" y="46" width="24" height="9"/><rect x="53" y="46" width="24" height="9"/><rect x="80" y="46" width="24" height="9"/><rect x="107" y="46" width="24" height="9"/><rect x="134" y="46" width="24" height="9"/><rect x="161" y="46" width="24" height="9"/><rect x="188" y="46" width="24" height="9"/></g>
-    <!-- Switch SE 1U: 9.45 in = 113 px -->
-    <rect x="18" y="64" width="209" height="19" class="ghost" rx="1"/>
-    <rect x="66" y="67" width="113" height="13" class="part-d" rx="1"/>
-    <text x="122" y="77" class="t-in" text-anchor="middle">Switch SE</text>
-    <!-- ToR 1U -->
-    <rect x="18" y="85" width="209" height="19" class="part-d" rx="1"/>
-    <text x="122" y="98" class="t-in" text-anchor="middle">lab ToR · 10G SFP+</text>
-    <!-- DLI 222 1U: 17 in = 204 px -->
-    <rect x="18" y="106" width="209" height="19" class="part" rx="1"/>
-    <g fill="#ffffff" stroke="#3b4252" stroke-width="0.6"><rect x="30" y="111" width="9" height="9"/><rect x="45" y="111" width="9" height="9"/><rect x="60" y="111" width="9" height="9"/><rect x="75" y="111" width="9" height="9"/><rect x="90" y="111" width="9" height="9"/><rect x="105" y="111" width="9" height="9"/><rect x="120" y="111" width="9" height="9"/><rect x="135" y="111" width="9" height="9"/></g>
-    <text x="185" y="119" class="t-in2" text-anchor="middle">DLI 222</text>
-    <!-- U1 free -->
-    <rect x="18" y="127" width="209" height="19" class="ghost" rx="1"/>
-    <rect x="60" y="130" width="125" height="13" class="part-d" rx="1"/>
-    <text x="122" y="139" class="t-in2" text-anchor="middle">Mgmt switch · 1G managed</text>
-    <!-- casters -->
-    <circle cx="20" cy="178" r="9" fill="none" stroke="#1f2430" stroke-width="1.5"/>
-    <circle cx="225" cy="178" r="9" fill="none" stroke="#1f2430" stroke-width="1.5"/>
-  </g>
+  <!-- PRODUCTION BLOCK, U42 to U31 -->
+  <rect x="21" y="16" width="147" height="10" class="part-d"/>
+  <text x="94" y="24" class="t-in2" text-anchor="middle">U42 · brush panel, fiber and camera entry</text>
+  <rect x="21" y="28" width="147" height="14" class="part"/>
+  <rect x="22" y="31" width="72" height="9" class="part-d" rx="1"/><text x="58" y="38" class="t-in2" text-anchor="middle">SE #1 cameras</text>
+  <rect x="96" y="31" width="72" height="9" class="part-d" rx="1"/><text x="132" y="38" class="t-in2" text-anchor="middle">SE #2 hosts</text>
+  <rect x="25" y="43" width="139" height="27" class="part-d" rx="2"/>
+  <text x="94" y="54" class="t-in" text-anchor="middle">UNVR Pro</text>
+  <g fill="#ffffff" stroke="#3b4252" stroke-width="0.5"><rect x="31" y="59" width="16" height="6"/><rect x="49" y="59" width="16" height="6"/><rect x="67" y="59" width="16" height="6"/><rect x="85" y="59" width="16" height="6"/><rect x="103" y="59" width="16" height="6"/><rect x="121" y="59" width="16" height="6"/><rect x="139" y="59" width="16" height="6"/></g>
+  <rect x="25" y="71" width="139" height="27" class="part-d" rx="2"/>
+  <text x="94" y="82" class="t-in" text-anchor="middle">UNAS-Pro</text>
+  <g fill="#ffffff" stroke="#3b4252" stroke-width="0.5"><rect x="31" y="87" width="16" height="6"/><rect x="49" y="87" width="16" height="6"/><rect x="67" y="87" width="16" height="6"/><rect x="85" y="87" width="16" height="6"/><rect x="103" y="87" width="16" height="6"/><rect x="121" y="87" width="16" height="6"/><rect x="139" y="87" width="16" height="6"/></g>
+  <rect x="21" y="99" width="147" height="13" class="ghost" rx="1"/>
+  <text x="94" y="108" class="t-in2" text-anchor="middle">Plex host · form factor pending</text>
+  <rect x="21" y="113" width="147" height="13" class="part"/>
+  <rect x="24" y="115" width="30" height="9" class="part-d" rx="1"/><text x="39" y="122" class="t-in2" text-anchor="middle">Pi #2</text>
+  <rect x="60" y="115" width="60" height="9" class="part-d" rx="1"/><text x="90" y="122" class="t-in2" text-anchor="middle">pfSense</text>
+  <rect x="21" y="127" width="147" height="13" class="part-d" rx="1"/>
+  <g fill="#ffffff" stroke="#3b4252" stroke-width="0.5"><rect x="26" y="130" width="6" height="7"/><rect x="35" y="130" width="6" height="7"/><rect x="44" y="130" width="6" height="7"/><rect x="53" y="130" width="6" height="7"/><rect x="62" y="130" width="6" height="7"/><rect x="71" y="130" width="6" height="7"/><rect x="80" y="130" width="6" height="7"/><rect x="89" y="130" width="6" height="7"/></g>
+  <text x="140" y="137" class="t-in2" text-anchor="middle">DLI 222 · production</text>
+  <rect x="21" y="141" width="147" height="41" class="ghost" rx="1"/>
+  <text x="94" y="164" class="t-in2" text-anchor="middle">production growth · small servers</text>
 
-  <!-- floor -->
-  <line x1="-20" y1="364" x2="400" y2="364" stroke="#1f2430" stroke-width="1.5"/>
-  <text x="-20" y="378" class="t-dim">FLOOR · dedicated 20 A circuit</text>
+  <!-- fabric divider -->
+  <line x1="21" y1="182" x2="168" y2="182" stroke="#1f2430" stroke-width="1" stroke-dasharray="3 3"/>
+  <text x="172" y="178" class="t-h" font-size="8">PRODUCTION</text>
+  <text x="172" y="192" class="t-h" font-size="8">LAB</text>
 
-  <!-- UPS tower beside -->
-  <rect x="290" y="232" width="47" height="132" class="part" rx="2"/>
-  <text x="313" y="298" class="t-in" text-anchor="middle" transform="rotate(-90 313 298)">tower UPS</text>
-  <path d="M290,300 L260,300 L260,292 L237,292" class="pw" stroke-width="1.2"/>
-
-  <!-- fiber in from the closet, to the ToR -->
-  <path d="M-40,270 L8,270" class="fb" stroke-width="2" marker-end="url(#ar)"/>
-  <text x="-44" y="258" class="t-in2" text-anchor="end">OM4 fiber</text>
-  <text x="-44" y="268" class="t-in2" text-anchor="end">from Switch X</text>
-  <!-- camera bundle from the attic to the SE -->
-  <path d="M122,-60 L122,-36 L262,-36 L262,245 L237,245" class="cu" stroke-width="3" marker-end="url(#ar)"/>
-  <text x="128" y="-50" class="t-in2">8 camera runs, one bundle from the attic</text>
-
-  <!-- dims -->
-  <line x1="0" y1="392" x2="245" y2="392" class="dl" marker-start="url(#ar)" marker-end="url(#ar)"/>
-  <text x="122" y="406" class="t-dim" text-anchor="middle">20.43 in wide · 18.11 in deep</text>
+  <!-- LAB BLOCK, U30 down -->
+  <rect x="21" y="183" width="147" height="13" class="part-d" rx="1"/>
+  <text x="94" y="192" class="t-in2" text-anchor="middle">lab ToR · 10G SFP+</text>
+  <rect x="21" y="197" width="147" height="27" class="ghost" rx="1"/><text x="94" y="213" class="t-in2" text-anchor="middle">Xeon host 1 · specs pending</text>
+  <rect x="21" y="225" width="147" height="27" class="ghost" rx="1"/><text x="94" y="241" class="t-in2" text-anchor="middle">Xeon host 2</text>
+  <rect x="21" y="253" width="147" height="27" class="ghost" rx="1"/><text x="94" y="269" class="t-in2" text-anchor="middle">Xeon host 3</text>
+  <rect x="21" y="281" width="147" height="13" class="part"/>
+  <rect x="24" y="283" width="52" height="9" class="part-d" rx="1"/><text x="50" y="290" class="t-in2" text-anchor="middle">Gold gen-1</text>
+  <rect x="21" y="295" width="147" height="13" class="part-d" rx="1"/>
+  <g fill="#ffffff" stroke="#3b4252" stroke-width="0.5"><rect x="26" y="298" width="6" height="7"/><rect x="35" y="298" width="6" height="7"/><rect x="44" y="298" width="6" height="7"/><rect x="53" y="298" width="6" height="7"/><rect x="62" y="298" width="6" height="7"/><rect x="71" y="298" width="6" height="7"/><rect x="80" y="298" width="6" height="7"/><rect x="89" y="298" width="6" height="7"/></g>
+  <text x="140" y="305" class="t-in2" text-anchor="middle">second PDU · lab</text>
+  <rect x="21" y="309" width="147" height="237" class="ghost" rx="1"/>
+  <text x="94" y="424" class="t-in2" text-anchor="middle">U21 to U5 free · lab growth</text>
+  <rect x="21" y="547" width="147" height="55" class="ghost" rx="1"/>
+  <text x="94" y="571" class="t-in2" text-anchor="middle">rack UPS · 2U to 4U</text>
+  <text x="94" y="582" class="t-in2" text-anchor="middle">sized after the server specs</text>
 
   <!-- callouts -->
   <g class="callout">
-    <circle cx="-40" cy="42" r="8"/><text x="-40" y="45.5">6</text>
-    <circle cx="-40" cy="218" r="8"/><text x="-40" y="221.5">1</text>
-    <circle cx="-40" cy="249" r="8"/><text x="-40" y="252.5">2</text>
-    <circle cx="-40" cy="292" r="8"/><text x="-40" y="295.5">3</text>
-    <circle cx="-40" cy="313" r="8"/><text x="-40" y="316.5">4</text>
-    <circle cx="360" cy="240" r="8"/><text x="360" y="243.5">5</text>
+    <circle cx="-40" cy="35" r="8"/><text x="-40" y="38.5">1</text>
+    <circle cx="-40" cy="57" r="8"/><text x="-40" y="60.5">2</text>
+    <circle cx="-40" cy="85" r="8"/><text x="-40" y="88.5">3</text>
+    <circle cx="-40" cy="119" r="8"/><text x="-40" y="122.5">4</text>
+    <circle cx="-40" cy="134" r="8"/><text x="-40" y="137.5">5</text>
+    <circle cx="-40" cy="190" r="8"/><text x="-40" y="193.5">6</text>
+    <circle cx="-40" cy="238" r="8"/><text x="-40" y="241.5">7</text>
+    <circle cx="-40" cy="294" r="8"/><text x="-40" y="297.5">8</text>
+    <circle cx="-40" cy="575" r="8"/><text x="-40" y="578.5">9</text>
   </g>
   <g class="lead">
-    <line x1="-32" y1="42" x2="-10" y2="42"/>
-    <line x1="-32" y1="218" x2="-10" y2="218"/>
-    <line x1="-32" y1="249" x2="-10" y2="249"/>
-    <line x1="-32" y1="292" x2="-10" y2="292"/>
-    <line x1="-32" y1="313" x2="-10" y2="313"/>
-    <line x1="337" y1="240" x2="352" y2="240"/>
+    <line x1="-32" y1="35" x2="21" y2="35"/><line x1="-32" y1="57" x2="25" y2="57"/><line x1="-32" y1="85" x2="25" y2="85"/><line x1="-32" y1="119" x2="21" y2="119"/><line x1="-32" y1="134" x2="21" y2="134"/><line x1="-32" y1="190" x2="21" y2="190"/><line x1="-32" y1="238" x2="21" y2="238"/><line x1="-32" y1="294" x2="21" y2="294"/><line x1="-32" y1="575" x2="21" y2="575"/>
   </g>
+
+  <line x1="-60" y1="642" x2="250" y2="642" stroke="#1f2430" stroke-width="1.5"/>
+  <text x="-60" y="656" class="t-dim">FLOOR · dedicated circuits, count after the server specs</text>
+  <line x1="0" y1="668" x2="189" y2="668" class="dl" marker-start="url(#ar)" marker-end="url(#ar)"/>
+  <text x="94" y="682" class="t-dim" text-anchor="middle">23.6 in wide · 39.4 in deep · 80.7 in tall</text>
 </g>
 
 <!-- ============ KEY ============ -->
-<g transform="translate(520 84)">
+<g transform="translate(400 112)">
   <text x="0" y="0" class="t-h">PART · SIZE (in) · NOTES</text>
-  <text x="0" y="24" class="t-key"><tspan font-weight="600">1</tspan>  UNVR Pro · lower U6 to U5</text>
-  <text x="14" y="38" class="t-sub">2U, 17.4 × 12.8 × 3.4, 20.8 lb, 7 bays, 10G SFP+ to the ToR</text>
-  <text x="0" y="62" class="t-key"><tspan font-weight="600">2</tspan>  Switch SE · lower U4</text>
-  <text x="14" y="76" class="t-sub">9.45 × 4.13 × 1.06, fanless, 8 × 2.5G PoE; the camera runs land here;</text>
-  <text x="14" y="88" class="t-sub">SFP+ DAC up to the ToR</text>
-  <text x="0" y="112" class="t-key"><tspan font-weight="600">3</tspan>  Lab top-of-rack switch · lower U3</text>
-  <text x="14" y="126" class="t-sub">10G SFP+; the garage core: fiber in, DACs to the UNVR, SE, UNAS and lab</text>
-  <text x="0" y="150" class="t-key"><tspan font-weight="600">4</tspan>  DLI 222 switched PDU · lower U2 · Mgmt switch · lower U1</text>
-  <text x="14" y="164" class="t-sub">222: 1U, 17 × 4.5, 8 × C13; adapter cords for bricks. Mgmt switch:</text>
-  <text x="14" y="176" class="t-sub">VLAN 10 copper for the 222, BMCs, KVMs, pfSense NIC 2 and the OOB Cat6</text>
-  <text x="0" y="200" class="t-key"><tspan font-weight="600">5</tspan>  Tower UPS on the floor</text>
-  <text x="14" y="214" class="t-sub">sized once the lab load is known; 5-20P if over 1.4 kW</text>
-  <text x="0" y="238" class="t-key"><tspan font-weight="600">6</tspan>  Second rack, stacked · UNAS Pro at U6 to U5, lab hosts below</text>
-  <text x="14" y="252" class="t-sub">UNAS Pro is the same 2U chassis as the UNVR; on the ToR by DAC, so the</text>
-  <text x="14" y="264" class="t-sub">archive copies stay in the garage. pfSense is here too, on the ToR</text>
+  <text x="0" y="24" class="t-key"><tspan font-weight="600">1</tspan>  Two Switch SEs on one 1U shelf · U41</text>
+  <text x="14" y="38" class="t-sub">9.45 × 4.13 × 1.06 each, 18.9 in side by side. SE #1: the eight camera runs and</text>
+  <text x="14" y="50" class="t-sub">the UNVR at 10G, uplink fiber pair B. SE #2: production hosts, the UNAS at 10G, pair C</text>
+  <text x="0" y="74" class="t-key"><tspan font-weight="600">2</tspan>  UNVR Pro · U40 to U39</text>
+  <text x="14" y="88" class="t-sub">2U, 17.4 × 12.8 × 3.4, 20.8 lb, 7 bays; 10G SFP+ to SE #1</text>
+  <text x="0" y="112" class="t-key"><tspan font-weight="600">3</tspan>  UNAS-Pro · U38 to U37</text>
+  <text x="14" y="126" class="t-sub">same 2U chassis; 10G SFP+ to SE #2. Protect archive target and the production NAS</text>
+  <text x="0" y="150" class="t-key"><tspan font-weight="600">4</tspan>  Plex host, Pi #2, pfSense · U36 to U35</text>
+  <text x="14" y="164" class="t-sub">Plex host form factor pending. Pi #2: Pi-hole and NUT for the rack UPS. pfSense:</text>
+  <text x="14" y="176" class="t-sub">both NICs on SE #2 (DMZ and Mgmt)</text>
+  <text x="0" y="200" class="t-key"><tspan font-weight="600">5</tspan>  DLI 222 switched PDU, production · U34</text>
+  <text x="14" y="214" class="t-sub">1U, 8 × C13; SEs, UNVR, UNAS, Plex, Pi, pfSense on it</text>
+  <text x="0" y="238" class="t-key"><tspan font-weight="600">6</tspan>  Lab top-of-rack switch · U30</text>
+  <text x="14" y="252" class="t-sub">10G SFP+; uplink fiber pair A; DACs to the Xeon hosts and the Gold gen-1</text>
+  <text x="0" y="276" class="t-key"><tspan font-weight="600">7</tspan>  Three Xeon hosts · U29 to U24, drawn at 2U each</text>
+  <text x="14" y="290" class="t-sub">Specs pending. The cabinet's rails adjust 25.7 to 34.5 in deep, which is what</text>
+  <text x="14" y="302" class="t-sub">rack servers need and the mini racks could not give</text>
+  <text x="0" y="326" class="t-key"><tspan font-weight="600">8</tspan>  Gold gen-1 and the second PDU · U23 to U22</text>
+  <text x="14" y="340" class="t-sub">Gold gen-1 on a shelf as the nested lab firewall; a second DLI 222 or metered strip</text>
+  <text x="14" y="352" class="t-sub">for the lab, so a lab fault cannot trip the production feed</text>
+  <text x="0" y="376" class="t-key"><tspan font-weight="600">9</tspan>  Rack UPS · U4 to U1</text>
+  <text x="14" y="390" class="t-sub">2U to 4U; the 1,000 mm cabinet takes a rack unit. Sized once the servers are known</text>
 
-  <text x="0" y="296" class="t-h">WHY THE GARAGE</text>
-  <text x="0" y="314" class="t-key">Disks and fans stay out of the closet. The mini rack's 18.11 in depth</text>
-  <text x="0" y="328" class="t-key">takes the 12.8 in UNVR and UNAS; the closet rack's 13.78 in would not.</text>
-  <text x="0" y="342" class="t-key">The garage is on the perimeter, so the eave camera runs are short.</text>
+  <text x="0" y="426" class="t-h">TWO FABRICS, ONE CABINET</text>
+  <text x="0" y="446" class="t-key">Each garage switch has its own fiber pair to Switch X; production (top) and lab</text>
+  <text x="0" y="460" class="t-key">(bottom) each have their own PDU. The cameras, the NAS and the Pi never touch</text>
+  <text x="0" y="474" class="t-key">the lab switch, so tearing the lab down cannot take them with it.</text>
 
-  <text x="0" y="374" class="t-h">DEPTH · 18.11 in</text>
-  <g transform="translate(0 372)">
-    <line x1="0" y1="12" x2="0" y2="54" stroke="#1f2430" stroke-width="2"/>
-    <line x1="217.3" y1="-4" x2="217.3" y2="58" stroke="#1f2430" stroke-width="1" stroke-dasharray="4 3"/>
-    <text x="217.3" y="68" class="t-dim" text-anchor="middle">18.11</text>
-    <rect x="0" y="16" width="153.6" height="12" class="depth-bar"/><text x="159" y="26" class="t-in">UNVR / UNAS Pro 12.8</text>
-    <rect x="0" y="36" width="54" height="12" class="depth-bar"/><text x="60" y="46" class="t-in">DLI 222 4.5 · SE 4.13</text>
+  <text x="0" y="510" class="t-h">DEPTH · 34.5 in max rail depth · 6 px = 1 in</text>
+  <g transform="translate(0 520)">
+    <line x1="0" y1="0" x2="0" y2="64" stroke="#1f2430" stroke-width="1.5"/>
+    <line x1="207" y1="-4" x2="207" y2="68" stroke="#6b7280" stroke-width="0.7" stroke-dasharray="3 2"/>
+    <rect x="0" y="4" width="76.8" height="12" class="depth-bar"/><text x="82" y="14" class="t-in">UNVR / UNAS-Pro 12.8</text>
+    <rect x="0" y="22" width="168" height="12" class="ghost"/><text x="174" y="32" class="t-in">Xeon host ~28, pending</text>
+    <rect x="0" y="40" width="27" height="12" class="depth-bar"/><text x="33" y="50" class="t-in">DLI 222 4.5 · SE 4.13</text>
+    <text x="207" y="80" class="t-dim" text-anchor="middle">34.5</text>
   </g>
 </g>
 </svg>
