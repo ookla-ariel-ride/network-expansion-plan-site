@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 830" style="background:#f7f7f5" role="img" aria-label="Shop drawing of the garage cabinet: a UniFi 42U 1,000 mm rack holding two fabrics. Production at the top: both Switch SEs on one shelf, the UNVR Pro, the UNAS-Pro, the UGREEN DXP8800 Plus and DXP4800 Plus NAS units, the Plex host, a Raspberry Pi and the pfSense box, a DLI 222 PDU and the TPE-1020WS console switch. Lab below: the owned QNAP and GiGaPlus lab switches, a storage switch, three Xeon servers, two QNAP lab NAS units, the Gold gen-1 and a second PDU. A rack UPS at the base. Three fiber pairs from the closet and the eight camera runs from the attic enter at the top.">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 830" style="background:#f7f7f5" role="img" aria-label="Shop drawing of the garage cabinet: a UniFi 42U 1,000 mm rack holding two fabrics. Production at the top: both Switch SEs on one shelf, the UNVR Pro, the UNAS-Pro, the UGREEN DXP8800 Plus and DXP4800 Plus NAS units, the Plex host, a Raspberry Pi and the pfSense box, a DLI 222 PDU and the TPE-1020WS console switch. Lab below: the owned QNAP and GiGaPlus lab switches, a storage switch, the three lab servers (two Supermicro 2U, one Chenbro 1U), two QNAP lab NAS units, the Gold gen-1 and a second PDU. A rack UPS at the base. Three fiber pairs from the closet and the eight camera runs from the attic enter at the top.">
 <style>
   svg { font-family: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; }
   .t-title { font-size: 15px; font-weight: 600; fill: #1f2430; }
@@ -109,9 +109,10 @@
   <text x="94" y="304" class="t-in2" text-anchor="middle">GP-2100 #1 · lab 10GBASE-T</text>
   <rect x="21" y="309" width="147" height="13" class="part-d" rx="1"/>
   <text x="94" y="318" class="t-in2" text-anchor="middle">GP-2100 #2 · storage net</text>
-  <rect x="21" y="323" width="147" height="27" class="ghost" rx="1"/><text x="94" y="339" class="t-in2" text-anchor="middle">Xeon host 1 · specs pending</text>
-  <rect x="21" y="351" width="147" height="27" class="ghost" rx="1"/><text x="94" y="367" class="t-in2" text-anchor="middle">Xeon host 2</text>
-  <rect x="21" y="379" width="147" height="27" class="ghost" rx="1"/><text x="94" y="395" class="t-in2" text-anchor="middle">Xeon host 3</text>
+  <rect x="21" y="323" width="147" height="27" class="part-d" rx="1"/><text x="94" y="334" class="t-in" text-anchor="middle">Supermicro SC216 · X10DRH-iT</text><text x="94" y="345" class="t-in2" text-anchor="middle">2U · 24 + 2 × 2.5 in · 2 × 10GBASE-T · IPMI</text>
+  <rect x="21" y="351" width="147" height="27" class="part-d" rx="1"/><text x="94" y="362" class="t-in" text-anchor="middle">Supermicro 6028U-TR4+</text><text x="94" y="373" class="t-in2" text-anchor="middle">2U · 12 × 3.5 in · 4 × 1GbE · IPMI</text>
+  <rect x="21" y="379" width="147" height="13" class="part-d" rx="1"/><text x="94" y="388" class="t-in2" text-anchor="middle">Chenbro NR12001 · 1U · 12 × 3.5 in · SFP+</text>
+  <rect x="21" y="393" width="147" height="13" class="ghost" rx="1"/><text x="94" y="402" class="t-in2" text-anchor="middle">U15 free</text>
   <!-- U14-11 lab NAS shelf -->
   <rect x="21" y="407" width="147" height="55" class="part"/>
   <rect x="26" y="411" width="62" height="47" class="part-d" rx="2"/><text x="57" y="432" class="t-in2" text-anchor="middle">TS-932PX</text><text x="57" y="443" class="t-in2" text-anchor="middle">lab NAS</text>
@@ -168,8 +169,8 @@
   <text x="14" y="204" class="t-sub">TPE-1020WS: 8 × GbE PoE+, 75 W, Mgmt only, off SE #2: Pi #2, BMCs, JetKVMs, OOB Cat6</text>
   <text x="0" y="226" class="t-key"><tspan font-weight="600">7</tspan>  Lab switches · U23 to U21, all owned</text>
   <text x="14" y="240" class="t-sub">QNAP QSW-M408-4C ToR on pair A; GP-2100 #1 for copper-NIC hosts; GP-2100 #2 storage net</text>
-  <text x="0" y="262" class="t-key"><tspan font-weight="600">8</tspan>  Three Xeon hosts · U20 to U15, drawn at 2U each · specs pending</text>
-  <text x="14" y="276" class="t-sub">The rails adjust 25.7 to 34.5 in deep, which rack servers need and the mini racks could not give</text>
+  <text x="0" y="262" class="t-key"><tspan font-weight="600">8</tspan>  Three lab servers · U20 to U16 · Supermicro SC216 (24.8 in deep), 6028U-TR4+ (28.5 in), Chenbro NR12001 (1U)</text>
+  <text x="14" y="276" class="t-sub">The rails adjust 25.7 to 34.5 in deep; both Supermicros fit. Draw still depends on the CPUs fitted</text>
   <text x="0" y="298" class="t-key"><tspan font-weight="600">9</tspan>  QNAP TS-932PX and TS-563 · U14 to U11, on a shelf</text>
   <text x="14" y="312" class="t-sub">Lab NAS on the ToR at 10G, VLAN 99; both still hold Plex data until it is consolidated on the 8800</text>
   <text x="0" y="334" class="t-key"><tspan font-weight="600">10</tspan>  Gold gen-1 (nested lab firewall) and the lab PDU · U10 to U9</text>
@@ -186,7 +187,7 @@
     <line x1="0" y1="0" x2="0" y2="64" stroke="#1f2430" stroke-width="1.5"/>
     <line x1="207" y1="-4" x2="207" y2="68" stroke="#6b7280" stroke-width="0.7" stroke-dasharray="3 2"/>
     <rect x="0" y="4" width="76.8" height="12" class="depth-bar"/><text x="82" y="14" class="t-in">UNVR / UNAS-Pro 12.8</text>
-    <rect x="0" y="22" width="168" height="12" class="ghost"/><text x="174" y="32" class="t-in">Xeon host ~28, pending</text>
+    <rect x="0" y="22" width="170.8" height="12" class="depth-bar"/><text x="176" y="32" class="t-in">6028U-TR4+ 28.46 · SC216 24.8</text>
     <rect x="0" y="40" width="27" height="12" class="depth-bar"/><text x="33" y="50" class="t-in">DLI 222 4.5 · SE 4.13</text>
     <text x="207" y="80" class="t-dim" text-anchor="middle">34.5</text>
   </g>
