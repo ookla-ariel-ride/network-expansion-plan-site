@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 600" style="background:#f7f7f5" role="img" aria-label="Shop drawing of the garage racks: a UniFi 6U toolless mini rack on casters holding the UNVR Pro, Switch SE, lab top-of-rack switch and DLI 222 PDU, with a second mini rack stacked on top for the UNAS Pro and lab hosts, a tower UPS beside them, the fiber from the closet and the eight camera runs from the attic.">
+<style>
+  svg { font-family: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; }
+  .t-title { font-size: 15px; font-weight: 600; fill: #1f2430; }
+  .t-sub { font-size: 10.5px; fill: #6b7280; }
+  .t-key { font-size: 11px; fill: #1f2430; }
+  .t-dim { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 9.5px; fill: #6b7280; }
+  .t-h { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 9.5px; fill: #6b7280; letter-spacing: 0.08em; }
+  .t-in { font-size: 9px; fill: #1f2430; }
+  .t-in2 { font-size: 8px; fill: #6b7280; }
+  .frame { fill: none; stroke: #1f2430; stroke-width: 2; }
+  .frame-g { fill: none; stroke: #9aa2b3; stroke-width: 1.5; stroke-dasharray: 5 4; }
+  .post { fill: #d3d7de; stroke: #1f2430; stroke-width: 1; }
+  .post-g { fill: none; stroke: #9aa2b3; stroke-width: 1; stroke-dasharray: 3 3; }
+  .part { fill: #e6e8ec; stroke: #3b4252; stroke-width: 1; }
+  .part-d { fill: #d3d7de; stroke: #3b4252; stroke-width: 1; }
+  .ghost { fill: none; stroke: #9aa2b3; stroke-width: 1; stroke-dasharray: 4 3; }
+  .tick { stroke: #9aa2b3; stroke-width: 0.8; }
+  .cu { stroke: #b5652b; fill: none; }
+  .fb { stroke: #1c86b0; fill: none; }
+  .pw { stroke: #7a6b2a; fill: none; stroke-dasharray: 4 3; }
+  .callout circle { fill: #1f2430; stroke: #f7f7f5; stroke-width: 1.5; }
+  .callout text { fill: #ffffff; font-family: ui-monospace, Menlo, monospace; font-size: 9.5px; font-weight: 600; text-anchor: middle; }
+  .lead { stroke: #6b7280; stroke-width: 0.7; }
+  .dl { stroke: #6b7280; stroke-width: 0.7; }
+  .depth-bar { fill: #d3d7de; stroke: #3b4252; stroke-width: 0.8; }
+</style>
+<defs>
+  <marker id="ar" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L8,4 L0,8 z" fill="#6b7280"/></marker>
+</defs>
+
+<text x="40" y="30" class="t-title">Garage racks · UniFi Toolless Mini Rack ×2</text>
+<text x="40" y="46" class="t-sub">U-Rack-6U-TL, stacked with the stacking kit · 20.43 in wide, 18.11 in deep, 19.09 in tall each · 154 lb static stacked · 12 px = 1 in</text>
+<line x1="40" y1="56" x2="900" y2="56" stroke="#1f2430" stroke-width="1"/>
+
+<!-- ============ FRONT VIEW ============ each rack 20.43 x 13.82 in body (245 x 166), posts 19 in => 228 apart; 6U = 10.5 in = 126 px -->
+<g transform="translate(110 150)">
+  <text x="0" y="-74" class="t-h">FRONT</text>
+
+  <!-- upper rack (second, stacked) -->
+  <g transform="translate(0 0)">
+    <rect x="0" y="0" width="245" height="166" class="frame-g"/>
+    <rect x="8" y="6" width="7" height="154" class="post-g"/>
+    <rect x="230" y="6" width="7" height="154" class="post-g"/>
+    <g class="t-dim" text-anchor="end">
+      <text x="-6" y="30">U6</text><text x="-6" y="51">U5</text><text x="-6" y="72">U4</text><text x="-6" y="93">U3</text><text x="-6" y="114">U2</text><text x="-6" y="135">U1</text>
+    </g>
+    <!-- UNAS Pro 2U: 17.4 in = 209 px -->
+    <rect x="18" y="22" width="209" height="40" class="part" rx="2"/>
+    <text x="122" y="38" class="t-in" text-anchor="middle">UNAS Pro</text>
+    <g fill="#ffffff" stroke="#3b4252" stroke-width="0.6"><rect x="26" y="46" width="24" height="9"/><rect x="53" y="46" width="24" height="9"/><rect x="80" y="46" width="24" height="9"/><rect x="107" y="46" width="24" height="9"/><rect x="134" y="46" width="24" height="9"/><rect x="161" y="46" width="24" height="9"/><rect x="188" y="46" width="24" height="9"/></g>
+    <!-- lab hosts -->
+    <rect x="18" y="64" width="209" height="82" class="ghost" rx="2"/>
+    <text x="122" y="100" class="t-in2" text-anchor="middle">lab hosts · Gold gen-1 · 4U</text>
+    <text x="122" y="112" class="t-in2" text-anchor="middle">as they arrive</text>
+  </g>
+
+  <!-- lower rack (first) -->
+  <g transform="translate(0 176)">
+    <rect x="0" y="0" width="245" height="166" class="frame"/>
+    <rect x="8" y="6" width="7" height="154" class="post"/>
+    <rect x="230" y="6" width="7" height="154" class="post"/>
+    <g class="t-dim" text-anchor="end">
+      <text x="-6" y="30">U6</text><text x="-6" y="51">U5</text><text x="-6" y="72">U4</text><text x="-6" y="93">U3</text><text x="-6" y="114">U2</text><text x="-6" y="135">U1</text>
+    </g>
+    <!-- UNVR Pro 2U -->
+    <rect x="18" y="22" width="209" height="40" class="part-d" rx="2"/>
+    <text x="122" y="38" class="t-in" text-anchor="middle">UNVR Pro</text>
+    <g fill="#ffffff" stroke="#3b4252" stroke-width="0.6"><rect x="26" y="46" width="24" height="9"/><rect x="53" y="46" width="24" height="9"/><rect x="80" y="46" width="24" height="9"/><rect x="107" y="46" width="24" height="9"/><rect x="134" y="46" width="24" height="9"/><rect x="161" y="46" width="24" height="9"/><rect x="188" y="46" width="24" height="9"/></g>
+    <!-- Switch SE 1U: 9.45 in = 113 px -->
+    <rect x="18" y="64" width="209" height="19" class="ghost" rx="1"/>
+    <rect x="66" y="67" width="113" height="13" class="part-d" rx="1"/>
+    <text x="122" y="77" class="t-in" text-anchor="middle">Switch SE</text>
+    <!-- ToR 1U -->
+    <rect x="18" y="85" width="209" height="19" class="part-d" rx="1"/>
+    <text x="122" y="98" class="t-in" text-anchor="middle">lab ToR · 10G SFP+</text>
+    <!-- DLI 222 1U: 17 in = 204 px -->
+    <rect x="18" y="106" width="209" height="19" class="part" rx="1"/>
+    <g fill="#ffffff" stroke="#3b4252" stroke-width="0.6"><rect x="30" y="111" width="9" height="9"/><rect x="45" y="111" width="9" height="9"/><rect x="60" y="111" width="9" height="9"/><rect x="75" y="111" width="9" height="9"/><rect x="90" y="111" width="9" height="9"/><rect x="105" y="111" width="9" height="9"/><rect x="120" y="111" width="9" height="9"/><rect x="135" y="111" width="9" height="9"/></g>
+    <text x="185" y="119" class="t-in2" text-anchor="middle">DLI 222</text>
+    <!-- U1 free -->
+    <rect x="18" y="127" width="209" height="19" class="ghost" rx="1"/>
+    <rect x="60" y="130" width="125" height="13" class="part-d" rx="1"/>
+    <text x="122" y="139" class="t-in2" text-anchor="middle">Mgmt switch · 1G managed</text>
+    <!-- casters -->
+    <circle cx="20" cy="178" r="9" fill="none" stroke="#1f2430" stroke-width="1.5"/>
+    <circle cx="225" cy="178" r="9" fill="none" stroke="#1f2430" stroke-width="1.5"/>
+  </g>
+
+  <!-- floor -->
+  <line x1="-20" y1="364" x2="400" y2="364" stroke="#1f2430" stroke-width="1.5"/>
+  <text x="-20" y="378" class="t-dim">FLOOR · dedicated 20 A circuit</text>
+
+  <!-- UPS tower beside -->
+  <rect x="290" y="232" width="47" height="132" class="part" rx="2"/>
+  <text x="313" y="298" class="t-in" text-anchor="middle" transform="rotate(-90 313 298)">tower UPS</text>
+  <path d="M290,300 L260,300 L260,292 L237,292" class="pw" stroke-width="1.2"/>
+
+  <!-- fiber in from the closet, to the ToR -->
+  <path d="M-40,270 L8,270" class="fb" stroke-width="2" marker-end="url(#ar)"/>
+  <text x="-44" y="258" class="t-in2" text-anchor="end">OM4 fiber</text>
+  <text x="-44" y="268" class="t-in2" text-anchor="end">from Switch X</text>
+  <!-- camera bundle from the attic to the SE -->
+  <path d="M122,-60 L122,-36 L262,-36 L262,245 L237,245" class="cu" stroke-width="3" marker-end="url(#ar)"/>
+  <text x="128" y="-50" class="t-in2">8 camera runs, one bundle from the attic</text>
+
+  <!-- dims -->
+  <line x1="0" y1="392" x2="245" y2="392" class="dl" marker-start="url(#ar)" marker-end="url(#ar)"/>
+  <text x="122" y="406" class="t-dim" text-anchor="middle">20.43 in wide · 18.11 in deep</text>
+
+  <!-- callouts -->
+  <g class="callout">
+    <circle cx="-40" cy="42" r="8"/><text x="-40" y="45.5">6</text>
+    <circle cx="-40" cy="218" r="8"/><text x="-40" y="221.5">1</text>
+    <circle cx="-40" cy="249" r="8"/><text x="-40" y="252.5">2</text>
+    <circle cx="-40" cy="292" r="8"/><text x="-40" y="295.5">3</text>
+    <circle cx="-40" cy="313" r="8"/><text x="-40" y="316.5">4</text>
+    <circle cx="360" cy="240" r="8"/><text x="360" y="243.5">5</text>
+  </g>
+  <g class="lead">
+    <line x1="-32" y1="42" x2="-10" y2="42"/>
+    <line x1="-32" y1="218" x2="-10" y2="218"/>
+    <line x1="-32" y1="249" x2="-10" y2="249"/>
+    <line x1="-32" y1="292" x2="-10" y2="292"/>
+    <line x1="-32" y1="313" x2="-10" y2="313"/>
+    <line x1="337" y1="240" x2="352" y2="240"/>
+  </g>
+</g>
+
+<!-- ============ KEY ============ -->
+<g transform="translate(520 84)">
+  <text x="0" y="0" class="t-h">PART · SIZE (in) · NOTES</text>
+  <text x="0" y="24" class="t-key"><tspan font-weight="600">1</tspan>  UNVR Pro · lower U6 to U5</text>
+  <text x="14" y="38" class="t-sub">2U, 17.4 × 12.8 × 3.4, 20.8 lb, 7 bays, 10G SFP+ to the ToR</text>
+  <text x="0" y="62" class="t-key"><tspan font-weight="600">2</tspan>  Switch SE · lower U4</text>
+  <text x="14" y="76" class="t-sub">9.45 × 4.13 × 1.06, fanless, 8 × 2.5G PoE; the camera runs land here;</text>
+  <text x="14" y="88" class="t-sub">SFP+ DAC up to the ToR</text>
+  <text x="0" y="112" class="t-key"><tspan font-weight="600">3</tspan>  Lab top-of-rack switch · lower U3</text>
+  <text x="14" y="126" class="t-sub">10G SFP+; the garage core: fiber in, DACs to the UNVR, SE, UNAS and lab</text>
+  <text x="0" y="150" class="t-key"><tspan font-weight="600">4</tspan>  DLI 222 switched PDU · lower U2 · Mgmt switch · lower U1</text>
+  <text x="14" y="164" class="t-sub">222: 1U, 17 × 4.5, 8 × C13; adapter cords for bricks. Mgmt switch:</text>
+  <text x="14" y="176" class="t-sub">VLAN 10 copper for the 222, BMCs, KVMs, pfSense NIC 2 and the OOB Cat6</text>
+  <text x="0" y="200" class="t-key"><tspan font-weight="600">5</tspan>  Tower UPS on the floor</text>
+  <text x="14" y="214" class="t-sub">sized once the lab load is known; 5-20P if over 1.4 kW</text>
+  <text x="0" y="238" class="t-key"><tspan font-weight="600">6</tspan>  Second rack, stacked · UNAS Pro at U6 to U5, lab hosts below</text>
+  <text x="14" y="252" class="t-sub">UNAS Pro is the same 2U chassis as the UNVR; on the ToR by DAC, so the</text>
+  <text x="14" y="264" class="t-sub">archive copies stay in the garage. pfSense is here too, on the ToR</text>
+
+  <text x="0" y="296" class="t-h">WHY THE GARAGE</text>
+  <text x="0" y="314" class="t-key">Disks and fans stay out of the closet. The mini rack's 18.11 in depth</text>
+  <text x="0" y="328" class="t-key">takes the 12.8 in UNVR and UNAS; the closet rack's 13.78 in would not.</text>
+  <text x="0" y="342" class="t-key">The garage is on the perimeter, so the eave camera runs are short.</text>
+
+  <text x="0" y="374" class="t-h">DEPTH · 18.11 in</text>
+  <g transform="translate(0 372)">
+    <line x1="0" y1="12" x2="0" y2="54" stroke="#1f2430" stroke-width="2"/>
+    <line x1="217.3" y1="-4" x2="217.3" y2="58" stroke="#1f2430" stroke-width="1" stroke-dasharray="4 3"/>
+    <text x="217.3" y="68" class="t-dim" text-anchor="middle">18.11</text>
+    <rect x="0" y="16" width="153.6" height="12" class="depth-bar"/><text x="159" y="26" class="t-in">UNVR / UNAS Pro 12.8</text>
+    <rect x="0" y="36" width="54" height="12" class="depth-bar"/><text x="60" y="46" class="t-in">DLI 222 4.5 · SE 4.13</text>
+  </g>
+</g>
+</svg>

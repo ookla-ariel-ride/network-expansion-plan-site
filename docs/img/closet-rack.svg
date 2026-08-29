@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 470" style="background:#f7f7f5" role="img" aria-label="Shop drawing of the closet's StarTech 6U wall rack, front view and depth view, with the Gold Pro on its tray at U5, Switch X on a vented shelf at U4 and U3, the cellular injector at U2, the Web Power Switch Pro flat on a shelf at U1, and the tower UPS on the floor below.">
+<style>
+  svg { font-family: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; }
+  .t-title { font-size: 15px; font-weight: 600; fill: #1f2430; }
+  .t-sub { font-size: 10.5px; fill: #6b7280; }
+  .t-key { font-size: 11px; fill: #1f2430; }
+  .t-dim { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 9.5px; fill: #6b7280; }
+  .t-h { font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; font-size: 9.5px; fill: #6b7280; letter-spacing: 0.08em; }
+  .t-in { font-size: 9px; fill: #1f2430; }
+  .t-in2 { font-size: 8px; fill: #6b7280; }
+  .frame { fill: none; stroke: #1f2430; stroke-width: 2; }
+  .post { fill: #d3d7de; stroke: #1f2430; stroke-width: 1; }
+  .part { fill: #e6e8ec; stroke: #3b4252; stroke-width: 1; }
+  .part-d { fill: #d3d7de; stroke: #3b4252; stroke-width: 1; }
+  .shelf { fill: #f0f1f3; stroke: #6b7280; stroke-width: 0.8; }
+  .ghost { fill: none; stroke: #9aa2b3; stroke-width: 1; stroke-dasharray: 4 3; }
+  .tick { stroke: #9aa2b3; stroke-width: 0.8; }
+  .cu { stroke: #b5652b; fill: none; }
+  .fb { stroke: #1c86b0; fill: none; }
+  .pw { stroke: #7a6b2a; fill: none; stroke-dasharray: 4 3; }
+  .callout circle { fill: #1f2430; stroke: #f7f7f5; stroke-width: 1.5; }
+  .callout text { fill: #ffffff; font-family: ui-monospace, Menlo, monospace; font-size: 9.5px; font-weight: 600; text-anchor: middle; }
+  .lead { stroke: #6b7280; stroke-width: 0.7; }
+  .dl { stroke: #6b7280; stroke-width: 0.7; }
+  .depth-bar { fill: #d3d7de; stroke: #3b4252; stroke-width: 0.8; }
+</style>
+<defs>
+  <marker id="ar" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L8,4 L0,8 z" fill="#6b7280"/></marker>
+  <pattern id="vent" width="4" height="4" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="0.7" fill="#6b7280" opacity="0.5"/></pattern>
+</defs>
+
+<text x="40" y="30" class="t-title">Closet rack · StarTech WALLMOUNT6</text>
+<text x="40" y="46" class="t-sub">Left wall of the closet, centered · 6U, 2-post open frame · 19.6 in wide, 10.7 in tall, 13.78 in usable depth, 44 lb rating · 12 px = 1 in</text>
+<line x1="40" y1="56" x2="860" y2="56" stroke="#1f2430" stroke-width="1"/>
+
+<!-- ============ FRONT VIEW ============ 21.9 x 12.5 in => 263 x 150; posts at 19 in => 228 apart -->
+<g transform="translate(60 84)">
+  <text x="0" y="-8" class="t-h">FRONT</text>
+  <rect x="0" y="0" width="235" height="128" class="frame"/>
+  <!-- posts -->
+  <rect x="0" y="2" width="7" height="124" class="post"/>
+  <rect x="228" y="2" width="7" height="124" class="post"/>
+  <!-- U ruler on the left post -->
+  <g class="t-dim" text-anchor="end">
+    <text x="-10" y="16">U6</text><text x="-10" y="37">U5</text><text x="-10" y="58">U4</text><text x="-10" y="79">U3</text><text x="-10" y="100">U2</text><text x="-10" y="121">U1</text>
+  </g>
+  <g class="tick">
+    <line x1="-6" y1="1" x2="0" y2="1"/><line x1="-6" y1="22" x2="0" y2="22"/><line x1="-6" y1="43" x2="0" y2="43"/><line x1="-6" y1="64" x2="0" y2="64"/><line x1="-6" y1="85" x2="0" y2="85"/><line x1="-6" y1="106" x2="0" y2="106"/><line x1="-6" y1="127" x2="0" y2="127"/>
+  </g>
+  <!-- U6: brush panel -->
+  <rect x="7" y="2" width="221" height="19" class="ghost" rx="1"/>
+  <text x="117" y="15" class="t-in2" text-anchor="middle">1U brush panel, optional</text>
+  <!-- U5: Gold Pro tray (1U): tray full width, Gold Pro 8.5 in = 102 px, brick shelf, 6-port panel -->
+  <rect x="7" y="23" width="221" height="19" class="shelf"/>
+  <rect x="16" y="25" width="102" height="15" class="part-d" rx="1"/>
+  <text x="67" y="36" class="t-in" text-anchor="middle">Gold Pro</text>
+  <rect x="124" y="27" width="30" height="11" class="part" rx="1"/>
+  <text x="139" y="35" class="t-in2" text-anchor="middle" font-size="6.5">brick</text>
+  <g fill="#ffffff" stroke="#3b4252" stroke-width="0.6">
+    <rect x="164" y="28" width="8" height="8"/><rect x="174" y="28" width="8" height="8"/><rect x="184" y="28" width="8" height="8"/><rect x="194" y="28" width="8" height="8"/><rect x="204" y="28" width="8" height="8"/><rect x="214" y="28" width="8" height="8"/>
+  </g>
+  <!-- U4-U3: vented shelf with Switch X 12.99 x 1.73 in => 156 x 21 -->
+  <rect x="7" y="44" width="221" height="40" fill="url(#vent)" stroke="#6b7280" stroke-width="0.8"/>
+  <rect x="39" y="49" width="156" height="21" class="part-d" rx="2"/>
+  <text x="117" y="63" class="t-in" text-anchor="middle">Switch X</text>
+  <text x="117" y="79" class="t-in2" text-anchor="middle">1U air gap above the fans</text>
+  <!-- U2: bt injector -->
+  <rect x="7" y="86" width="221" height="19" class="ghost" rx="1"/>
+  <rect x="16" y="89" width="40" height="13" class="part" rx="1"/>
+  <text x="36" y="98" class="t-in2" text-anchor="middle" font-size="6.5">injector</text>
+  <!-- U1: free -->
+  <rect x="7" y="107" width="221" height="19" class="shelf"/>
+  <rect x="39" y="109" width="156" height="15" class="part-d" rx="2"/>
+  <text x="117" y="120" class="t-in" text-anchor="middle">Web Power Switch Pro, flat on a shelf</text>
+  <!-- WPS Pro on the right post: 13 x 1.6 in => 156 x 19, along the post -->
+    <!-- cables entering from the right (the corner) -->
+  <path d="M272,60 L244,60" class="cu" stroke-width="3" marker-end="url(#ar)"/>
+  <path d="M272,68 L244,68" class="fb" stroke-width="1.6" marker-end="url(#ar)"/>
+  <text x="276" y="82" class="t-in2">from the On-Q,</text>
+  <text x="276" y="92" class="t-in2">10 in away</text>
+  <!-- floor and UPS: 3.9 x 11 in => 47 x 132 -->
+  <line x1="-20" y1="290" x2="330" y2="290" stroke="#1f2430" stroke-width="1.5"/>
+  <text x="-20" y="304" class="t-dim">FLOOR</text>
+  <rect x="94" y="158" width="47" height="132" class="part" rx="2"/>
+  <text x="117" y="220" class="t-in" text-anchor="middle" transform="rotate(-90 117 220)">CP1500PFCLCD</text>
+  <path d="M141,170 L246,170 L246,116 L236,116" class="pw" stroke-width="1.2"/>
+  <!-- dims -->
+  <line x1="0" y1="140" x2="235" y2="140" class="dl" marker-start="url(#ar)" marker-end="url(#ar)"/>
+  <text x="117" y="154" class="t-dim" text-anchor="middle">19.6 in wide · 10.7 in tall · 13.78 in deep</text>
+  <!-- callouts -->
+  <g class="callout">
+    <circle cx="-44" cy="32" r="8"/><text x="-44" y="35.5">1</text>
+    <circle cx="-44" cy="59" r="8"/><text x="-44" y="62.5">2</text>
+    <circle cx="-44" cy="95" r="8"/><text x="-44" y="98.5">3</text>
+    <circle cx="-44" cy="116" r="8"/><text x="-44" y="119.5">4</text>
+    <circle cx="166" cy="224" r="8"/><text x="166" y="227.5">5</text>
+  </g>
+  <g class="lead">
+    <line x1="-36" y1="32" x2="-14" y2="32"/>
+    <line x1="-36" y1="59" x2="-14" y2="59"/>
+    <line x1="-36" y1="95" x2="-14" y2="95"/>
+    <line x1="-36" y1="116" x2="-14" y2="116"/>
+    <line x1="141" y1="224" x2="158" y2="224"/>
+  </g>
+</g>
+
+<!-- ============ KEY ============ -->
+<g transform="translate(470 84)">
+  <text x="0" y="0" class="t-h">PART · SIZE (in) · NOTES</text>
+  <text x="0" y="24" class="t-key"><tspan font-weight="600">1</tspan>  Gold Pro on Firewalla's rack tray · U5</text>
+  <text x="14" y="38" class="t-sub">Gold Pro 8.5 × 6.5 × 1.7; the 1U tray is 6.54 deep and adds a brick shelf</text>
+  <text x="14" y="50" class="t-sub">and a 6-port keystone panel</text>
+  <text x="0" y="74" class="t-key"><tspan font-weight="600">2</tspan>  Switch X on a vented shelf · U4 to U3</text>
+  <text x="14" y="88" class="t-sub">12.99 × 9.05 × 1.73, 6.29 lb, three fans; not rackmount; 2U for air</text>
+  <text x="0" y="112" class="t-key"><tspan font-weight="600">3</tspan>  802.3bt injector · U2</text>
+  <text x="14" y="126" class="t-sub">feeds the AP7C until Switch X arrives, then the cellular radio's run</text>
+  <text x="0" y="150" class="t-key"><tspan font-weight="600">4</tspan>  Web Power Switch Pro flat on a 1U shelf · U1</text>
+  <text x="14" y="164" class="t-sub">13 × 5.8 × 1.6, longer than the 10.7 in rack, so it lies flat; 8 switched outlets:</text>
+  <text x="14" y="176" class="t-sub">Gold Pro, Switch X, kit inlet (modem), the Pi. Ethernet to the Mgmt breakout</text>
+  <text x="0" y="200" class="t-key"><tspan font-weight="600">5</tspan>  CyberPower CP1500PFCLCD on the floor</text>
+  <text x="14" y="214" class="t-sub">tower 3.9 × 11 × 14, 1500 VA / 1000 W sine wave; 1U rack units are</text>
+  <text x="14" y="226" class="t-sub">17 to 20 deep and do not fit. Feeds the Web Power Switch Pro</text>
+
+  <text x="0" y="258" class="t-h">LOAD</text>
+  <text x="0" y="276" class="t-key">About 18 lb of the 44 lb rating. Closet draw about 150 W.</text>
+
+  <text x="0" y="308" class="t-h">DEPTH · 13.78 in usable</text>
+  <g transform="translate(0 318)">
+    <line x1="0" y1="0" x2="0" y2="62" stroke="#1f2430" stroke-width="2"/>
+    <line x1="165.4" y1="-4" x2="165.4" y2="66" stroke="#1f2430" stroke-width="1" stroke-dasharray="4 3"/>
+    <text x="165.4" y="76" class="t-dim" text-anchor="middle">13.78</text>
+    <rect x="0" y="4" width="108.6" height="12" class="depth-bar"/><text x="114" y="14" class="t-in">Switch X 9.05</text>
+    <rect x="0" y="24" width="78.5" height="12" class="depth-bar"/><text x="84" y="34" class="t-in">Gold Pro tray 6.54</text>
+    <rect x="0" y="44" width="69.6" height="12" class="depth-bar"/><text x="75" y="54" class="t-in">WPS Pro 5.8, flat on the U1 shelf</text>
+  </g>
+</g>
+</svg>
