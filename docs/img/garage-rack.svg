@@ -96,9 +96,9 @@
   <rect x="21" y="183" width="147" height="13" class="part-d" rx="1"/>
   <text x="94" y="192" class="t-in2" text-anchor="middle">QSW-M408-4C · lab ToR</text>
   <rect x="21" y="197" width="147" height="13" class="part-d" rx="1"/>
-  <text x="94" y="206" class="t-in2" text-anchor="middle">GP-S100 #1 · lab 10GBASE-T</text>
+  <text x="94" y="206" class="t-in2" text-anchor="middle">GP-2100 #1 · lab 10GBASE-T</text>
   <rect x="21" y="211" width="147" height="13" class="part-d" rx="1"/>
-  <text x="94" y="220" class="t-in2" text-anchor="middle">GP-S100 #2 · storage net</text>
+  <text x="94" y="220" class="t-in2" text-anchor="middle">GP-2100 #2 · storage net</text>
   <rect x="21" y="225" width="147" height="27" class="ghost" rx="1"/><text x="94" y="241" class="t-in2" text-anchor="middle">Xeon host 1 · specs pending</text>
   <rect x="21" y="253" width="147" height="27" class="ghost" rx="1"/><text x="94" y="269" class="t-in2" text-anchor="middle">Xeon host 2</text>
   <rect x="21" y="281" width="147" height="27" class="ghost" rx="1"/><text x="94" y="297" class="t-in2" text-anchor="middle">Xeon host 3</text>
@@ -152,8 +152,8 @@
   <text x="14" y="214" class="t-sub">222: production PDU, 8 × C13. TPE-1020WS (owned): 8 × GbE PoE+, 75 W, off SE #2;</text>
   <text x="14" y="226" class="t-sub">Mgmt only: Pi #2, BMCs, JetKVMs, the OOB garage Cat6</text>
   <text x="0" y="250" class="t-key"><tspan font-weight="600">6</tspan>  Lab switches · U30 to U28, all owned</text>
-  <text x="14" y="264" class="t-sub">QNAP QSW-M408-4C as the ToR on fiber pair A (4 × 10G combo, 8 × GbE); GP-S100-0800T #1</text>
-  <text x="14" y="276" class="t-sub">(8 × 10GBASE-T) for copper-NIC hosts; GP-S100-0800T #2 as the isolated storage network</text>
+  <text x="14" y="264" class="t-sub">QNAP QSW-M408-4C as the ToR on fiber pair A (4 × 10G combo, 8 × GbE); GP-2100-0800T #1</text>
+  <text x="14" y="276" class="t-sub">(8 × 10GBASE-T) for copper-NIC hosts; GP-2100-0800T #2 as the isolated storage network</text>
   <text x="0" y="300" class="t-key"><tspan font-weight="600">7</tspan>  Three Xeon hosts · U27 to U22, drawn at 2U each</text>
   <text x="14" y="314" class="t-sub">Specs pending. The cabinet's rails adjust 25.7 to 34.5 in deep, which is what</text>
   <text x="14" y="326" class="t-sub">rack servers need and the mini racks could not give</text>

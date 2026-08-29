@@ -64,11 +64,11 @@
 <!-- lab fabric -->
 <rect x="640" y="260" width="110" height="40" class="node"/><text x="695" y="275" class="lbl" text-anchor="middle">QSW-M408-4C</text><text x="695" y="290" class="lbl-2" text-anchor="middle">lab ToR · 10G</text>
 <rect x="800" y="248" width="96" height="30" class="node"/><text x="848" y="267" class="lbl" text-anchor="middle">3× Xeon host</text>
-<rect x="800" y="288" width="96" height="30" class="node"/><text x="848" y="301" class="lbl" text-anchor="middle">GP-S100 #1</text><text x="848" y="313" class="lbl-2" text-anchor="middle">8 × 10GBASE-T</text>
+<rect x="800" y="288" width="96" height="30" class="node"/><text x="848" y="301" class="lbl" text-anchor="middle">GP-2100 #1</text><text x="848" y="313" class="lbl-2" text-anchor="middle">8 × 10GBASE-T</text>
 <path d="M750,274 L775,274 L775,263 L800,263" class="edge" marker-end="url(#a2)"/>
 <path d="M750,286 L775,286 L775,303 L800,303" class="edge" marker-end="url(#a2)"/>
 <text x="946" y="266" class="lbl-2">VLAN 99</text>
-<rect x="1010" y="300" width="130" height="34" class="node" stroke-dasharray="4 3"/><text x="1075" y="314" class="lbl" text-anchor="middle">GP-S100 #2</text><text x="1075" y="327" class="lbl-2" text-anchor="middle">storage net · no gateway</text>
+<rect x="1010" y="300" width="130" height="34" class="node" stroke-dasharray="4 3"/><text x="1075" y="314" class="lbl" text-anchor="middle">GP-2100 #2</text><text x="1075" y="327" class="lbl-2" text-anchor="middle">storage net · no gateway</text>
 <path d="M896,110 L906,110 L906,100 L1155,100 L1155,317 L1140,317" class="edge" stroke-dasharray="4 3"/>
 <path d="M896,252 L1155,252" class="edge" stroke-dasharray="4 3"/>
 <text x="1010" y="346" class="lbl-2">2nd 10G NICs: NAS + Xeons</text>

@@ -300,10 +300,10 @@ dialog.lightbox .lb-close { position: fixed; top: 14px; right: 18px; font: 500 1
     <thead><tr><th>Switch</th><th>Port</th><th>Connects</th><th>VLAN handling</th></tr></thead>
     <tbody>
     <tr><td class="m">QSW-M408-4C</td><td class="m">combo 1, SFP+</td><td>OM4 pair A from Switch X</td><td>Access, Lab (VLAN 99 untagged)</td></tr>
-    <tr><td class="m">QSW-M408-4C</td><td class="m">combo 2, RJ45</td><td>10GBASE-T down to GP-S100-0800T #1</td><td>Lab</td></tr>
+    <tr><td class="m">QSW-M408-4C</td><td class="m">combo 2, RJ45</td><td>10GBASE-T down to GP-2100-0800T #1</td><td>Lab</td></tr>
     <tr><td class="m">QSW-M408-4C</td><td class="m">combo 3, 4; GbE 1 to 8</td><td>Xeon hosts with SFP+ or 10GBASE-T NICs; the Gold gen-1</td><td>Lab</td></tr>
-    <tr><td class="m">GP-S100-0800T #1</td><td class="m">10GBASE-T 1 to 8</td><td>Xeon hosts with copper NICs</td><td>Flat, Lab</td></tr>
-    <tr><td class="m">GP-S100-0800T #2</td><td class="m">10GBASE-T 1 to 8</td><td>Storage network: second NICs in the NAS and the Xeons</td><td>Isolated; no uplink, no gateway</td></tr>
+    <tr><td class="m">GP-2100-0800T #1</td><td class="m">10GBASE-T 1 to 8</td><td>Xeon hosts with copper NICs</td><td>Flat, Lab</td></tr>
+    <tr><td class="m">GP-2100-0800T #2</td><td class="m">10GBASE-T 1 to 8</td><td>Storage network: second NICs in the NAS and the Xeons</td><td>Isolated; no uplink, no gateway</td></tr>
     </tbody>
   </table></div>
   <p>The lab switches carry only the lab. The consoles plug into the TPE-1020WS on Mgmt, not the lab switches, so a lab switch fault cannot take them with it. The storage switch has no uplink at all: it is a second network card in each host, not a path through the firewall, and it carries NFS and iSCSI only. The SEs are not lab switches (2.5G access ports) and do not power the APs: two AP7 Ceilings plus eight cameras is 115 W against one SE's 114 W budget.</p>
@@ -522,8 +522,8 @@ dialog.lightbox .lb-close { position: fixed; top: 14px; right: 18px; font: 500 1
     <div class="hd"><span class="pn">Phase 5</span><span class="pt">Lab and DMZ</span><span class="pw">server specs in hand</span></div>
     <ul>
       <li>Server specs first: depth, draw, NICs, BMCs. Then the circuits, the rack UPS and the lab PDU.</li>
-      <li>Lab fabric at the bottom of the cabinet: the QSW-M408-4C on fiber pair A, GP-S100 #1 under it on a combo RJ45 port, the three Xeon hosts, the Gold gen-1 as a nested lab firewall. Lab on VLAN 99, routed by the Gold Pro at 10G.</li>
-      <li>Storage network: GP-S100 #2 with no uplink; second 10GBASE-T NICs in the NAS and the Xeons; one non-routed subnet, no gateway; NFS and iSCSI only.</li>
+      <li>Lab fabric at the bottom of the cabinet: the QSW-M408-4C on fiber pair A, GP-2100 #1 under it on a combo RJ45 port, the three Xeon hosts, the Gold gen-1 as a nested lab firewall. Lab on VLAN 99, routed by the Gold Pro at 10G.</li>
+      <li>Storage network: GP-2100 #2 with no uplink; second 10GBASE-T NICs in the NAS and the Xeons; one non-routed subnet, no gateway; NFS and iSCSI only.</li>
       <li>Consoles: BMC ports and JetKVMs on the TPE-1020WS (Mgmt, PoE), not the lab switches.</li>
       <li>pfSense single-armed in the DMZ: move the GUI to the Mgmt NIC on 8443 first, then HAProxy and ACME. Firewalla: 443 forward from Cloudflare ranges only; per-backend DMZ to Lab allows; Custom DNS Rules for internal resolution.</li>
     </ul>
@@ -752,7 +752,7 @@ backend bk_one
     <tr><td><a href="https://help.firewalla.com/hc/en-us/articles/360049613014-Firewalla-Gold-When-my-network-is-segmented-will-I-be-able-to-use-AirPlay-and-Chromecast-across-networks">Firewalla: mDNS across segments</a></td><td>Built-in reflector; disable IGMP/MLD snooping on managed switches</td></tr>
     <tr><td>Legrand datasheet DM0810161R2 and cutsheets (ENP4250, AC106A6, VM1002, F7526, AC1031, AC1040F)</td><td>Every On-Q dimension in the drawing</td></tr>
     <tr><td><a href="https://media.startech.com/cms/pdfs/wallmount6_datasheet.pdf">StarTech WALLMOUNT6 datasheet</a>, <a href="https://techspecs.ui.com/unifi/accessories/uacc-rack-42u-1000-g">UniFi 42U rack</a> and <a href="https://techspecs.ui.com">tech specs</a></td><td>Rack sizes, rail depth and load ratings; UNVR Pro and UNAS Pro chassis</td></tr>
-    <tr><td><a href="https://www.qnap.com/en-us/product/qsw-m408-4c/specs/hardware">QNAP QSW-M408-4C</a>, <a href="https://gigaplustech.com/products/8-port-10gb-ethernet-switch-unmanaged-8x-10gbe-base-t-ports-gigaplus-10g-network-switch-for-10gbps-nas-pc-wifi7-router-10gbps-adapter-nic-desktop-19-inch-rack-mount-plug-and-play">GiGaPlus GP-S100-0800T</a>, <a href="https://www.trendnet.com/support/faqs/?ToDo=view&amp;questId=3011&amp;catId=716">TRENDnet TPE-1020WS</a>, <a href="https://store.zyxel.com/xmg-105hp-us0101f.html">Zyxel XMG-105HP</a></td><td>Ports, PoE budgets and management features of the owned switches now in the plan</td></tr>
+    <tr><td><a href="https://www.qnap.com/en-us/product/qsw-m408-4c/specs/hardware">QNAP QSW-M408-4C</a>, <a href="https://gigaplustech.com/products/8-port-10gb-ethernet-switch-unmanaged-8x-10gbe-base-t-ports-gigaplus-10g-network-switch-for-10gbps-nas-pc-wifi7-router-10gbps-adapter-nic-desktop-19-inch-rack-mount-plug-and-play">GiGaPlus GP-2100-0800T</a>, <a href="https://www.trendnet.com/support/faqs/?ToDo=view&amp;questId=3011&amp;catId=716">TRENDnet TPE-1020WS</a>, <a href="https://store.zyxel.com/xmg-105hp-us0101f.html">Zyxel XMG-105HP</a></td><td>Ports, PoE budgets and management features of the owned switches now in the plan</td></tr>
     <tr><td><a href="https://www.gl-inet.com/products/gl-xe3000/">GL.iNet Puli AX</a>, <a href="https://calyxinstitute.org/membership">Calyx Institute</a>, <a href="https://shop.poetexas.com/products/gbt-12v60w">PoE Texas GBT-12V60W</a></td><td>Radio specs and temperature rating; the data plan; the splitter's real output and price</td></tr>
     <tr><td><a href="https://docs.netgate.com/pfsense/en/latest/config/advanced-admin.html">Netgate: admin access</a>, <a href="https://github.com/haproxy/haproxy/blob/master/doc/configuration.txt">HAProxy manual</a>, <a href="https://caddyserver.com/docs/automatic-https">Caddy docs</a></td><td>Moving the GUI off 443; HTTP/2 in TCP frontends; SNI and ECH; DNS-01 and wildcard sharing from 2.10</td></tr>
     <tr><td><a href="https://kb.netgear.com/000070829/RBE970-RBE971-Firmware-Version-12-1-10-12-North-America-Only">Netgear KB 000070829</a>, <a href="https://dongknows.com/netgear-orbi-970-series-wi-fi-7-mesh-review/">Orbi 970 review</a></td><td>Firmware 12.1.10.12; the reserved backhaul band</td></tr>
