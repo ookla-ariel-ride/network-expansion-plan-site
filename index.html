@@ -1,831 +1,615 @@
 <!DOCTYPE html>
-<html lang="en" data-palette="#2a78d6,#eb6834,#1baf7a,#eda100,#e87ba4,#008300,#4a3aa7">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Home Network Expansion Plan — Carlsbad</title>
+<title>Pinnacle Network Plan</title>
+<meta name="description" content="Build-to plan for a segmented home network: Firewalla Gold Pro, Switch X and SE, AP7 Wi-Fi, UniFi cameras, a garage lab, and a cellular second WAN.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <style>
 :root {
   color-scheme: light;
-  --surface-0: #f5f4f1;
-  --surface-1: #fcfcfb;
-  --surface-2: #efeeea;
-  --border:    #dedcd6;
-  --border-strong: #c4c1b8;
-  --text-primary:   #0b0b0b;
-  --text-secondary: #52514e;
-  --text-muted:     #7a7873;
-  --s1: #2a78d6; --s2: #eb6834; --s3: #1baf7a; --s4: #eda100;
-  --s5: #e87ba4; --s6: #008300; --s7: #4a3aa7; --s8: #e34948;
-  --good: #0ca30c; --warning: #fab219; --serious: #ec835a; --critical: #d03b3b;
-  --mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+  --paper: #f7f7f5;
+  --paper-2: #ffffff;
+  --fill: #e6e8ec;
+  --fill-2: #d3d7de;
+  --rule: #cfd3da;
+  --rule-strong: #9aa0ab;
+  --ink: #1f2430;
+  --ink-2: #4b5261;
+  --muted: #6b7280;
+  --copper: #b5652b;
+  --fiber: #1c86b0;
+  --ground: #2f855a;
+  --warn: #b7791f;
+  --crit: #b3362f;
+  --sans: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
 }
 @media (prefers-color-scheme: dark) {
-  :root:where(:not([data-theme="light"])) {
+  :root:not([data-theme="light"]) {
     color-scheme: dark;
-    --surface-0: #121211;
-    --surface-1: #1a1a19;
-    --surface-2: #232322;
-    --border:    #33332f;
-    --border-strong: #4a4a45;
-    --text-primary:   #ffffff;
-    --text-secondary: #c3c2b7;
-    --text-muted:     #918f85;
-    --s1: #3987e5; --s2: #d95926; --s3: #199e70; --s4: #c98500;
-    --s5: #d55181; --s6: #008300; --s7: #9085e9; --s8: #e66767;
+    --paper: #15171b; --paper-2: #1c1f25; --fill: #262a32; --fill-2: #31363f;
+    --rule: #3a3f49; --rule-strong: #5b6170; --ink: #e9eaee; --ink-2: #c3c6cf; --muted: #8b909c;
+    --copper: #d08a4e; --fiber: #4aa8d8; --ground: #5fb37f; --warn: #d9a441; --crit: #e06b62;
   }
 }
-* { box-sizing: border-box; }
-body {
-  margin: 0;
-  background: var(--surface-0);
-  color: var(--text-primary);
-  font: 15px/1.65 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --paper: #15171b; --paper-2: #1c1f25; --fill: #262a32; --fill-2: #31363f;
+  --rule: #3a3f49; --rule-strong: #5b6170; --ink: #e9eaee; --ink-2: #c3c6cf; --muted: #8b909c;
+  --copper: #d08a4e; --fiber: #4aa8d8; --ground: #5fb37f; --warn: #d9a441; --crit: #e06b62;
 }
-.wrap { max-width: 1040px; margin: 0 auto; padding: 48px 28px 96px; }
-header.top { border-bottom: 2px solid var(--border-strong); padding-bottom: 24px; margin-bottom: 8px; }
-h1 { font-size: 30px; line-height: 1.2; margin: 0 0 8px; letter-spacing: -0.02em; }
-.sub { color: var(--text-secondary); font-size: 15px; margin: 0; }
-.meta { color: var(--text-muted); font-size: 13px; margin-top: 10px; font-family: var(--mono); }
-h2 {
-  font-size: 13px; text-transform: uppercase; letter-spacing: 0.09em;
-  color: var(--text-muted); margin: 52px 0 16px; font-weight: 700;
-  border-top: 1px solid var(--border); padding-top: 20px;
-}
-h3 { font-size: 17px; margin: 28px 0 10px; letter-spacing: -0.01em; }
-p { margin: 0 0 14px; }
-a { color: var(--s1); }
-code { font-family: var(--mono); font-size: 0.9em; background: var(--surface-2); padding: 1px 5px; border-radius: 4px; }
 
-/* stat tiles */
-.tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin: 24px 0 8px; }
-.tile { background: var(--surface-1); border: 1px solid var(--border); border-radius: 10px; padding: 16px 18px; }
-.tile .k { font-size: 12px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.06em; font-weight: 600; }
-.tile .v { font-size: 28px; font-weight: 650; letter-spacing: -0.025em; margin-top: 4px; line-height: 1.1; }
-.tile .n { font-size: 12.5px; color: var(--text-secondary); margin-top: 4px; }
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body {
+  margin: 0; background: var(--paper); color: var(--ink);
+  font: 15.5px/1.6 var(--sans); -webkit-font-smoothing: antialiased;
+}
+a { color: var(--fiber); text-decoration-thickness: 1px; text-underline-offset: 2px; }
+a:focus-visible, button:focus-visible { outline: 2px solid var(--copper); outline-offset: 3px; }
+code { font-family: var(--mono); font-size: 0.88em; background: var(--fill); padding: 1px 5px; border-radius: 3px; }
+pre { background: var(--fill); border: 1px solid var(--rule); border-radius: 4px; padding: 14px 16px; overflow-x: auto; font: 13px/1.5 var(--mono); margin: 12px 0 18px; }
+pre code { background: none; padding: 0; font-size: inherit; }
+p { margin: 0 0 14px; max-width: 72ch; }
+ul { margin: 6px 0 16px; padding-left: 22px; max-width: 72ch; }
+li { margin-bottom: 5px; }
+strong { font-weight: 600; }
+
+/* frame: index rail + sheet */
+.frame { display: grid; grid-template-columns: 232px minmax(0, 1fr); gap: 40px; max-width: 1240px; margin: 0 auto; padding: 0 28px 96px; }
+.sheet { min-width: 0; max-width: 900px; }
+
+/* index rail, styled as the drawings' key */
+.index { position: sticky; top: 0; align-self: start; max-height: 100vh; overflow-y: auto; padding: 36px 0 24px; border-right: 1px solid var(--rule); }
+.index .lbl { font: 500 11px/1 var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin: 0 0 14px; }
+.index ol { list-style: none; margin: 0; padding: 0 16px 0 0; }
+.index li { margin: 0; }
+.index a { display: grid; grid-template-columns: 22px 1fr; gap: 10px; align-items: baseline; padding: 5px 0; color: var(--ink-2); text-decoration: none; font-size: 13.5px; line-height: 1.3; border-radius: 3px; }
+.index a .k { font: 500 10.5px/18px var(--mono); width: 18px; height: 18px; border-radius: 50%; background: var(--ink); color: var(--paper); text-align: center; align-self: center; }
+.index a:hover { color: var(--ink); }
+.index a.on { color: var(--ink); font-weight: 600; }
+.index a.on .k { background: var(--copper); }
+.index .sub { margin-top: 18px; padding-top: 14px; border-top: 1px solid var(--rule); font-size: 12.5px; color: var(--muted); line-height: 1.45; }
+.index .sub a { display: inline; padding: 0; font-size: inherit; color: var(--fiber); }
+
+/* title block */
+.title { padding: 44px 0 0; }
+.title h1 { font: 600 34px/1.15 var(--sans); letter-spacing: -0.02em; margin: 0 0 6px; text-wrap: balance; }
+.title .lede { font-size: 17px; color: var(--ink-2); max-width: 64ch; margin: 0 0 22px; }
+.tblock { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); border: 1.5px solid var(--ink); }
+.tblock > div { padding: 10px 14px 12px; border-right: 1px solid var(--ink); }
+.tblock > div:last-child { border-right: 0; }
+.tblock .k { font: 500 10.5px/1 var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+.tblock .v { font-size: 22px; font-weight: 600; letter-spacing: -0.02em; line-height: 1.15; margin-top: 6px; font-variant-numeric: tabular-nums; }
+.tblock .n { font-size: 12.5px; color: var(--ink-2); margin-top: 3px; }
+
+/* sections */
+section { padding-top: 56px; }
+h2 { display: grid; grid-template-columns: 34px 1fr; gap: 14px; align-items: center; font: 600 24px/1.2 var(--sans); letter-spacing: -0.015em; margin: 0 0 8px; }
+h2 .k { font: 500 13px/34px var(--mono); width: 34px; height: 34px; border-radius: 50%; background: var(--ink); color: var(--paper); text-align: center; }
+h2 + p, h2 + .lede-s { margin-top: 10px; }
+h3 { font: 600 17px/1.3 var(--sans); margin: 28px 0 8px; }
+.src { font: 400 12.5px/1.4 var(--mono); color: var(--muted); margin: -2px 0 18px 48px; }
+.src a { color: inherit; }
 
 /* tables */
-table { width: 100%; border-collapse: collapse; margin: 14px 0 20px; font-size: 14px; }
-th { text-align: left; font-size: 11.5px; text-transform: uppercase; letter-spacing: 0.07em; color: var(--text-muted); font-weight: 700; padding: 8px 10px; border-bottom: 1.5px solid var(--border-strong); }
-td { padding: 9px 10px; border-bottom: 1px solid var(--border); vertical-align: top; }
-tbody tr:last-child td { border-bottom: none; }
-td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; font-family: var(--mono); font-size: 13px; }
-.tbl-wrap { background: var(--surface-1); border: 1px solid var(--border); border-radius: 10px; padding: 4px 14px; overflow-x: auto; }
+.tw { overflow-x: auto; margin: 10px 0 20px; border: 1px solid var(--rule); border-radius: 4px; background: var(--paper-2); }
+table { width: 100%; border-collapse: collapse; font-size: 14px; }
+th { text-align: left; font: 500 11px/1.3 var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); padding: 10px 12px; border-bottom: 1.5px solid var(--rule-strong); white-space: nowrap; }
+td { padding: 9px 12px; border-bottom: 1px solid var(--rule); vertical-align: top; }
+tbody tr:last-child td { border-bottom: 0; }
+td.n, th.n { text-align: right; font-family: var(--mono); font-size: 13px; font-variant-numeric: tabular-nums; white-space: nowrap; }
+td.m { font-family: var(--mono); font-size: 13px; white-space: nowrap; }
+.matrix td, .matrix th { text-align: center; padding: 7px 6px; }
+.matrix td:first-child, .matrix th:first-child { text-align: left; font-weight: 600; }
+.y { color: var(--ground); font-weight: 600; }
+.x { color: var(--muted); }
+.c { color: var(--warn); font-weight: 600; }
+.legend { font-size: 13px; color: var(--ink-2); margin-top: -8px; }
 
-/* vlan chips */
-.chip { display: inline-flex; align-items: center; gap: 7px; white-space: nowrap; font-weight: 600; }
-.dot { width: 11px; height: 11px; border-radius: 3px; flex: none; box-shadow: 0 0 0 2px var(--surface-1); }
+/* chips for VLAN rows */
+.chip { display: inline-flex; align-items: center; gap: 8px; font-weight: 600; white-space: nowrap; }
+.chip i { width: 10px; height: 10px; border-radius: 2px; display: inline-block; }
 
-/* callouts */
-.note { border-left: 3px solid var(--border-strong); background: var(--surface-1); padding: 14px 18px; border-radius: 0 8px 8px 0; margin: 18px 0; }
-.note.warn { border-left-color: var(--warning); }
-.note.crit { border-left-color: var(--critical); }
-.note.good { border-left-color: var(--good); }
-.note .lbl { font-size: 11.5px; text-transform: uppercase; letter-spacing: 0.07em; font-weight: 700; color: var(--text-secondary); display: block; margin-bottom: 5px; }
-.note p:last-child { margin-bottom: 0; }
+/* callouts: one style, a left rule in the drawing colors */
+.call { border-left: 3px solid var(--rule-strong); background: var(--paper-2); padding: 12px 16px; margin: 16px 0 18px; max-width: 76ch; border-radius: 0 4px 4px 0; }
+.call.crit { border-left-color: var(--crit); }
+.call.warn { border-left-color: var(--warn); }
+.call.good { border-left-color: var(--ground); }
+.call .t { display: block; font: 500 11px/1.3 var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
+.call p:last-child { margin-bottom: 0; }
 
-/* meter */
-.meter { margin: 16px 0 22px; }
-.meter .row { display: flex; justify-content: space-between; align-items: baseline; font-size: 13.5px; margin-bottom: 6px; }
-.meter .row b { font-variant-numeric: tabular-nums; font-family: var(--mono); }
-.track { height: 14px; background: var(--surface-2); border-radius: 4px; overflow: hidden; display: flex; gap: 2px; }
-.seg { height: 100%; border-radius: 4px; }
-.mlegend { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 8px; font-size: 12.5px; color: var(--text-secondary); }
-.mlegend span { display: inline-flex; align-items: center; gap: 6px; }
-
-/* topology */
-.topo { background: var(--surface-1); border: 1px solid var(--border); border-radius: 10px; padding: 22px; margin: 18px 0 24px; font-size: 13.5px; }
-.node { border: 1.5px solid var(--border-strong); background: var(--surface-2); border-radius: 8px; padding: 9px 13px; display: inline-block; }
-.node .t { font-weight: 650; }
-.node .d { color: var(--text-secondary); font-size: 12px; font-family: var(--mono); }
-.tier { display: flex; gap: 12px; flex-wrap: wrap; justify-content: center; margin: 0; }
-.conn { text-align: center; color: var(--text-muted); font-family: var(--mono); font-size: 11.5px; padding: 7px 0; letter-spacing: 0.04em; }
+/* figures */
+figure { margin: 14px 0 20px; background: var(--paper-2); border: 1px solid var(--rule); border-radius: 4px; padding: 12px; }
+figure.wide { overflow-x: auto; }
+figure.wide img { min-width: 620px; }
+.figs { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 14px; }
+.figs figure { margin: 0; }
+figcaption { font-size: 13px; color: var(--ink-2); margin-top: 10px; line-height: 1.5; }
+.zoom { display: block; cursor: zoom-in; }
+.zoom img { display: block; width: 100%; height: auto; background: #f7f7f5; }
 
 /* phases */
-.phase { background: var(--surface-1); border: 1px solid var(--border); border-radius: 10px; padding: 18px 20px; margin: 12px 0; }
-.phase .hd { display: flex; align-items: baseline; gap: 12px; margin-bottom: 8px; flex-wrap: wrap; }
-.phase .num { font-family: var(--mono); font-size: 12px; font-weight: 700; color: var(--text-primary); background: var(--surface-2); border: 1px solid var(--border-strong); border-radius: 5px; padding: 2px 8px; }
-.phase .ttl { font-size: 16px; font-weight: 650; }
-.phase .when { font-size: 12px; color: var(--text-muted); font-family: var(--mono); margin-left: auto; }
-.phase ul { margin: 8px 0 0; padding-left: 20px; }
-.phase li { margin-bottom: 5px; }
+.phase { border: 1px solid var(--rule); border-radius: 4px; background: var(--paper-2); padding: 14px 18px; margin: 10px 0; }
+.phase .hd { display: flex; gap: 12px; align-items: baseline; flex-wrap: wrap; margin-bottom: 4px; }
+.phase .pn { font: 500 11.5px/1 var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--paper); background: var(--ink); padding: 5px 8px; border-radius: 3px; }
+.phase .pt { font-weight: 600; font-size: 16px; }
+.phase .pw { margin-left: auto; font: 400 12.5px/1 var(--mono); color: var(--muted); }
+.phase ul { margin: 8px 0 0; max-width: none; }
 
-ul.tight { margin: 8px 0 14px; padding-left: 20px; }
-ul.tight li { margin-bottom: 6px; }
+/* bars */
+.bar { margin: 10px 0 18px; max-width: 76ch; }
+.bar .r { display: flex; justify-content: space-between; font-size: 13.5px; margin-bottom: 5px; }
+.bar .r b { font-family: var(--mono); font-weight: 500; }
+.bar .t { height: 10px; background: var(--fill); border-radius: 2px; overflow: hidden; }
+.bar .s { height: 100%; }
 
-.matrix td, .matrix th { text-align: center; padding: 7px 6px; font-size: 12.5px; }
-.matrix td:first-child, .matrix th:first-child { text-align: left; white-space: nowrap; }
-.y { color: var(--good); font-weight: 700; }
-.n { color: var(--text-muted); }
-.c { color: var(--warning); font-weight: 700; }
+footer { margin-top: 64px; padding-top: 18px; border-top: 1px solid var(--rule); font-size: 12.5px; color: var(--muted); max-width: 76ch; }
 
-.figs { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin: 16px 0; }
-.figs figure { margin: 0; background: var(--surface-1); border: 1px solid var(--border); padding: 12px; }
-.figs img, .fig-wide img { display: block; width: 100%; height: auto; background: #fff; }
-.figs figcaption, .fig-wide figcaption { font-size: 12.5px; color: var(--text-secondary); margin-top: 8px; }
-.fig-wide { margin: 16px 0; background: var(--surface-1); border: 1px solid var(--border); padding: 12px; overflow-x: auto; }
-.fig-wide img { min-width: 640px; }
-footer { margin-top: 60px; padding-top: 20px; border-top: 1px solid var(--border); color: var(--text-muted); font-size: 12.5px; }
-@media (max-width: 640px) { .wrap { padding: 28px 16px 60px; } h1 { font-size: 24px; } }
+/* lightbox */
+dialog.lightbox { border: 0; padding: 0; background: transparent; max-width: none; max-height: none; width: 100vw; height: 100vh; }
+dialog.lightbox::backdrop { background: rgba(15,18,24,.88); }
+dialog.lightbox .lb-scroll { width: 100vw; height: 100vh; overflow: auto; display: flex; align-items: flex-start; justify-content: center; padding: 28px; cursor: zoom-out; }
+dialog.lightbox img { background: #f7f7f5; border-radius: 4px; max-width: none; width: min(96vw, 1800px); height: auto; box-shadow: 0 20px 60px rgba(0,0,0,.5); }
+dialog.lightbox .lb-close { position: fixed; top: 14px; right: 18px; font: 500 13px/1 var(--mono); color: #fff; background: rgba(0,0,0,.55); border: 1px solid rgba(255,255,255,.35); border-radius: 999px; padding: 9px 14px; cursor: pointer; }
+
+@media (max-width: 1080px) {
+  .frame { display: block; padding: 0 18px 72px; }
+  .index { position: sticky; top: 0; z-index: 5; max-height: none; overflow: visible; padding: 10px 0; border-right: 0; border-bottom: 1px solid var(--rule); background: var(--paper); margin: 0 -18px; padding-left: 18px; padding-right: 18px; }
+  .index .lbl, .index .sub { display: none; }
+  .index ol { display: flex; gap: 4px; overflow-x: auto; padding: 0; scrollbar-width: none; }
+  .index ol::-webkit-scrollbar { display: none; }
+  .index li { flex: none; }
+  .index a { grid-template-columns: 18px auto; padding: 6px 8px 6px 4px; }
+  .index a .t { white-space: nowrap; }
+  .tblock { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .tblock > div:nth-child(2) { border-right: 0; }
+  .tblock > div:nth-child(-n+2) { border-bottom: 1px solid var(--ink); }
+  .title h1 { font-size: 27px; }
+  h2 { font-size: 21px; }
+  .src { margin-left: 0; }
+}
 </style>
 </head>
 <body>
-<div class="wrap">
+<div class="frame">
 
-<header class="top">
-  <h1>Home Network Expansion Plan</h1>
-  <p class="sub">Firewalla Gold Pro · 1,860 sq ft single-story · Carlsbad, CA</p>
-  <p class="meta">Drafted 19 Aug 2026 · from live Firewalla MSP data + vendor specs ·
-  the <code>docs/</code> files are canonical and carry decisions and corrections through 29 Aug 2026, including the 29 Aug fact-check</p>
+<nav class="index" aria-label="Sections">
+  <p class="lbl">Sheet index</p>
+  <ol>
+    <li><a href="#s1"><span class="k">1</span><span class="t">Today</span></a></li>
+    <li><a href="#s2"><span class="k">2</span><span class="t">Target architecture</span></a></li>
+    <li><a href="#s3"><span class="k">3</span><span class="t">VLANs and policy</span></a></li>
+    <li><a href="#s4"><span class="k">4</span><span class="t">Wi-Fi</span></a></li>
+    <li><a href="#s5"><span class="k">5</span><span class="t">Closet and garage</span></a></li>
+    <li><a href="#s6"><span class="k">6</span><span class="t">What to buy, and when</span></a></li>
+    <li><a href="#s7"><span class="k">7</span><span class="t">Phases</span></a></li>
+    <li><a href="#s8"><span class="k">8</span><span class="t">Guest network</span></a></li>
+    <li><a href="#s9"><span class="k">9</span><span class="t">Cellular failover</span></a></li>
+    <li><a href="#s10"><span class="k">10</span><span class="t">Publishing websites</span></a></li>
+    <li><a href="#s11"><span class="k">11</span><span class="t">DNS and Pi-hole</span></a></li>
+    <li><a href="#s12"><span class="k">12</span><span class="t">Lab and the spare Gold</span></a></li>
+    <li><a href="#s13"><span class="k">13</span><span class="t">Orbi, until it goes</span></a></li>
+    <li><a href="#s14"><span class="k">14</span><span class="t">Risks</span></a></li>
+    <li><a href="#s15"><span class="k">15</span><span class="t">Open items</span></a></li>
+    <li><a href="#s16"><span class="k">16</span><span class="t">Sources</span></a></li>
+  </ol>
+  <p class="sub">Rendered from the <code>docs/</code> set, which is the canonical plan. Every figure traces to a vendor page or a live read of the equipment.</p>
+</nav>
+
+<main class="sheet">
+
+<header class="title">
+  <h1>Pinnacle Network Plan</h1>
+  <p class="lede">Eight VLANs behind one Firewalla Gold Pro, Wi-Fi that can tag them, cameras that record at home, a garage lab on fiber, and a 5G second WAN. Single-story, 1,860 sq ft, Carlsbad.</p>
+  <div class="tblock" role="group" aria-label="Key figures">
+    <div><span class="k">Devices today</span><div class="v">116</div><div class="n">one flat /24, no VLANs</div></div>
+    <div><span class="k">Planned segments</span><div class="v">8</div><div class="n">VLANs 10 to 99, Trusted keeps its subnet</div></div>
+    <div><span class="k">WAN</span><div class="v">1000 / 35</div><div class="n">Spectrum GIG; upload is the constraint</div></div>
+    <div><span class="k">Buy this week</span><div class="v">~$2,150</div><div class="n">of a ~$6,800 to $7,500 program</div></div>
+  </div>
 </header>
 
-<div class="tiles">
-  <div class="tile"><div class="k">Devices today</div><div class="v">116</div><div class="n">all on one flat subnet</div></div>
-  <div class="tile"><div class="k">VLANs today</div><div class="v">0</div><div class="n"><code>LAN 1</code> + 2 VPN tunnels</div></div>
-  <div class="tile"><div class="k">Monthly transfer</div><div class="v">2.77 TB</div><div class="n">~103 GB/day</div></div>
-  <div class="tile"><div class="k">WAN upload cap</div><div class="v">35 Mb/s</div><div class="n">Spectrum ceiling, any tier</div></div>
-</div>
+<!-- 1 -->
+<section id="s1">
+  <h2><span class="k">1</span>Today</h2>
+  <p class="src">docs/01 · read from the Firewalla MSP dashboard and the Orbi admin UI</p>
+  <p>Every device sits in one broadcast domain, <code>192.168.187.0/24</code>, labelled <code>LAN 1</code>: laptops, cameras, the NAS, 28 smart plugs, two Teslas and the lab. The 282 firewall rules and 3,839 alarms all operate inside that one flat space. Two VPN networks exist beside it: WireGuard on <code>10.189.243.x</code> and AmneziaWG on <code>10.190.96.x</code>.</p>
+  <div class="tw"><table>
+    <thead><tr><th>Class</th><th class="n">Count</th><th>Notable members</th></tr></thead>
+    <tbody>
+    <tr><td>TP-Link Kasa</td><td class="n">28</td><td>EP25 ×10, HS300 ×7, KP115 ×4, HS103 ×4; KP200 in-wall outlets are being added through the house</td></tr>
+    <tr><td>Apple clients and TVs</td><td class="n">~16</td><td>Mac Studio, 2× Apple TV, laptops, phones, Watch</td></tr>
+    <tr><td>Sonos</td><td class="n">8</td><td>8 units across 5 zones (two stereo pairs) plus 2 subs</td></tr>
+    <tr><td>Google / Nest</td><td class="n">7</td><td>Nest-Cam, doorbell, displays, speakers. The cameras go; the doorbell stays</td></tr>
+    <tr><td>Orbi Wi-Fi 7</td><td class="n">3</td><td>RBE971 + 2× RBE970 in AP mode, wired backhaul. Being replaced</td></tr>
+    <tr><td>Lab and infrastructure</td><td class="n">7</td><td>UNAS-Pro, pfSense on a Silicom box (2 NICs), Raspberry Pi, Domotz</td></tr>
+    <tr><td>Energy / EV</td><td class="n">6</td><td>Enphase envoy, Sense, Rainforest eagle, 2× Tesla + Wall Connector</td></tr>
+    <tr><td>Media / gaming</td><td class="n">5</td><td>LG C2 77", Shield, PS5, Xbox, FamilyHub</td></tr>
+    <tr><td>Other IoT</td><td class="n">~36</td><td>Bond, Flume, MyQ, Rinnai, WiZ, eufy robot vacuum, Neakasa ×2, printers, ESLs</td></tr>
+    </tbody>
+  </table></div>
 
-<h2>1 · What's actually there today</h2>
-
-<p>Read directly from the Firewalla MSP dashboard. Every device — laptops, cameras,
-NAS, smart plugs, the Tesla, the lab — sits in a single broadcast domain,
-<code>192.168.187.0/24</code>, labelled <code>LAN 1</code>. There is no segmentation of any kind.
-The 282 firewall rules and 3,839 alarms are all operating inside that one flat space.</p>
-
-<div class="tbl-wrap">
-<table>
-<thead><tr><th>Class</th><th class="num">Count</th><th>Notable members</th></tr></thead>
-<tbody>
-<tr><td>TP-Link Kasa</td><td class="num">28</td><td>EP25 ×10, HS300 ×7, KP115 ×4, HS103 ×4 — <em>growing with KP200s</em></td></tr>
-<tr><td>Apple clients + TVs</td><td class="num">~16</td><td>Mac Studio, 2× Apple TV, laptops, phones, Watch</td></tr>
-<tr><td>Sonos</td><td class="num">8</td><td>5 zones + 2 subs</td></tr>
-<tr><td>Google / Nest</td><td class="num">7</td><td>Nest-Cam, doorbell, displays, speakers — <em>cameras being replaced; the doorbell stays, on VLAN 30</em></td></tr>
-<tr><td>Orbi Wi-Fi 7</td><td class="num">3</td><td>RBE971 + 2× RBE970, AP mode — <em>being replaced</em></td></tr>
-<tr><td>Lab &amp; infra</td><td class="num">7</td><td>UNAS-Pro, pfSense (Silicom, 2 NICs), Raspberry Pi, Domotz (kept → Mgmt VLAN)</td></tr>
-<tr><td>Energy / EV</td><td class="num">6</td><td>Enphase envoy, Sense, Rainforest eagle, 2× Tesla + Wall Connector</td></tr>
-<tr><td>Media / gaming</td><td class="num">5</td><td>LG C2 77", Shield, PS5, Xbox, FamilyHub</td></tr>
-<tr><td>Other IoT</td><td class="num">~36</td><td>Bond, Flume, MyQ, Rinnai, WiZ, eufy (robot vacuum), Neakasa ×2, printers, ESLs</td></tr>
-</tbody>
-</table>
-</div>
-
-<div class="note crit">
-  <span class="lbl">The constraint that forced this whole plan</span>
-  <p>The <strong>Orbi 970 series cannot tag VLANs in AP mode</strong> — Netgear disables VLAN support
-  entirely in that mode. Its guest network is worse than nothing: it hands out 192.168.2.x but
-  NATs everything behind the Orbi's own LAN IP, so guest traffic is invisible to the Firewalla
-  and guest clients retain application-layer reach into the LAN. Firewalla's own answer is
-  "use a different access point." <strong>Every wireless device you own is stuck in one L2 domain
-  until the Orbi is retired.</strong></p>
-</div>
-
-<div class="note warn">
-  <span class="lbl">Upstream pressure</span>
-  <p>In 24 hours, <code>Nest-Cam</code> pushed <strong>11.4 GB</strong> up and <code>Nest-5B38</code>
-  another <strong>6.8 GB</strong>; <code>googleapis.com</code> absorbed 20.7 GB of your 30 GB total daily
-  upload. Against Spectrum's hard 35 Mb/s upstream ceiling that is a large, permanent tax on every
-  other outbound flow. Moving to locally-recorded UniFi Protect drops it to near zero — the strongest
-  single argument for the camera swap.</p>
-</div>
-
-<h2>2 · Target architecture</h2>
-
-<div class="fig-wide">
-  <img src="docs/img/signal-path.svg" alt="Signal path: modem to Gold Pro to Switch X in the closet; fiber to the garage ToR; UNVR Pro, Switch SE, UNAS-Pro and lab hosts behind it">
-  <figcaption><strong>One trunk between rooms.</strong> Closet: modem → Gold Pro → Switch X, which serves the 6 wall drops and the AP7Cs. OM4 fiber to the lab ToR in the garage, which serves the UNVR Pro, the Switch SE (cameras), the UNAS-Pro and the lab hosts. Rev C.3, 25 Aug 2026.</figcaption>
-</div>
-
-<p>Two principles shape this. First, <strong>the Gold Pro stays the single edge</strong> — it does
-10 Gbps <em>with</em> full IDS/IPS running, three regions blocked and a 1,000-entry target list,
-so it is not the bottleneck and doesn't need help. Second, <strong>lab east-west traffic never
-crosses a Firewalla</strong>; the rack gets its own top-of-rack switch and the second Gold only
-handles the lab's north-south path.</p>
-
-<h2>3 · VLAN &amp; addressing plan</h2>
-
-<p>The key migration saver: <strong>keep <code>192.168.187.0/24</code> as the Trusted VLAN.</strong>
-Your laptops, phones, Macs and any static assignments or port forwards stay exactly where they are.
-Everything else moves out around them, which turns one big flag-day cutover into six small ones.</p>
-
-<div class="tbl-wrap">
-<table>
-<thead><tr><th>VLAN</th><th>Purpose</th><th>Subnet</th><th class="num">Hosts</th><th>Occupants</th></tr></thead>
-<tbody>
-<tr><td><span class="chip"><span class="dot" style="background:var(--s1)"></span>10 · Mgmt</span></td><td>Infrastructure only</td><td><code>10.187.10.0/24</code></td><td class="num">254</td><td>Firewalla boxes, Switch X/SE, AP7s, UNVR mgmt, IPMI/iDRAC, Domotz, <strong>both Pi-holes</strong></td></tr>
-<tr><td><span class="chip"><span class="dot" style="background:var(--s2)"></span>20 · Trusted</span></td><td>People &amp; work</td><td><code>192.168.187.0/24</code></td><td class="num">254</td><td>Macs, phones, tablets, printers — <strong>unchanged</strong></td></tr>
-<tr><td><span class="chip"><span class="dot" style="background:var(--s3)"></span>30 · IoT</span></td><td>Cloud-dependent things</td><td><code>10.187.30.0/23</code></td><td class="num">510</td><td>All Kasa incl. KP200s, WiZ, Bond, MyQ, Flume, Rinnai, appliances, Nest doorbell (kept), eufy vacuum</td></tr>
-<tr><td><span class="chip"><span class="dot" style="background:var(--s4)"></span>40 · Cameras</span></td><td>Surveillance, no WAN</td><td><code>10.187.40.0/24</code></td><td class="num">254</td><td>UniFi PoE cameras + UNVR G2</td></tr>
-<tr><td><span class="chip"><span class="dot" style="background:var(--s5)"></span>50 · Media</span></td><td>Streaming &amp; audio</td><td><code>10.187.50.0/24</code></td><td class="num">254</td><td>Sonos ×8, LG C2, Shield, PS5, Xbox, Apple TVs</td></tr>
-<tr><td><span class="chip"><span class="dot" style="background:var(--s6)"></span>60 · Guest</span></td><td>Internet only</td><td><code>10.187.60.0/24</code></td><td class="num">254</td><td>Visitors, contractors, anything untrusted. Decided 25 Aug: internet only, 100/10 Mb/s Smart Queue cap, device isolation, SSID <code>pinnacle-Guest</code> on 2.4 + 5 GHz (docs/14)</td></tr>
-<tr><td><span class="chip"><span class="dot" style="background:var(--s8)"></span>80 · DMZ</span></td><td>Internet-facing only</td><td><code>10.187.80.0/24</code></td><td class="num">254</td><td>Reverse proxy + any publicly reachable web host. <strong>See §11</strong></td></tr>
-<tr><td><span class="chip"><span class="dot" style="background:var(--s7)"></span>99 · Lab</span></td><td>Rack, routed by Gold Pro</td><td><code>10.99.0.0/16</code></td><td class="num">—</td><td>Rack servers, VMs, storage. Inter-VLAN routed at 10G — <strong>see §12</strong></td></tr>
-</tbody>
-</table>
-</div>
-
-<div class="note">
-  <span class="lbl">Why IoT gets a /23</span>
-  <p>28 Kasa devices today, plus KP200s "throughout the house" — a 3-bed home can absorb 30–50 in-wall
-  outlets and switches. Add the existing 36 assorted IoT devices and a /24 gets uncomfortable fast.
-  A /23 costs nothing now and saves a re-addressing exercise later. Everything else stays /24.</p>
-</div>
-
-<h3>Inter-VLAN policy</h3>
-
-<div class="tbl-wrap">
-<table class="matrix">
-<thead><tr><th>From ↓ / To →</th><th>Mgmt</th><th>Trusted</th><th>IoT</th><th>Cameras</th><th>Media</th><th>Guest</th><th>Lab</th><th>WAN</th></tr></thead>
-<tbody>
-<tr><td>Mgmt</td><td>—</td><td class="y">✓</td><td class="y">✓</td><td class="y">✓</td><td class="y">✓</td><td class="y">✓</td><td class="y">✓</td><td class="y">✓</td></tr>
-<tr><td>Trusted</td><td class="c">◐</td><td>—</td><td class="c">◐</td><td class="c">◐</td><td class="c">◐</td><td class="n">✕</td><td class="y">✓</td><td class="y">✓</td></tr>
-<tr><td>IoT</td><td class="n">✕</td><td class="n">✕</td><td>—</td><td class="n">✕</td><td class="n">✕</td><td class="n">✕</td><td class="n">✕</td><td class="y">✓</td></tr>
-<tr><td>Cameras</td><td class="n">✕</td><td class="n">✕</td><td class="n">✕</td><td>—</td><td class="n">✕</td><td class="n">✕</td><td class="n">✕</td><td class="c">◐</td></tr>
-<tr><td>Media</td><td class="n">✕</td><td class="n">✕</td><td class="n">✕</td><td class="n">✕</td><td>—</td><td class="n">✕</td><td class="n">✕</td><td class="y">✓</td></tr>
-<tr><td>Guest</td><td class="n">✕</td><td class="n">✕</td><td class="n">✕</td><td class="n">✕</td><td class="n">✕</td><td>—</td><td class="n">✕</td><td class="y">✓</td></tr>
-<tr><td>Lab</td><td class="n">✕</td><td class="n">✕</td><td class="n">✕</td><td class="n">✕</td><td class="n">✕</td><td class="n">✕</td><td>—</td><td class="y">✓</td></tr>
-</tbody>
-</table>
-</div>
-
-<p style="font-size:13px;color:var(--text-secondary)">
-<span class="y">✓</span> allowed &nbsp;·&nbsp; <span class="n">✕</span> denied &nbsp;·&nbsp;
-<span class="c">◐</span> conditional — established sessions plus specific service ports only.
-Cameras reach WAN solely for UniFi cloud/NTP; block everything else. <strong>One deliberate exception:</strong> the UNVR→UNAS-Pro archive flow needs an explicit allow (specific host, specific port) from VLAN 40 to wherever the UNAS-Pro lands — assign the UNAS-Pro to Trusted (VLAN 20) and add that single rule, or the backup silently never runs.
-Trusted→IoT is initiated-only, which is what makes Kasa and HomeKit control work without
-letting a plug reach your Mac. <strong>VPN tunnels</strong> (decided 24 Aug 2026): WireGuard <code>10.189.243.x</code> gets the Trusted row minus the Mgmt column; AmneziaWG <code>10.190.96.x</code> gets the Mgmt row — full reach, so it is the remote-admin tunnel.</p>
-
-<h2>4 · Hardware</h2>
-
-<div class="tbl-wrap">
-<table>
-<thead><tr><th>Item</th><th class="num">Qty</th><th class="num">Unit</th><th class="num">Subtotal</th><th>Notes</th></tr></thead>
-<tbody>
-<tr><td>Firewalla Switch X</td><td class="num">1</td><td class="num">$649</td><td class="num">$649</td><td>Core. 8×10G PoE++, 4×SFP+, 410 W, 240 Gbps. <strong>3 fans</strong> — not for living space</td></tr>
-<tr><td>Firewalla Switch SE</td><td class="num">1</td><td class="num">$319</td><td class="num">$319</td><td>Camera runs. 8×2.5G, 2×10G SFP+, <strong>802.3af/at only</strong>, 114 W, fanless, 9.45×4.13 in. $299.30 pre-sale. <strong>Early access sold out</strong></td></tr>
-<tr><td>New cable runs</td><td class="num">15</td><td class="num">—</td><td class="num">~$400–800</td><td>3× Cat6A ceiling APs + 4× Cat6A spares to the closet; 8× Cat6 cameras to the garage. 2" conduit and attic access make this DIY-feasible; a 1,000 ft box of Cat6 plus jacks is most of the cost</td></tr>
-<tr><td>Gold Pro rack tray + vented shelf + brush panel</td><td class="num">1</td><td class="num">~$120</td><td class="num">~$120</td><td>For the closet's existing StarTech 6U. The 12U rack and 24-port panel are gone — see §10</td></tr>
-<tr><td>Closet PDU + UPS</td><td class="num">1 + 1</td><td class="num">—</td><td class="num">~$525</td><td>DLI Web Power Switch Pro ($229 + $18 bracket) on the rack side; CyberPower CP1500PFCLCD tower ($275) on the floor</td></tr>
-<tr><td>Brush plate + coax SPD</td><td class="num">—</td><td class="num">—</td><td class="num">~$30</td><td>The Legrand IWPEUSBAC-WH relocation kit, F7526 boxes, grommets, AC1031 strip and cord cover are already owned</td></tr>
-<tr><td>Cellular WAN failover</td><td class="num">1</td><td class="num">—</td><td class="num">~$600 + $500/yr</td><td>GL.iNet Puli AX (bought 28 Aug), Calyx SIM, 802.3bt injector + splitter, 4×4 antenna — §15 in docs</td></tr>
-<tr><td>Garage: UniFi 6U mini rack + DLI 222 PDU</td><td class="num">1 + 1</td><td class="num">—</td><td class="num">tbd + ~$249</td><td>UNVR Pro, Switch SE, lab ToR and PDU live here. Skip the rack if already owned</td></tr>
-<tr><td>OM4 fiber run + SFP+ optics</td><td class="num">1</td><td class="num">~$250</td><td class="num">~$250</td><td>Closet → garage, plus spare strands and a parallel Cat6A</td></tr>
-<tr><td>Firewalla AP7 Ceiling</td><td class="num">1 (+1 conditional)</td><td class="num">$369</td><td class="num">$369–738</td><td>PoE+ (802.3at), <strong>25.5 W</strong>. 10G + 2.5G. <strong>6 GHz is 2×2, not 4×4</strong> — see §5. Ships now</td></tr>
-<tr><td>Firewalla AP7 Desktop</td><td class="num">1</td><td class="num">$369</td><td class="num">$369</td><td>DC adapter only — needs an outlet <em>and</em> a data drop</td></tr>
-<tr><td>UniFi UNVR Pro</td><td class="num">1</td><td class="num">$499</td><td class="num">$499</td><td>7 bays, 24 cams. Chosen 24 Aug over the G2 (4 bays, $699, sold out) because continuous recording needs the bays</td></tr>
-<tr><td>UniFi PoE cameras</td><td class="num">~8</td><td class="num">~$200</td><td class="num">~$1,600</td><td>Count not yet decided — sized for headroom</td></tr>
-<tr><td>Surveillance HDDs</td><td class="num">5–7</td><td class="num">~$200</td><td class="num">~$1,000–1,400</td><td><strong>Continuous recording decided 24 Aug.</strong> 8 cams @ 4K continuous ≈ 650–1,040 GB/day; 60–90 days needs ~50–75 TB. Two drives would last ~26 days (docs/03)</td></tr>
-<tr><td>Cat6A, keystones, mounts</td><td class="num">—</td><td class="num">—</td><td class="num">~$300</td><td>Depends entirely on your cabling situation</td></tr>
-<tr><td><strong>Total</strong></td><td class="num"></td><td class="num"></td><td class="num"><strong>~$6,800–7,500</strong> plus racks, KVMs</td><td>Decided plan, per docs/11 (28 Aug). Plus $500/yr for the cellular SIM. Verify pricing at purchase — several items are pre-sale. Excludes lab hosts and electrical work</td></tr>
-</tbody>
-</table>
-</div>
-
-<div class="note warn">
-  <span class="lbl">Availability is the schedule driver</span>
-  <p>The <strong>AP7 units ship in 1–2 days</strong> (US only; 60-day return on the Ceiling beta, 30 on the Desktop). The
-  <strong>switches do not</strong> — Switch X is pre-sale for Sept/Oct 2026 and Switch SE for Oct/Nov 2026,
-  and <strong>Switch SE early access is sold out</strong>, so Oct/Nov is the realistic date for it. If you order APs first you will need a
-  <strong>802.3bt injector</strong> for the AP7C in the interim (it later moves to the cellular radio), since the Orbi can't power them and you won't
-  have a Firewalla switch yet.</p>
-</div>
-
-<h3>PoE budget</h3>
-
-<div class="meter">
-  <div class="row"><span><strong>Switch X</strong> — APs and headroom</span><b>51 W / 410 W · 12%</b></div>
-  <div class="track"><div class="seg" style="width:12.4%;background:var(--s1)"></div></div>
-  <div class="mlegend"><span><span class="dot" style="background:var(--s1)"></span>2× AP7C @ 25.5 W</span><span>359 W spare — room for the entire camera fleet if you'd rather consolidate</span></div>
-</div>
-
-<div class="meter">
-  <div class="row"><span><strong>Switch SE</strong> — cameras</span><b>64 W / 114 W · 56%</b></div>
-  <div class="track"><div class="seg" style="width:56%;background:var(--s4)"></div></div>
-  <div class="mlegend"><span><span class="dot" style="background:var(--s4)"></span>8 cameras @ ~8 W</span><span>50 W spare — enough for ~6 more standard cams, but <em>not</em> a PTZ</span></div>
-</div>
-
-<div class="note crit">
-  <span class="lbl">Don't put the APs on the SE</span>
-  <p>2× AP7C (51 W) + 8 cameras (64 W) = <strong>115 W against the SE's 114 W budget</strong> — over by a
-  single watt, which is no margin at all once a camera turns on IR illuminators and draws above nominal.
-  The SE is also <strong>802.3af/at only</strong>, with no PoE++ headroom. Powering APs from Switch X's
-  410 W PoE++ keeps you on the safe side of that line.</p>
-</div>
-
-<h2>5 · Wi-Fi design</h2>
-
-<p>Decided 22 Aug: start with <strong>two</strong> APs (~930 sq ft each) and pull cable for a conditional third — see docs/04.
-Even two APs in this footprint is dense spacing. It will perform well, but only with deliberate
-tuning; defaults will produce the radios fighting each other.</p>
-
-<div class="tbl-wrap">
-<table>
-<thead><tr><th>Band</th><th>Channel width</th><th>Plan</th></tr></thead>
-<tbody>
-<tr><td><strong>6 GHz</strong></td><td>320 MHz</td><td>One per AP. US 6 GHz has three non-overlapping 320 MHz channels <strong>in Low Power Indoor (LPi) mode</strong> — which is what indoor consumer APs use, so it applies to you. (In Standard Power mode the US allows only <em>one</em> 320 MHz channel.) Two or three APs fit with zero co-channel. <strong>Note the asymmetry:</strong> the AP7 <em>Desktop</em> is 4×4 on 6 GHz (11.5 Gbps); the <em>Ceiling</em> units are only 2×2 (5.76 Gbps). Your central AP7D is the strongest radio in the house — put your most demanding clients near it.</td></tr>
-<tr><td><strong>5 GHz</strong></td><td>40 MHz</td><td>Not 80. At this density 80 MHz forces channel reuse and airtime contention. 40 MHz gives enough non-overlapping channels to keep all three clean.</td></tr>
-<tr><td><strong>2.4 GHz</strong></td><td>20 MHz</td><td><strong>Disable on at least one AP</strong>, and cut TX power hard on the other two. Kasa devices are 2.4-only and cling to first association — you want this coverage deliberate and minimal, not blanketing.</td></tr>
-</tbody>
-</table>
-</div>
-
-<h3>SSID → VLAN mapping</h3>
-<ul class="tight">
-  <li><strong>Main</strong> → Trusted (VLAN 20) — 6 GHz + 5 GHz, WPA3</li>
-  <li><strong>IoT</strong> → IoT (VLAN 30) — 2.4 GHz only, WPA2 (most Kasa gear won't do WPA3)</li>
-  <li><strong>Media</strong> → Media (VLAN 50) — 5 GHz, for anything not hardwired</li>
-  <li><strong>Guest</strong> → Guest (VLAN 60) — client isolation on, captive portal optional</li>
-</ul>
-
-<div class="note">
-  <span class="lbl">Vaulted ceilings</span>
-  <p>Firewalla specs AP7C mounting at <strong>6–10 ft</strong>. A vault peak at 14–18 ft gives you a weak,
-  splayed, downward pattern precisely where clients aren't. <strong>Wall-mount on the vault wall at 8–10 ft</strong>,
-  or use flat ceiling sections. The AP7D wants 3–5 ft off the floor in a central spot — confirm you have
-  both an outlet and a drop there before ordering it.</p>
-</div>
-
-<h3>Uplinks</h3>
-<p>Each AP7C has a 10G PoE port and a 2.5G port, both bridged. Run the 10G port to Switch X as a
-<strong>tagged trunk carrying all Wi-Fi VLANs, with an untagged native VLAN for AP management</strong> —
-Firewalla's guide is explicit that AP and box ports are trunk ports and need a native untagged VLAN
-for control traffic. Note also that Wi-Fi networks can only use VLANs present on the same port set as
-the management LAN.</p>
-
-<h2>6 · Migration</h2>
-
-<div class="phase">
-  <div class="hd"><span class="num">P1</span><span class="ttl">Foundation</span><span class="when">now — hardware arrives</span></div>
-  <ul>
-    <li>Define all VLANs on the Gold Pro <em>before</em> any hardware lands. Costs nothing, breaks nothing.</li>
-    <li>Order AP7s now (1–2 days). Switch X early access may still exist; <strong>Switch SE early access is sold out</strong> — plan on Oct/Nov for it.</li>
-    <li><s>Decide camera recording mode.</s> <strong>Decided 24 Aug: continuous.</strong> That sets the UNVR Pro (7 bays) and 5–7 drives.</li>
-    <li><s>Decide IPv6 policy.</s> <strong>Decided 24 Aug: dual-stack</strong> — every VLAN rule gets a v6 twin before the switching core goes in.</li>
-    <li>The six wall drops hang off an <strong>unmanaged switch</strong> (confirmed 24 Aug). It cannot carry the AP7 VLAN trunks, so until Switch X arrives the APs patch straight into the Gold Pro's two free LAN ports.</li>
-    <li>Audit cabling: every AP7C and camera position needs a drop. This is the long pole.</li>
-    <li><strong>Closet (25 Aug):</strong> tape-check the On-Q interior, fit the three AC106A6 modules, drill and grommet the left-side exit, install the relocation kit and brush plate. Camera runs gather in the attic and drop as a bundle into the garage.</li>
-  </ul>
-</div>
-
-<div class="phase">
-  <div class="hd"><span class="num">P2</span><span class="ttl">Switching core</span><span class="when">Switch X arrives</span></div>
-  <ul>
-    <li>Gold Pro onto its tray, Switch X onto the vented shelf, Web Power Switch Pro on the side bracket, CP1500PFCLCD on the floor; kit inlet into a switched outlet. Switch X: 8 patch cables from the On-Q modules; 10G trunk to Gold Pro (10GBASE-T copper — the Gold Pro has no SFP+), all VLANs tagged. Remove the unmanaged switch.</li>
-    <li>Move wired infrastructure across: Mac Studio, UNAS-Pro, pfSense, Raspberry Pi, Domotz (→ Mgmt VLAN).</li>
-    <li>Trusted stays on <code>192.168.187.0/24</code> — nothing re-addresses, nothing breaks.</li>
-  </ul>
-</div>
-
-<div class="phase">
-  <div class="hd"><span class="num">P3</span><span class="ttl">Wireless cutover</span><span class="when">the risky one</span></div>
-  <ul>
-    <li>AP7s up on wired backhaul, SSIDs mapped to VLANs, tuned per the band plan above.</li>
-    <li>Migrate Trusted clients first — same subnet, so it's an SSID change only.</li>
-    <li><strong>Then</strong> move IoT: re-join ~28 Kasa devices to the IoT SSID. Budget real time for this; each device is a manual app-driven re-provision.</li>
-    <li>Retire the Orbi only once every client has moved. Keep it boxed, not sold, until you're a month clear.</li>
-  </ul>
-</div>
-
-<div class="phase">
-  <div class="hd"><span class="num">P4</span><span class="ttl">Cameras</span><span class="when">after Wi-Fi is stable</span></div>
-  <ul>
-    <li>Garage mini rack: UNVR Pro, Switch SE, lab ToR, DLI 222. SE uplinks to the ToR; cameras onto VLAN 40 with WAN denied except UniFi cloud/NTP. Recording is continuous.</li>
-    <li>UNAS-Pro becomes the Protect archive target, not the recorder.</li>
-    <li>Decommission the Nest cameras last — and watch your WAN upload graph drop off a cliff. The Nest doorbell stays and moves to VLAN 30.</li>
-  </ul>
-</div>
-
-<div class="phase">
-  <div class="hd"><span class="num">P5</span><span class="ttl">Lab</span><span class="when">when the rack powers on</span></div>
-  <ul>
-    <li>Lab on <strong>VLAN 99, routed by the Gold Pro at 10G</strong> — not behind the spare Gold. See §12.</li>
-    <li>Rack gets its own top-of-rack switch. Lab east-west never touches a Firewalla.</li>
-    <li>Stand up the reverse proxy in the <strong>DMZ (VLAN 80)</strong>, with per-backend allow rules into the lab. See §11.</li>
-    <li>Spare Gold becomes a nested lab firewall to experiment against, or a cold spare.</li>
-  </ul>
-</div>
-
-<h2>7 · Known risks</h2>
-
-<div class="tbl-wrap">
-<table>
-<thead><tr><th>Risk</th><th>Why</th><th>Mitigation</th></tr></thead>
-<tbody>
-<tr><td><strong>Sonos across VLANs</strong></td><td>Sonos is the single most VLAN-hostile consumer platform. Controller discovery relies on mDNS plus a spread of specific ports.</td><td>Keep all 8 units in Media together. Firewalla has a <strong>built-in mDNS reflector, enabled by default</strong> — verified, not assumed. Caveat: on managed switches (incl. Switch X/SE) <strong>disable IGMP and MLD snooping</strong> or the reflector's multicast gets filtered. Sonos app control may need extra allow rules beyond mDNS. If it fights you, moving Sonos to Trusted is a legitimate retreat.</td></tr>
-<tr><td><strong>Kasa local control</strong></td><td>Kasa uses local discovery on the wire. App control via cloud works cross-VLAN; local/Home Assistant control does not.</td><td>Cloud control needs no rule. For local automation, add a targeted allow from the automation host into VLAN 30.</td></tr>
-<tr><td><strong>AirPlay / HomeKit</strong></td><td>Two Apple TVs in Media, controllers in Trusted. Both are mDNS-dependent.</td><td>mDNS reflection Trusted↔Media, same as Sonos. Test before declaring the phase done.</td></tr>
-<tr><td><strong>VqLAN ≠ VLAN</strong></td><td>Firewalla's VqLAN is ACL-based microsegmentation and explicitly <em>does not</em> restrict broadcast/multicast between segments.</td><td>Use real 802.1q VLANs for the boundaries that matter. VqLAN is a convenience layer on top, not a substitute.</td></tr>
-<tr><td><strong>Rack power &amp; heat</strong></td><td>A full rack of enterprise gear in a 1,860 sq ft house is a serious electrical and thermal load — likely 1 kW+.</td><td>Dedicated circuit, UPS sizing, and a cooling plan before it powers on. Switch X's 3 fans belong in the same room, not the living space.</td></tr>
-<tr><td><strong>Powered gear in the attic</strong></td><td>Tempting because every camera cable passes through it. The Switch SE is rated 32–104 °F and "can get very warm"; a Carlsbad attic exceeds that, and nothing up there is on the UPS or PDU.</td><td>Attic is a passive gathering point only; the SE lives in the garage mini rack (§10).</td></tr>
-<tr><td><strong>Re-addressing sprawl</strong></td><td>Any static IPs, port forwards, or DNS entries pointing at <code>192.168.187.x</code> devices that move VLANs will break.</td><td>Inventory statics before P2. Keeping Trusted on the existing /24 already avoids most of this.</td></tr>
-</tbody>
-</table>
-</div>
-
-<h2>8 · Open questions</h2>
-
-<p>These four inputs are still unknown and each one moves the plan:</p>
-
-<ul class="tight">
-  <li><s>Which Gold is the spare?</s> <strong>Resolved:</strong> original Gold, 4&times;1G &mdash; see &sect;12.</li>
-  <li><s>Spectrum tier?</s> <strong>Resolved:</strong> Spectrum GIG, 1000/35.</li>
-  <li><s>Cabling reality?</s> <strong>Resolved:</strong> attic access to a false ceiling, 2&quot; conduit at 6.8% fill &mdash; see &sect;10.</li>
-  <li><s>Camera count?</s> <strong>Resolved:</strong> 5 planned, sized for 8.</li>
-  <li><s>Conduit capacity?</s> <strong>Resolved:</strong> ample room for additional runs.</li>
-  <li><s>Proxy direction?</s> <strong>Resolved:</strong> self-hosted, pfSense single-armed with HAProxy on the Silicom box &mdash; see &sect;11.</li>
-  <li><strong>Remaining (updated 22 Aug review):</strong> (1) DNS bypass fix on the Orbi, on-site. (2) <s>Main-SSID security</s> <strong>Resolved:</strong> AP7 "Mixed Personal" mode does per-band overriding — WPA2 on 2.4/5 GHz, WPA3 on 6 GHz, one SSID (§5). (3) <s>IPv6 policy</s> <strong>Decided 24 Aug: keep IPv6, dual-stack</strong>; every VLAN rule is mirrored in v6 before the switching core. (4) <strong>Guest + Custom DNS Rules interaction</strong> — <em>if</em> DNS overrides apply globally (the official guide is silent on scope — unverified), guests resolve your public sites to the DMZ proxy while Guest→DMZ is denied; test the scope first, then add a Guest→DMZ:443 allow if needed. (5) Test whether Firewalla passes client identity (ECS) upstream to Pi-hole.</li>
-  <li><strong>Decided 24 Aug 2026</strong> (details in <code>knowledge/open-questions.md</code>): camera recording is <strong>continuous</strong> → UNVR Pro, 5–7 drives; the closet's current aggregator is an <strong>unmanaged switch</strong> → interim AP uplinks go straight to the Gold Pro; VPN reach is per tunnel — <strong>WireGuard = Trusted without Mgmt, AmneziaWG = full reach</strong>; the <strong>Nest doorbell stays</strong> on VLAN 30; eufy is a robot vacuum (plain IoT); <strong>Domotz stays</strong> and moves to Mgmt; the Pi-hole is <strong>v6.x</strong>, so nebula-sync applies as written.</li>
-  <li><strong>Decided 25 Aug 2026</strong> (closet rethink, §10): closet keeps its existing StarTech 6U and the On-Q; no 12U rack, no patch panel; camera gear and the UNVR Pro go to a UniFi 6U mini rack in the garage; DLI Web Power Switch Pro (closet) and DLI 222 (garage) as PDUs; CyberPower CP1500PFCLCD closet UPS; UPS power reaches the On-Q only through a Legrand in-wall outlet relocation kit; the modem is a Ubee EU2251; the On-Q exit is a drilled hole (no side knockouts). Still to tape: On-Q interior, house duplex position, slack on the six drops.</li>
-</ul>
-
-<h2>9 · Orbi audit &amp; migration capture</h2>
-
-<p>Read directly from the RBE971 admin UI at <code>192.168.187.230</code>. Firmware
-<strong>V9.13.2.1</strong> on all three units — that is the current release, so you're not behind.</p>
-
-<h3>What's healthy</h3>
-<ul class="tight">
-  <li><strong>Operation Mode: AP</strong>, DHCP off, gateway <code>192.168.187.1</code> — correctly configured behind the Firewalla.</li>
-  <li><strong>Guest network is OFF</strong> (SSID <code>NETGEAR-Guest</code>, Wireless AP: Off). The AP-mode guest hole is <em>not</em> live on your network. That closes the security item.</li>
-  <li><strong>Both satellites on wired backhaul</strong>, status Good — <code>Orbi Satellite-MB</code> (<code>.2</code>) and <code>Orbi Satellite-G</code> (<code>.192</code>). This is the ideal topology and those two locations already have drops.</li>
-  <li><strong>A separate IoT SSID already exists</strong> — <code>pinnacle-IoT</code>, 2.4 GHz only, WPA2-PSK. No VLAN behind it, but your devices are already sorted, which makes the AP7 cutover far easier.</li>
-  <li>20/40 MHz coexistence enabled; region correctly set to United States.</li>
-</ul>
-
-<h3>What needs fixing</h3>
-
-<div class="tbl-wrap">
-<table>
-<thead><tr><th>Finding</th><th>Current</th><th>Should be</th></tr></thead>
-<tbody>
-<tr><td><strong>2.4 GHz channel</strong></td><td>Channel <strong>2</strong></td><td>1, 6, or 11. Channel 2 overlaps both 1 and 6 — it interferes with neighbours <em>and</em> with itself across your three APs. Free fix, immediate benefit.</td></tr>
-<tr><td><strong>5 GHz width</strong></td><td>160 MHz spanning 36+40(P)+44+48+52+56+60+64 — <strong>includes DFS</strong></td><td>80 MHz on non-DFS (36–48 or 149–165). 160 MHz across 3 APs forces reuse, and a DFS radar event silently drops every client on the band.</td></tr>
-<tr><td><strong>Firmware updates</strong></td><td>Auto-update <em>Enabled</em> but check returns <strong>"Update failed"</strong> / <strong>"Service unreachable"</strong></td><td>Working. Almost certainly your Firewalla blocking Netgear's update endpoints — 23% of your flows are blocked across 282 rules. <strong>This is not hypothetical:</strong> the firmware you're running, 9.13.2.1, itself shipped a fix for "authentication bypass vulnerability that allowed unauthorized password modification and admin access." You got that one. A broken update path means you would not get the next.</td></tr>
-<tr><td><strong>DNS bypass</strong></td><td>Secondary DNS <code>8.8.8.8</code></td><td><code>192.168.187.1</code> only. The AP is currently resolving around your Firewalla DNS policy.</td></tr>
-<tr><td><strong>MLO backhaul width</strong></td><td>240 MHz enabled</td><td><strong>Leave it alone.</strong> An earlier draft said to disable this. On investigation it does not reclaim what I thought, and it degrades the wireless fallback path — see the band-architecture note below.</td></tr>
-<tr><td><strong>Transmit power</strong></td><td><strong>No control exists in the UI</strong></td><td>Unfixable on this hardware. The only RF knobs are region, 20/40 coexistence, preamble mode, and backhaul width. Three APs over-covering 1,860 sq ft can't be tuned down — <strong>only the AP7 migration solves this.</strong></td></tr>
-</tbody>
-</table>
-</div>
-
-<div class="note crit">
-  <span class="lbl">Why your 5 GHz choices are so limited — and why it can't be fixed</span>
-  <p>The Orbi 970 is quad-band: 2.4 GHz, <strong>two</strong> 5 GHz bands, and 6 GHz. The
-  <strong>upper 5 GHz band (5GHz-1) is permanently dedicated to wireless backhaul and is never available
-  to clients</strong> — and that reservation <em>persists even when backhaul is wired</em>. That is the
-  explanation for something that looked like a firmware bug earlier: the 5 GHz channel list offers only
-  36–64, with no UNII-3 (149–165), because those upper channels are reserved for a backhaul your satellites
-  aren't using. You are giving up an entire band for nothing, permanently, with no setting to reclaim it.</p>
-  <p>This also revises the MLO advice. Netgear builds the backhaul by combining 5GHz-1 and 6 GHz into a
-  single MLO link, so turning off 240 MHz would <strong>not</strong> free the reserved 5 GHz band — that
-  stays gone regardless — and any 6 GHz gain is speculative while backhaul is wired. Meanwhile the cost is
-  real: we watched Satellite-MB fall back to wireless backhaul during the channel change, so that path does
-  get used, and narrowing it makes the fallback worse. <strong>Net: leave 240 MHz enabled.</strong></p>
-  <p>Add this to the AP7 case. Three Orbi units in 1,860 sq ft, no transmit power control, and a whole
-  5 GHz band burned on an unused backhaul.</p>
-</div>
-
-<div class="note warn">
-  <span class="lbl">Management plane hygiene</span>
-  <p>The admin UI is <strong>HTTP Basic Auth over plain HTTP</strong> — the password crosses the wire
-  base64-encoded on a flat network shared with 116 devices. The Wi-Fi PSK is also displayed in cleartext
-  on the Basic page. Both problems disappear once management lives on VLAN 10 behind an AP platform the
-  Firewalla actually manages.</p>
-  <p><em>Correction:</em> an earlier draft of this document claimed the RBE971's admin daemon had failed.
-  It had not. The admin UI was unreachable because the client browser sat behind a <strong>Netgear
-  Nighthawk 5G router</strong>, which intercepted admin-login traffic bound for the Orbi. Connecting from
-  a client not behind the Nighthawk resolved it immediately. The RBE971 was healthy throughout.</p>
-</div>
-
-<h3>Carry these to the AP7 build</h3>
-<ul class="tight">
-  <li><strong>Main SSID:</strong> <code>pinnacle</code> → Trusted (VLAN 20), security mode <strong>"Mixed Personal"</strong>. <strong>Resolved:</strong> the AP7 supports per-band security overriding under exactly this name — Mixed Personal "uses WPA2 for 2.4/5 GHz, and WPA3 for 6 GHz" on one SSID. Same SSID, same PSK, legacy devices keep joining on 2.4/5, modern clients get 6 GHz. Do <em>not</em> pick the AP7's "WPA2/WPA3" mode — on the AP7, that mode does not enable 6 GHz at all. Two caveats: 6 GHz is disabled on SSIDs carrying microsegmentation personal keys (PPSK is WPA2-only), and some legacy IoT can only join WPA2-<em>only</em> SSIDs — which is what <code>pinnacle-IoT</code> remains for.</li>
-  <li><strong>IoT SSID:</strong> <code>pinnacle-IoT</code> — 2.4 GHz only, WPA2-PSK → map to IoT (VLAN 30); keep the same PSK and the ~28 Kasa devices re-join without re-provisioning</li>
-  <li><strong>AP locations:</strong> the two satellite positions (MB and G) already have wired drops — those are your AP7C mounts. The AP7D goes in the RBE971's current central spot.</li>
-  <li><strong>Client load:</strong> 63 devices associated on the Orbi side at time of audit</li>
-  <li>Region: United States. Guest: leave disabled until it maps to VLAN 60 on the AP7s.</li>
-</ul>
-
-<h2>10 · Physical infrastructure</h2>
-
-<p>All house wiring is <strong>home-run to a 42" Legrand On-Q enclosure</strong> (ENP4250-NA: interior 14 × 41.75 × 4.31 in;
-body 14.3 × 42.75 × 4.09 in outside per Legrand's datasheet) on the back wall of a <strong>36 × 23 in closet</strong>. A
-<strong>StarTech WALLMOUNT6</strong> 6U open-frame rack (19.6 × 10.7 in, 13.78 in usable depth) is already centered on the left wall.
-The <strong>attached garage</strong>, under 100 ft away, gets a UniFi 6U mini rack on casters.</p>
-
-<h3>Existing plant</h3>
-
-<div class="tbl-wrap">
-<table>
-<thead><tr><th>Item</th><th>Actual</th></tr></thead>
-<tbody>
-<tr><td>Enclosure patch positions</td><td>8 — <strong>7 in use, 1 spare</strong></td></tr>
-<tr><td>Live drops</td><td><strong>6</strong>: bedroom 1, bedroom 2, master bedroom, family room, living room, garage</td></tr>
-<tr><td>Eighth position</td><td>Firewalla uplink</td></tr>
-<tr><td>Cable</td><td><strong>Vertical Cable UTP Cat6</strong></td></tr>
-<tr><td>Attic access</td><td>Yes</td></tr>
-</tbody>
-</table>
-</div>
-
-<div class="note good">
-  <span class="lbl">Cat6 validates the Switch X purchase</span>
-  <p>Cat6 carries <strong>10GBASE-T to 55 m (180 ft)</strong> per TIA — versus 100 m for Cat6A. One honest
-  caveat: that 55 m assumes reasonable conditions, and tightly bundled cable in conduit is exactly the
-  <strong>alien crosstalk</strong> scenario that pushes the practical figure toward <strong>37 m</strong>.
-  In an 1,860 sq ft single-story home, runs from a central closet are realistically 15–25 m, so you are
-  inside even the conservative number. Switch X's 10G copper is genuinely usable. Had this been Cat5e the
-  recommendation would have been two Switch SEs instead — it isn't, so buy the X.</p>
-</div>
-
-<div class="note crit">
-  <span class="lbl">The APs need new ceiling runs — existing drops can't serve them</span>
-  <p>All six live drops terminate at <strong>wall plates near the floor</strong>. An AP7C is a
-  <em>ceiling</em> mount, and section 5 already concluded it wants 8–10 ft of height on a vault wall. You
-  cannot feed a ceiling-mounted AP from a baseboard jack without pulling new cable — so
-  <strong>2 new attic runs are required for the ceiling APs regardless of the camera project</strong>.
-  Attic access makes this straightforward. The AP7D is the exception: it's a desktop unit, so it can live
-  on furniture off an existing room drop.</p>
-</div>
-
-<div class="note warn">
-  <span class="lbl">Cabling scope and the port ceiling</span>
-  <p>New runs needed: <strong>2 for ceiling APs</strong> (Cat6A — 10G headroom) and <strong>~8 for exterior
-  cameras</strong> (Cat6 is ample; cameras need 1G at most). Exterior runs under the eaves of a
-  single-story house with attic access are among the easiest cabling work there is.</p>
-  <p>Closet runs terminate on <strong>three Legrand AC106A6 modules</strong> inside the On-Q (18 Cat6A
-  positions, owned); camera runs go to the garage. No 19" patch panel anywhere.</p>
-</div>
-
-<h3>Recommended pull list</h3>
-
-<p>Attic access reaches a false ceiling throughout, so runs are cheap and repeatable. <strong>Pull
-generously now; buy switches later.</strong> Cable is the thing you can't easily redo once the ceiling is
-closed and the gear is live — a switch is a purchase you can defer to the week you actually fill the ports.
-This is the one place in the project where over-building is the frugal choice.</p>
-
-<div class="tbl-wrap">
-<table>
-<thead><tr><th>Run</th><th class="num">Qty</th><th>Spec</th><th>Purpose</th></tr></thead>
-<tbody>
-<tr><td>Ceiling AP positions</td><td class="num">3</td><td>Cat6A</td><td>2 planned AP7C mounts + 1 spare position. 10G headroom where it actually matters</td></tr>
-<tr><td>Exterior cameras</td><td class="num">8</td><td>Cat6</td><td>Eave runs. Cameras need 1G at most</td></tr>
-<tr><td>Interior spares</td><td class="num">4</td><td>Cat6A</td><td>Office, patio, future AP position, wherever a workstation might land. Terminated on the On-Q modules, unpatched until used; one is reserved for the cellular radio</td></tr>
-<tr><td>Garage fiber</td><td class="num">1</td><td>OM4 duplex LC, 4–6 strand</td><td>Alongside the existing Cat6, not instead of it</td></tr>
-</tbody>
-</table>
-</div>
-
-<p><strong>Resulting port demand, closet:</strong> 6 existing + 2 AP7C = <strong>8 copper</strong>, exactly Switch X's
-copper count; the 3rd AP run and 4 spares coil in the On-Q. <strong>Garage:</strong> 8 camera runs onto the Switch SE.
-They gather at one labeled point in the attic and drop as a bundle through one hole. Nothing powered goes in the attic
-(the SE is rated 32–104 °F).</p>
-
-<p><strong>PoE check against this layout:</strong> 2× AP7C at 25.5 W = 51 W of Switch X's 410 W (76.5 W if the spare ceiling position ever gets a third AP7C). Eight cameras
-at ~8 W = 64 W of SE #1's 114 W. Both comfortable, with the X carrying enough reserve to absorb the entire
-camera fleet if you ever want to consolidate.</p>
-
-<div class="note good">
-  <span class="lbl">Conduit is not a constraint — it's an invitation</span>
-  <p>2" conduit, 6 cables in it. The math:</p>
-  <div class="tbl-wrap">
-  <table>
-  <thead><tr><th>Measure</th><th class="num">Value</th></tr></thead>
-  <tbody>
-  <tr><td>Internal area (2", 2.067" ID)</td><td class="num">3.356 in²</td></tr>
-  <tr><td>40% fill allowance</td><td class="num">1.342 in²</td></tr>
-  <tr><td>Cat6 UTP, 0.22" dia</td><td class="num">0.038 in² ea</td></tr>
-  <tr><td><strong>Capacity at 40% fill</strong></td><td class="num"><strong>~35 Cat6</strong></td></tr>
-  <tr><td>Currently used by 6 cables</td><td class="num">6.8% fill</td></tr>
-  <tr><td><strong>Room remaining</strong></td><td class="num"><strong>~29 more Cat6</strong></td></tr>
-  </tbody>
-  </table>
+  <div class="call crit">
+    <span class="t">The constraint that shapes the plan</span>
+    <p>The Orbi 970 cannot tag VLANs in AP mode; the VLAN menus do not exist there. Its guest network NATs behind the Orbi's own LAN address, so guest traffic is invisible to the Firewalla and guests keep application-layer reach into the LAN. Every wireless device stays in one L2 domain until the Orbi is retired.</p>
   </div>
-  <p>The 15 runs below land you at <strong>23.8% fill</strong> — nowhere near the limit. Pulling tension and
-  bend count become the practical constraints long before fill does, and with attic access over a short run
-  neither is a concern. <strong>Pull everything you might plausibly want in one trip.</strong></p>
-</div>
+  <div class="call warn">
+    <span class="t">Upstream pressure</span>
+    <p>In 24 hours <code>Nest-Cam</code> pushed 11.4 GB up and a second Nest device 6.8 GB; the two cameras are about 60% of the 30 GB daily upload, and <code>googleapis.com</code> as a whole takes two-thirds. Against a 35 Mb/s ceiling that is a permanent tax on every other outbound flow. Local recording with UniFi Protect removes it, which is the strongest single argument for the camera swap.</p>
+  </div>
+</section>
 
-<h3>Closet layout — Rev C.3, 25 Aug 2026</h3>
+<!-- 2 -->
+<section id="s2">
+  <h2><span class="k">2</span>Target architecture</h2>
+  <p class="src">docs/13 · the build-to sheet</p>
+  <figure class="wide">
+    <a class="zoom" href="docs/img/signal-path.svg" target="_blank" rel="noopener" title="Open full size"><img src="docs/img/signal-path.svg" alt="Signal path: modem to Gold Pro to Switch X in the closet; fiber to the garage ToR; UNVR Pro, Switch SE, UNAS-Pro and lab hosts behind it"></a>
+    <figcaption>One trunk between rooms. Closet: modem, Gold Pro, Switch X, which serves the six wall drops and the AP7 ceiling units. OM4 fiber to the lab top-of-rack switch in the garage, which serves the UNVR Pro, the Switch SE and its cameras, the UNAS-Pro and the lab hosts.</figcaption>
+  </figure>
+  <p>Two principles. The Gold Pro stays the single edge: it routes 10 Gbps with IDS/IPS on, so it is not the bottleneck and every VLAN, including the lab, is routed by it. Lab east-west traffic never crosses a Firewalla; the garage top-of-rack switch keeps it local.</p>
 
-<p>The rule: nothing with a disk, and nothing with cameras behind it, lives in the closet. Drawn to scale in
-<code>docs/closet-elevation.md</code>; the figures below are the same drawings.</p>
+  <h3>Gold Pro ports</h3>
+  <div class="tw"><table>
+    <thead><tr><th>Port</th><th>Speed</th><th>Role</th></tr></thead>
+    <tbody>
+    <tr><td class="m">1</td><td class="m">10G</td><td>LAN trunk to Switch X, all VLANs tagged. The only role that needs 10G</td></tr>
+    <tr><td class="m">2</td><td class="m">2.5G</td><td>Second AP during Phase 2; spare afterwards</td></tr>
+    <tr><td class="m">3</td><td class="m">2.5G</td><td>WAN1, the Ubee EU2251 modem</td></tr>
+    <tr><td class="m">4</td><td class="m">10G</td><td>WAN2, the Puli AX cellular router, from Phase 3</td></tr>
+    </tbody>
+  </table></div>
 
-<div class="figs">
-  <figure><img src="docs/img/closet-rack.svg" alt="StarTech 6U wall rack, to scale"><figcaption><strong>StarTech 6U, left wall.</strong> Gold Pro on its 1U tray, Switch X on a vented shelf with an air gap, 802.3bt injector at U2, DLI Web Power Switch Pro flat on a 1U shelf at U1 (the 13 in strip is longer than the 10.7 in rack). Tower UPS on the floor.</figcaption></figure>
-  <figure><img src="docs/img/garage-rack.svg" alt="UniFi 6U mini rack on casters, to scale"><figcaption><strong>Garage mini rack.</strong> UNVR Pro (12.8 in deep; would not fit the closet), Switch SE with the 8 camera runs, lab 10G ToR as the garage core, DLI 222 PDU. Lab hosts beside it.</figcaption></figure>
-</div>
+  <h3>Switch X, closet core</h3>
+  <div class="tw"><table>
+    <thead><tr><th>Port</th><th>Connects</th><th>VLAN handling</th><th>PoE</th></tr></thead>
+    <tbody>
+    <tr><td class="m">Cu 1 to 5</td><td>Bedroom 1, bedroom 2, master, family room, living room drops</td><td>Access, Trusted. The family-room drop becomes a trunk if the AP7 Desktop lives there</td><td class="m">none</td></tr>
+    <tr><td class="m">Cu 6</td><td>Existing garage Cat6</td><td>Access, Mgmt: the out-of-band path to the garage</td><td class="m">none</td></tr>
+    <tr><td class="m">Cu 7, 8</td><td>Ceiling runs to the AP7 Ceiling units (Cu 8 reserved for the conditional third AP)</td><td>Trunk, untagged native Mgmt LAN</td><td class="m">PoE+ 25.5 W</td></tr>
+    <tr><td class="m">SFP+ 1</td><td>OM4 fiber to the garage ToR</td><td>Trunk: 10, 20, 40, 80, 99</td><td class="m">none</td></tr>
+    <tr><td class="m">SFP+ 2</td><td>10GBASE-T module to the old unmanaged switch, now the closet Mgmt breakout for the two Pi-holes, Domotz and the closet PDU</td><td>Access, Mgmt</td><td class="m">none</td></tr>
+    <tr><td class="m">SFP+ 3, 4</td><td>Free. The four terminated spares in the On-Q patch in here through 10GBASE-T modules when needed</td><td></td><td></td></tr>
+    </tbody>
+  </table></div>
 
-<div class="fig-wide">
-  <img src="docs/img/onq-layout.svg" alt="Dimensioned shop drawing of the On-Q back panel">
-  <figcaption><strong>On-Q, in the back wall.</strong> Coax arrestor wired to the modem, three AC106A6 modules (18 positions), the VM1002 splitter parking the five room coax runs, the Ubee EU2251 modem rotated on the AC1040F plate, the two coils, the AC1031 strip on the relocation kit's UPS-backed receptacle, the Amerisense USB-C duplex on house power; drawn to the real part sizes. Unmanaged switch and old module removed. Positions in inches from the top-left inside corner; knockouts top and bottom only (the exit to the rack is a drilled, grommeted hole in the left side); depth section shows every part clears the 4.31 in usable depth.</figcaption>
-</div>
+  <h3>Garage top-of-rack switch</h3>
+  <div class="tw"><table>
+    <thead><tr><th>Port</th><th>Connects</th><th>VLAN handling</th></tr></thead>
+    <tbody>
+    <tr><td class="m">SFP+ 1</td><td>OM4 from Switch X</td><td>Trunk: 10, 20, 40, 80, 99</td></tr>
+    <tr><td class="m">SFP+ 2</td><td>UNVR Pro</td><td>Access, Cameras, plus one allow to the UNAS-Pro</td></tr>
+    <tr><td class="m">SFP+ 3</td><td>Switch SE uplink, DAC</td><td>Trunk: Cameras + Mgmt</td></tr>
+    <tr><td class="m">SFP+ 4</td><td>UNAS-Pro, second mini rack</td><td>Access, Trusted</td></tr>
+    <tr><td class="m">SFP+ 5</td><td>pfSense NIC 1</td><td>Access, DMZ</td></tr>
+    <tr><td class="m">SFP+ 6+</td><td>Lab hosts, Gold gen-1</td><td>Lab</td></tr>
+    <tr><td class="m">RJ45 or an SFP+</td><td>Small managed 1G Mgmt switch: DLI 222, BMCs, JetKVMs, pfSense NIC 2, the OOB Cat6 from Switch X Cu 6</td><td>Trunk carrying Mgmt</td></tr>
+    </tbody>
+  </table></div>
+  <p>The Switch SE carries only the eight camera runs. It is not the lab switch (2.5G access ports) and it does not power the APs: two AP7 Ceilings plus eight cameras is 115 W against its 114 W budget.</p>
+</section>
 
-<div class="tbl-wrap">
-<table>
-<thead><tr><th>Decision</th><th>What</th><th>Why</th></tr></thead>
-<tbody>
-<tr><td>No new closet rack, no patch panel</td><td>Gold Pro + Switch X in the existing StarTech; runs terminate on the AC106A6 modules</td><td>The closet is 36 × 23 in; the 12U plan never fit the room. Saves ~$450</td></tr>
-<tr><td>Power into the On-Q only through a kit</td><td>Legrand radiant in-wall outlet relocation kit (IWPEUSBAC-WH): inlet beside the rack, receptacle at a bottom knockout</td><td>A flexible cord may not pass through a wall (NEC 400.12). The kit's receptacle is fed from a switched outlet on the Web Power Switch Pro, so the modem is UPS-backed <em>and</em> remotely power-cycled</td></tr>
-<tr><td>Pass-through</td><td>Drilled 2 in hole + grommet in the On-Q's left wall → 2-gang brush plate before the back-left corner → ~10 in in the open into the rack's side</td><td>The plastic 42 has no side knockouts; the rack is on the adjacent wall, ~1 in from the corner. Raceway optional</td></tr>
-<tr><td>Cameras to the garage</td><td>8 runs gather in the attic, drop as one bundle into the garage wall, land on the Switch SE in the mini rack</td><td>Garage is on the perimeter; the SE (32–104 °F) cannot live in the attic</td></tr>
-<tr><td>PDUs</td><td>DLI Web Power Switch Pro (8 × NEMA, $229) in the closet; DLI 222 (8 × C13, ~$249) in the garage; EPC7 deferred</td><td>NEMA outlets where the bricks are; rack ears where there is a rack. Both have REST, Lua and AutoPing</td></tr>
-<tr><td>UPS</td><td>CyberPower CP1500PFCLCD tower on the closet floor; garage UPS sized once the lab load is known</td><td>Rack 1U units are 17–20 in deep and do not fit; NUT over USB on the Pi does monitoring and graceful shutdown</td></tr>
-</tbody>
-</table>
-</div>
+<!-- 3 -->
+<section id="s3">
+  <h2><span class="k">3</span>VLANs and policy</h2>
+  <p class="src">docs/02</p>
+  <p>Trusted keeps <code>192.168.187.0/24</code>, so laptops, phones, static assignments and port forwards stay where they are. Everything else moves out around them, which turns one flag-day cutover into several small ones. Mgmt is configured as a Firewalla LAN, untagged on the AP and switch ports, because the AP7 is managed only over a LAN, not a tagged VLAN.</p>
+  <div class="tw"><table>
+    <thead><tr><th>VLAN</th><th>Purpose</th><th>Subnet</th><th>Occupants</th></tr></thead>
+    <tbody>
+    <tr><td><span class="chip"><i style="background:var(--fiber)"></i>10 · Mgmt</span></td><td>Infrastructure only</td><td class="m">10.187.10.0/24</td><td>Firewalla boxes, Switch X and SE, AP7s, both PDUs, Domotz, pfSense NIC 2, BMCs and IP-KVMs, both Pi-holes</td></tr>
+    <tr><td><span class="chip"><i style="background:var(--copper)"></i>20 · Trusted</span></td><td>People and work</td><td class="m">192.168.187.0/24</td><td>Macs, phones, tablets, printers, UNAS-Pro. Unchanged</td></tr>
+    <tr><td><span class="chip"><i style="background:var(--ground)"></i>30 · IoT</span></td><td>Cloud-dependent things</td><td class="m">10.187.30.0/23</td><td>All Kasa including KP200s, WiZ, Bond, MyQ, Flume, Rinnai, appliances, Nest doorbell, thermostat and displays, eufy, Neakasa, ESLs, Enphase, Sense, Rainforest, the Teslas and the Wall Connector</td></tr>
+    <tr><td><span class="chip"><i style="background:var(--warn)"></i>40 · Cameras</span></td><td>Surveillance; WAN only for UniFi cloud and NTP</td><td class="m">10.187.40.0/24</td><td>UniFi PoE cameras and the UNVR Pro</td></tr>
+    <tr><td><span class="chip"><i style="background:#c2538c"></i>50 · Media</span></td><td>Streaming and audio</td><td class="m">10.187.50.0/24</td><td>Sonos ×8, LG C2, Shield, PS5, Xbox, Apple TVs</td></tr>
+    <tr><td><span class="chip"><i style="background:#6b7280"></i>60 · Guest</span></td><td>Internet only</td><td class="m">10.187.60.0/24</td><td>Visitors and contractors. 100/10 Mb/s cap, device isolation (section 8)</td></tr>
+    <tr><td><span class="chip"><i style="background:var(--crit)"></i>80 · DMZ</span></td><td>Internet-facing only</td><td class="m">10.187.80.0/24</td><td>pfSense with HAProxy, in the garage rack (section 10)</td></tr>
+    <tr><td><span class="chip"><i style="background:#5b4bb5"></i>99 · Lab</span></td><td>Rack, routed by the Gold Pro at 10G</td><td class="m">10.99.0.0/16</td><td>Rack servers and VMs (section 12)</td></tr>
+    </tbody>
+  </table></div>
+  <p>IoT gets a /23 because 28 Kasa devices today plus the KP200 rollout and 36 other IoT devices make a /24 tight, and a /23 costs nothing now.</p>
 
-<div class="note warn">
-  <span class="lbl">Heat and sound</span>
-  <p>~46 cu ft behind a closed door, with Switch X's three fans and ~150 W inside. Plan on a louvered door or leaving it
-  ajar, and check temperatures the first week. Stand in there with the door shut before Switch X arrives.</p>
-</div>
+  <h3>Inter-VLAN policy</h3>
+  <div class="tw"><table class="matrix">
+    <thead><tr><th>From ↓ / To →</th><th>Mgmt</th><th>Trusted</th><th>IoT</th><th>Cameras</th><th>Media</th><th>Guest</th><th>DMZ</th><th>Lab</th><th>WAN</th></tr></thead>
+    <tbody>
+    <tr><td>Mgmt</td><td>—</td><td class="y">✓</td><td class="y">✓</td><td class="y">✓</td><td class="y">✓</td><td class="c">◐</td><td class="y">✓</td><td class="y">✓</td><td class="y">✓</td></tr>
+    <tr><td>Trusted</td><td class="c">◐</td><td>—</td><td class="c">◐</td><td class="c">◐</td><td class="c">◐</td><td class="x">✕</td><td class="c">◐</td><td class="y">✓</td><td class="y">✓</td></tr>
+    <tr><td>IoT</td><td class="x">✕</td><td class="x">✕</td><td>—</td><td class="x">✕</td><td class="x">✕</td><td class="x">✕</td><td class="x">✕</td><td class="x">✕</td><td class="y">✓</td></tr>
+    <tr><td>Cameras</td><td class="x">✕</td><td class="c">◐</td><td class="x">✕</td><td>—</td><td class="x">✕</td><td class="x">✕</td><td class="x">✕</td><td class="x">✕</td><td class="c">◐</td></tr>
+    <tr><td>Media</td><td class="x">✕</td><td class="x">✕</td><td class="x">✕</td><td class="x">✕</td><td>—</td><td class="x">✕</td><td class="x">✕</td><td class="x">✕</td><td class="y">✓</td></tr>
+    <tr><td>Guest</td><td class="x">✕</td><td class="x">✕</td><td class="x">✕</td><td class="x">✕</td><td class="x">✕</td><td>—</td><td class="c">◐</td><td class="x">✕</td><td class="y">✓</td></tr>
+    <tr><td>DMZ</td><td class="x">✕</td><td class="x">✕</td><td class="x">✕</td><td class="x">✕</td><td class="x">✕</td><td class="x">✕</td><td>—</td><td class="c">◐</td><td class="c">◐</td></tr>
+    <tr><td>Lab</td><td class="x">✕</td><td class="x">✕</td><td class="x">✕</td><td class="x">✕</td><td class="x">✕</td><td class="x">✕</td><td class="x">✕</td><td>—</td><td class="y">✓</td></tr>
+    </tbody>
+  </table></div>
+  <p class="legend"><span class="y">✓</span> allowed · <span class="x">✕</span> denied · <span class="c">◐</span> conditional: established sessions plus specific service ports.</p>
+  <ul>
+    <li>Cameras reach the WAN only for UniFi cloud and NTP. Cameras to Trusted is one allow: the UNVR to the UNAS-Pro over SMB for the archive copies.</li>
+    <li>Trusted to IoT is initiated-only, so cloud-controlled Kasa works and a plug cannot reach a Mac. HomeKit accessories on IoT also need mDNS reflection Trusted↔IoT.</li>
+    <li>Mgmt to Guest is conditional because the Guest network carries a bidirectional block of all local networks. Guest to DMZ is one conditional allow, the proxy on TCP 443, only if Custom DNS Rules turn out to apply to Guest.</li>
+    <li>VPN reach differs per tunnel: WireGuard gets the Trusted row minus the Mgmt column; AmneziaWG gets the Mgmt row, so it is the remote-admin tunnel.</li>
+    <li>VqLAN is ACL-based and is bypassed by any generic switch. In the closet that only matters until Switch X arrives; in the garage the third-party top-of-rack switch stays a bypass, so real VLANs do the isolating there.</li>
+  </ul>
+</section>
 
-<h3>Garage link</h3>
+<!-- 4 -->
+<section id="s4">
+  <h2><span class="k">4</span>Wi-Fi</h2>
+  <p class="src">docs/04</p>
+  <p>Two Firewalla AP7s across 1,860 sq ft, about 930 sq ft each, with a ceiling run pulled for a conditional third. Even two radios in this footprint need deliberate tuning; the defaults leave every band at maximum power.</p>
+  <div class="tw"><table>
+    <thead><tr><th>Band</th><th>Width</th><th>Plan</th></tr></thead>
+    <tbody>
+    <tr><td><strong>6 GHz</strong></td><td class="m">320 MHz</td><td>One channel per AP. US 6 GHz has three non-overlapping 320 MHz channels in Low Power Indoor mode, so two or three APs fit with no co-channel overlap. The AP7 Desktop is 4×4 on 6 GHz (11.5 Gbps); the Ceiling units are 2×2 (5.76 Gbps), so the central Desktop is the strongest radio in the house</td></tr>
+    <tr><td><strong>5 GHz</strong></td><td class="m">40 MHz</td><td>Not 80. The AP7 exposes UNII-3 (149 to 165), which the Orbi hid, so the non-DFS set gives four clean 40 MHz blocks: 36+40, 44+48, 149+153, 157+161. No DFS, no co-channel</td></tr>
+    <tr><td><strong>2.4 GHz</strong></td><td class="m">20 MHz</td><td>Bands are chosen per SSID, not per AP, so set 2.4 GHz transmit power to minimum on one AP and low on the rest. Kasa devices are 2.4-only and cling to their first association; coverage should be deliberate and minimal</td></tr>
+    </tbody>
+  </table></div>
 
-<p><strong>Run fiber, not copper</strong> — even though it's attached and under 100 ft. Switch X has four
-10G SFP+ ports and you'll use one regardless. The reason is electrical, not bandwidth: with the lab rack on
-its own circuit, a copper run between separately-grounded points is a ground-loop and surge path. Fiber
-eliminates it outright.</p>
+  <h3>SSIDs</h3>
+  <div class="tw"><table>
+    <thead><tr><th>SSID</th><th>VLAN</th><th>Bands and security</th></tr></thead>
+    <tbody>
+    <tr><td class="m">pinnacle</td><td>20 Trusted</td><td>2.4 + 5 + 6 GHz, <strong>Mixed Personal</strong> (WPA2 on 2.4/5 GHz, WPA3 on 6 GHz). Not the AP7's "WPA2/WPA3" mode, which leaves 6 GHz off. Same SSID and passphrase as today</td></tr>
+    <tr><td class="m">pinnacle-IoT</td><td>30 IoT</td><td>2.4 GHz only, WPA2. Same SSID and passphrase as today, so the 28 Kasa devices re-join on their own</td></tr>
+    <tr><td class="m">pinnacle-Media</td><td>50 Media</td><td>5 GHz, for anything not hardwired</td></tr>
+    <tr><td class="m">pinnacle-Guest</td><td>60 Guest</td><td>2.4 + 5 GHz, WPA2/WPA3, device isolation, 100/10 Mb/s cap (section 8)</td></tr>
+    </tbody>
+  </table></div>
 
-<ul class="tight">
-  <li><strong>OM4 duplex LC</strong> with 10GBASE-SR optics both ends — cheap and more than sufficient at this distance</li>
-  <li>Pull <strong>more strands than you need</strong> (4 or 6). The pull is the cost, not the glass</li>
-  <li>The existing garage Cat6 stays patched as the <strong>out-of-band path</strong> — worth it the first time an optic misbehaves</li>
-</ul>
+  <h3>Placement and uplinks</h3>
+  <p>Firewalla's ceiling-mount guide allows the ceiling or a wall at 6 to 10 ft. A vault peak at 14 to 18 ft is outside either and puts a weak, splayed pattern where clients are not, so mount on the vault wall at 8 to 10 ft or on a flat ceiling section. The Ceiling units go where the two Orbi satellites are now, since those spots already have drops; the Desktop takes the RBE971's central spot and needs an outlet and a data drop there.</p>
+  <p>Each AP port is a trunk carrying the Wi-Fi VLANs with an untagged native Mgmt LAN for control traffic, and Wi-Fi networks can only use VLANs present on the same port set as that LAN. Until Switch X arrives the APs patch straight into the Gold Pro, because the unmanaged switch cannot carry the trunk.</p>
+</section>
 
-<p>The fiber lands on the <strong>lab ToR in the garage mini rack</strong>, which becomes the garage core: DACs to the
-UNVR Pro, the Switch SE, the UNAS-Pro (second stacked mini rack, decided 25 Aug) and the lab hosts. Switch X keeps three SFP+ ports free. Dedicated 20 A circuit and a tower UPS
-for the garage.</p>
+<!-- 5 -->
+<section id="s5">
+  <h2><span class="k">5</span>Closet and garage</h2>
+  <p class="src">docs/05 · docs/closet-elevation.md · click a drawing to open it full size</p>
+  <p>All house wiring home-runs to a 42 in Legrand On-Q enclosure (ENP4250-NA, interior 14 × 41.75 × 4.31 in) in the back wall of a 36 × 23 in closet. A StarTech WALLMOUNT6 rack (6U, 19.6 × 10.7 in, 13.78 in usable depth) is centered on the left wall. The attached garage, under 100 ft away, gets two stacked UniFi 6U mini racks. The rule: nothing with a disk, and nothing with cameras behind it, lives in the closet.</p>
 
-<h3>Switch roles</h3>
-<ul class="tight">
-  <li><strong>Switch X — closet core.</strong> Cu 1–6 the wall drops, Cu 7–8 the AP7Cs (PoE++), SFP+ 1 fiber to the garage, SFP+ 2–4 free.</li>
-  <li><strong>Switch SE — camera switch, garage.</strong> The 8 camera runs land on it (af PoE at 1G; 40–64 W of 114 W); SFP+ uplink to the ToR. It is <em>not</em> the lab switch — its access ports are 2.5G.</li>
-  <li><strong>Lab ToR — garage core.</strong> 10G SFP+; fiber in, everything in the garage hangs off it.</li>
-</ul>
+  <div class="figs">
+    <figure><a class="zoom" href="docs/img/closet-rack.svg" target="_blank" rel="noopener" title="Open full size"><img src="docs/img/closet-rack.svg" alt="StarTech 6U wall rack, to scale"></a><figcaption>Closet rack. Gold Pro on its 1U tray, Switch X on a vented shelf with an air gap above its fans, the 802.3bt injector at U2, the DLI Web Power Switch Pro flat on a shelf at U1 (the 13 in strip is longer than the 10.7 in rack). Tower UPS on the floor. About 18 lb of the 44 lb rating.</figcaption></figure>
+    <figure><a class="zoom" href="docs/img/garage-rack.svg" target="_blank" rel="noopener" title="Open full size"><img src="docs/img/garage-rack.svg" alt="UniFi 6U mini racks, stacked, to scale"></a><figcaption>Garage. Lower rack: UNVR Pro, Switch SE with the eight camera runs, the lab top-of-rack switch, DLI 222 PDU, a small Mgmt switch. Upper rack: UNAS-Pro, pfSense, lab hosts, the Gold gen-1. Tower UPS beside it on a dedicated 20 A circuit.</figcaption></figure>
+  </div>
+  <figure class="wide">
+    <a class="zoom" href="docs/img/onq-layout.svg" target="_blank" rel="noopener" title="Open full size"><img src="docs/img/onq-layout.svg" alt="Dimensioned shop drawing of the On-Q back panel"></a>
+    <figcaption>On-Q back panel, drawn to the real part sizes. Coax arrestor wired to the modem; three AC106A6 modules (18 Cat6A positions); the VM1002 splitter parking the five room coax runs; the Ubee EU2251 modem rotated and hung on the grid by its keyholes; the fiber and copper slack coils; the AC1031 strip on the relocation kit's UPS-backed receptacle; the Amerisense USB-C duplex on house power. Knockouts top and bottom only; the exit to the rack is a drilled, grommeted hole in the left side. The depth section shows every part clears 4.31 in.</figcaption>
+  </figure>
 
-<h2>11 · Publishing websites — the pfSense question</h2>
+  <div class="tw"><table>
+    <thead><tr><th>Decision</th><th>What</th><th>Why</th></tr></thead>
+    <tbody>
+    <tr><td>No new closet rack, no patch panel</td><td>Gold Pro and Switch X in the existing StarTech; runs terminate on the AC106A6 modules</td><td>The closet is 36 × 23 in; a 12U rack never fit the room</td></tr>
+    <tr><td>Power into the On-Q only through a kit</td><td>Legrand in-wall outlet relocation kit: inlet in a box beside the rack, receptacle in an F7526 box at the left bottom cutout</td><td>A flexible cord may not pass through a wall (NEC 400.12). The kit's inlet plugs into a switched outlet on the Web Power Switch Pro, so the modem is UPS-backed and remotely power-cycled</td></tr>
+    <tr><td>Second bottom cutout on house power</td><td>F7526 box with an Amerisense 65 W GaN USB-C duplex</td><td>Always on, not UPS-backed; for anything that only needs USB power</td></tr>
+    <tr><td>Pass-through</td><td>Drilled 2.5 in hole with the F2242 ring in the On-Q's left wall, a 2-gang brush plate in the stud bay before the corner, then about 10 in in the open under a D-Line cord cover into the rack's side</td><td>The plastic 42 has no side knockouts, and the rack is on the adjacent wall about 1.7 in from the corner. Measure the stud bay first; the On-Q body is 14.3 in on 16 in stud centers</td></tr>
+    <tr><td>Modem hangs on the grid</td><td>By its own keyhole slots, ports down, backed by AC103520 clips</td><td>The AC1040F plate is 15.8 × 12 × 0.89 in: it would cover the splitter and cost 0.89 in of depth. It stays spare</td></tr>
+    <tr><td>Cameras to the garage</td><td>Eight runs gather in the attic and drop as one bundle into the garage wall, onto the Switch SE</td><td>The garage is on the perimeter, and nothing powered goes in the attic: the SE is rated 32 to 104 °F, the Puli 0 to 40 °C</td></tr>
+    <tr><td>PDUs</td><td>DLI Web Power Switch Pro (8 × NEMA) in the closet; DLI 222 (8 × C13) in the garage</td><td>NEMA outlets where the bricks are, rack ears where there is a rack. Both have REST, Lua and AutoPing</td></tr>
+    <tr><td>UPS</td><td>CyberPower CP1500PFCLCD tower on the closet floor, NUT over USB from the closet Pi; garage UPS sized once the lab load is known</td><td>1U rack units are 17 to 20 in deep and do not fit</td></tr>
+    </tbody>
+  </table></div>
 
-<p>The goal: several websites on separate domains, hosted on different internal machines, DNS in Cloudflare,
-reachable from the internet through <strong>one public IP</strong>. pfSense was bought to solve this.</p>
+  <h3>Cable pull</h3>
+  <p>Attic access reaches a false ceiling throughout. Cable is the one thing that cannot be redone cheaply once the gear is live, so this is the one place where over-building is the frugal choice.</p>
+  <div class="tw"><table>
+    <thead><tr><th>Run</th><th class="n">Qty</th><th>Spec</th><th>Purpose</th></tr></thead>
+    <tbody>
+    <tr><td>Ceiling AP positions</td><td class="n">3</td><td class="m">Cat6A</td><td>Two AP7 Ceiling mounts and one spare position</td></tr>
+    <tr><td>Exterior cameras</td><td class="n">8</td><td class="m">Cat6</td><td>Eave runs to the garage. Cameras need 1G at most</td></tr>
+    <tr><td>Interior spares</td><td class="n">4</td><td class="m">Cat6A</td><td>Office, patio, a future AP; one becomes the cellular radio's run. All four terminate on the On-Q modules, unpatched until used</td></tr>
+    <tr><td>Garage fiber</td><td class="n">1</td><td class="m">OM4, 4 to 6 strand</td><td>Beside the existing Cat6, not instead of it. Fiber rather than copper because the lab rack is on its own circuit; a copper run between separately grounded points is a ground-loop and surge path</td></tr>
+    </tbody>
+  </table></div>
+  <p>Closet port demand: six drops plus two AP runs is seven of Switch X's eight copper ports, with Cu 8 reserved for the third AP. The closet conduit carries 6 Cat6, 7 Cat6A and the fiber, about 16 to 25% of a 2 in conduit's 40% fill allowance; pulling tension and bend count become the limits long before fill does. The existing six drops end at wall plates near the floor, so the ceiling APs need new runs regardless of the camera project.</p>
 
-<div class="note">
-  <span class="lbl">Why a proxy is structurally required here</span>
-  <p><strong>NAT operates at layer 3/4 and cannot see a hostname.</strong> A port forward for 443 points at
-  exactly one internal host, forever. The domain name only appears inside the TLS handshake (SNI) and the
-  HTTP <code>Host</code> header — both above the layer NAT works at. So splitting many domains across one
-  public IP <em>requires</em> something that terminates or inspects at layer 7. There is no firewall
-  configuration that substitutes for it.</p>
-  <p>Corollary: every domain's A record must point at your single public IP (or CNAME to a tunnel). The
-  proxy can only route traffic that actually reaches it.</p>
-</div>
+  <div class="call warn">
+    <span class="t">Heat and sound</span>
+    <p>About 46 cu ft behind a closed door, with Switch X's three fans and roughly 150 W inside. Plan on a louvered door or leaving it ajar, and check temperatures the first week. Stand in there with the door shut before Switch X arrives.</p>
+  </div>
+</section>
 
-<div class="note crit">
-  <span class="lbl">The placement is the problem, not the software</span>
-  <p>pfSense currently sits at <code>192.168.187.99</code> / <code>.185</code> — <strong>on the flat LAN,
-  in the same broadcast domain as your Macs, the UNAS-Pro, the cameras and 28 cloud-connected smart
-  plugs</strong>. A reverse proxy is by definition the one host you intend the internet to reach. Putting
-  it on the same L2 segment as everything you care about means a compromise of the one thing designed to be
-  attacked lands it directly beside the things that must not be. This is the single strongest argument in
-  this whole document for segmentation, and it applies whichever proxy software you pick.</p>
-</div>
+<!-- 6 -->
+<section id="s6">
+  <h2><span class="k">6</span>What to buy, and when</h2>
+  <p class="src">docs/11 · prices checked 28 to 29 Aug 2026; re-check at checkout, several items are pre-sale</p>
+  <p>Five groups, each with a trigger. Nothing in a later group is worth ordering before its trigger fires. The full line-item lists, with the owned parts, are in <code>docs/11</code>.</p>
+  <div class="tw"><table>
+    <thead><tr><th>Group</th><th>Trigger</th><th>What</th><th class="n">Once</th></tr></thead>
+    <tbody>
+    <tr><td><strong>1. This week</strong></td><td>Ships now; needed for the cable weekend and the Wi-Fi cutover</td><td>AP7 Ceiling and Desktop ($369 each), Linovision 10G 802.3bt injector, Cat6 and Cat6A boxes, OM4 fiber, two 1U shelves and a brush panel, DLI Web Power Switch Pro ($229), CyberPower CP1500PFCLCD ($275), brush plate, TII 212 coax arrestor with bonding wire, old-work box, patch cables, right-angle modem leads, coax jumper, hole saw, labels</td><td class="n">~$2,150</td></tr>
+    <tr><td><strong>2. Pre-order</strong></td><td>Holds a place in the queue</td><td>Switch X ($649.20 pre-sale, Sept/Oct), Switch SE ($299.30, Oct/Nov, early access sold out), two 10GBASE-SR optics, one 10GBASE-T module for the Mgmt breakout</td><td class="n">~$1,030</td></tr>
+    <tr><td><strong>3. After a test</strong></td><td>Signal survey; two-week coverage test</td><td>802.3bt splitter to 12 V ($90), DC pigtail, 4×4 antenna if the survey needs it. A third AP7 Ceiling with injector ($395) only if the coverage test shows a gap</td><td class="n">~$180 (+$395)</td></tr>
+    <tr><td><strong>4. Cameras</strong></td><td>Switch SE in hand, about November</td><td>UNVR Pro ($499), 5 to 7 surveillance drives, 5 cameras sized for 8, UniFi mini rack, DLI 222 (~$249), garage UPS, lab 10G top-of-rack switch (~$270 to $400), small managed Mgmt switch</td><td class="n">~$3,300 to $3,900</td></tr>
+    <tr><td><strong>5. Lab</strong></td><td>Rack power-on</td><td>DACs, spare optics, used 10G NICs, second mini rack and stacking kit, JetKVMs ($103; $119 PoE) per host without a BMC</td><td class="n">~$150 to $250</td></tr>
+    <tr><td><strong>Program</strong></td><td></td><td>Plus racks, KVMs, the conditional AP. Excludes lab hosts, UNAS drives and electrician work. The Calyx SIM is $500/yr and already paid</td><td class="n">~$6,800 to $7,500</td></tr>
+    </tbody>
+  </table></div>
+  <p>Already owned and in the plan: Gold Pro, Gold gen-1, the pfSense box, UNAS-Pro, two Raspberry Pis, the unmanaged closet switch, the StarTech rack, the Gold Pro rack tray, the On-Q parts (three AC106A6 modules, relocation kit, two F7526 boxes, AC1031 strip, grommets, clips, D-Line cover, VM1002 splitter, Amerisense outlets), the GL.iNet Puli AX, the Calyx membership, Domotz, and the Spectrum modem.</p>
 
-<h3>Three ways to do it</h3>
+  <h3>PoE budgets</h3>
+  <div class="bar"><div class="r"><span>Switch X, two AP7 Ceilings</span><b>51 W / 410 W</b></div><div class="t"><div class="s" style="width:12.4%;background:var(--fiber)"></div></div></div>
+  <div class="bar"><div class="r"><span>Switch SE, eight cameras at ~8 W</span><b>64 W / 114 W</b></div><div class="t"><div class="s" style="width:56%;background:var(--copper)"></div></div></div>
+  <p>The camera figure is an assumption until a model is chosen. Switch X has enough reserve to absorb the whole camera fleet if the layout ever consolidates.</p>
 
-<div class="tbl-wrap">
-<table>
-<thead><tr><th>Approach</th><th>Inbound ports</th><th>Assessment</th></tr></thead>
-<tbody>
-<tr><td><strong>Cloudflare Tunnel</strong><br><span style="color:var(--text-secondary);font-size:13px">cloudflared daemon in DMZ</span></td><td><strong>None</strong></td><td><strong>Recommended.</strong> The daemon makes an <em>outbound</em> connection to Cloudflare; nothing is forwarded, no port is opened, and your origin IP is never exposed. You're already using Cloudflare DNS, so this is the natural fit — and it's free. Hostname-to-backend routing is configured in Cloudflare rather than locally.</td></tr>
-<tr><td><strong>Reverse proxy + port forward</strong><br><span style="color:var(--text-secondary);font-size:13px">Caddy / nginx / Traefik in DMZ</span></td><td>443 only</td><td>Solid if you want local control of routing. Restrict the Firewalla forward to <strong>Cloudflare's published IP ranges</strong> so the origin can't be hit directly. Caddy gets you automatic certificates with the least configuration.</td></tr>
-<tr><td><strong>pfSense + HAProxy package</strong><br><span style="color:var(--text-secondary);font-size:13px">single-armed on the Silicom box</span></td><td>443 only</td><td><strong>Chosen.</strong> HAProxy does SNI and host-header routing well, the ACME package handles certificates, and deploying pfSense <em>single-armed</em> — as a host on the DMZ, not a gateway — avoids the chained-NAT problem entirely. See below.</td></tr>
-</tbody>
-</table>
-</div>
+  <h3>Storage for continuous recording</h3>
+  <p>UniFi 4K cameras at H.265 write 8 to 12 Mbps around the clock, 86 to 130 GB per day each, so eight cameras is roughly 690 to 1,040 GB a day. Sizing assumes about 105 GB per camera per day: 60 to 90 days of retention needs about 50 to 75 TB, which is 5 to 7 surveillance drives at about $200 each. Two drives would last 21 to 34 days. The UNAS-Pro is the archive target for Protect, not the recorder; it cannot run Protect itself.</p>
+</section>
 
-<h3>Chosen build: pfSense single-armed on the Silicom box</h3>
+<!-- 7 -->
+<section id="s7">
+  <h2><span class="k">7</span>Phases</h2>
+  <p class="src">docs/11 · checklists; docs/09 carries the reasoning</p>
+  <p>Cable before hardware, because it is the only step that gets harder later. Wi-Fi before switches, because injectors decouple them. Trusted before IoT. Cameras after Wi-Fi is stable, and the garage top-of-rack switch with them. Lab hosts and the public DMZ last.</p>
 
-<div class="note good">
-  <span class="lbl">Single-armed resolves the redundancy objection</span>
-  <p>An earlier draft argued pfSense would add a second routing and NAT layer behind a Gold Pro that already
-  does the job. That is true only if pfSense is a <em>gateway</em>. Deployed <strong>single-armed</strong> —
-  one interface on the DMZ, default route pointing at the Firewalla, routing nothing for anyone — it is
-  simply a host that happens to run HAProxy. No second NAT, no chained port forwards, and you keep both the
-  hardware and an OS you already know.</p>
-</div>
+  <div class="phase">
+    <div class="hd"><span class="pn">Phase 0</span><span class="pt">Remote prep</span><span class="pw">now, no hardware</span></div>
+    <ul>
+      <li>Place the group 1 and group 2 orders.</li>
+      <li>Define all eight VLANs on the Gold Pro (mobile app; MSP Lite gates the web Networks page).</li>
+      <li>Inventory static IPs, DHCP reservations and port forwards.</li>
+      <li>Calyx SIM into the Puli; walk the house on battery and record n41 and n71 signal at the candidate window and exterior-wall spots.</li>
+      <li>Check the Spectrum account for the high-split upload upgrade.</li>
+    </ul>
+  </div>
+  <div class="phase">
+    <div class="hd"><span class="pn">Phase 1</span><span class="pt">Cable weekend</span><span class="pw">on site; the long pole</span></div>
+    <ul>
+      <li>Measure the slack on the six existing drops (3 to 4 ft needed to reach the modules). Fit the three AC106A6 modules; remove the original 8-position module.</li>
+      <li>Drill the On-Q's left side and fit the F2242 ring; brush plate before the corner; F7526 boxes in both bottom cutouts; kit inlet box beside the rack; AC1034 grommets in the top knockouts.</li>
+      <li>Pull 3× Cat6A to the ceiling AP positions, 8× Cat6 to the eave camera positions (gathered in the attic, dropped as one bundle into the garage), 4× Cat6A interior spares, and the OM4 fiber beside the existing garage Cat6.</li>
+      <li>Coax: arrestor, jumper, modem, nothing else in that path; park the five room coax runs on the VM1002, labeled.</li>
+      <li>Punch down: six drops on module A; three AP runs and three spares on module B; the fourth spare on module C. RJ45 the camera runs in the garage. Mount the modem by its keyholes, the VM1002 beside the modules, the AC1031 strip.</li>
+      <li>Fix the Orbi's secondary DNS (<code>8.8.8.8</code> to <code>192.168.187.1</code>) while on site.</li>
+    </ul>
+  </div>
+  <div class="phase">
+    <div class="hd"><span class="pn">Phase 2</span><span class="pt">Wi-Fi cutover</span><span class="pw">AP7s on injectors, before the switches</span></div>
+    <ul>
+      <li>AP7 Ceiling on its run through the Linovision injector; AP7 Desktop central. Both patched straight to Gold Pro LAN ports as trunks with an untagged native Mgmt LAN.</li>
+      <li>SSIDs per section 4; turn transmit power down from the default; apply the band plan.</li>
+      <li>Audit rules that target "Local Networks"; their meaning changes under the AP7.</li>
+      <li>Migrate Trusted clients, then IoT (Kasa re-joins on the same SSID and passphrase). Test Sonos and AirPlay across VLANs with the mDNS reflector and SSDP Relay on and IGMP/MLD snooping off.</li>
+      <li>Guest network per section 8. Two-week coverage test; order the third AP only if it shows a gap. Retire the Orbi; keep it boxed for 30 days.</li>
+    </ul>
+  </div>
+  <div class="phase">
+    <div class="hd"><span class="pn">Phase 3</span><span class="pt">Switching core</span><span class="pw">Switch X arrives</span></div>
+    <ul>
+      <li>Rack per section 5. Eight patch cables from the On-Q modules; 10G trunk to the Gold Pro with all VLANs tagged; SFP+ 2 to the old unmanaged switch as the Mgmt breakout for the Pi-holes, Domotz and the PDU.</li>
+      <li>Move the AP7 Ceiling from the injector to Switch X PoE+. Migrate wired hosts: Mac Studio, Pi-holes, Domotz.</li>
+      <li>Firewalla upstream DNS to both Pi-holes, <code>revServers</code>, nebula-sync between the Pis; block outbound :53 except the resolvers; enable DoH blocking.</li>
+      <li>Cellular WAN2 per section 9 on the freed Gold Pro port, Failover with Auto Failback.</li>
+      <li>IPv6: test each block from a v6 client; where a rule does not hold in v6, turn IPv6 off on that LAN. VPN policy: WireGuard is Trusted minus Mgmt; AmneziaWG is full reach.</li>
+    </ul>
+  </div>
+  <div class="phase">
+    <div class="hd"><span class="pn">Phase 4</span><span class="pt">Cameras</span><span class="pw">Switch SE and UNVR Pro in hand</span></div>
+    <ul>
+      <li>Garage mini rack: top-of-rack switch first and the fiber lit to Switch X SFP+ 1, then UNVR Pro, Switch SE, DLI 222 and the small Mgmt switch.</li>
+      <li>Test that the Gold Pro manages the SE across the third-party switch; the fallback is the garage Cat6 straight to Switch X Cu 6.</li>
+      <li>Cameras on VLAN 40 with the WAN blocked except UniFi cloud and NTP. UNAS-Pro into the garage on the ToR, with one allow from the UNVR for the archive copies.</li>
+      <li>Decommission the Nest cameras last and confirm the WAN upload drop. The doorbell stays, on VLAN 30.</li>
+    </ul>
+  </div>
+  <div class="phase">
+    <div class="hd"><span class="pn">Phase 5</span><span class="pt">Lab and DMZ</span><span class="pw">rack power-on</span></div>
+    <ul>
+      <li>Dedicated 20 A circuit and UPS. Lab on VLAN 99, routed by the Gold Pro at 10G; second mini rack with the lab hosts and the Gold gen-1 as a nested lab firewall.</li>
+      <li>Consoles: BMC ports and JetKVMs on VLAN 10 at the Mgmt switch.</li>
+      <li>pfSense single-armed in the DMZ: move the GUI to the Mgmt NIC on 8443 first, then HAProxy and ACME. Firewalla: 443 forward from Cloudflare ranges only; per-backend DMZ to Lab allows; Custom DNS Rules for internal resolution.</li>
+    </ul>
+  </div>
+</section>
 
-<div class="tbl-wrap">
-<table>
-<thead><tr><th>Element</th><th>Configuration</th></tr></thead>
-<tbody>
-<tr><td>NIC 1 — data</td><td>DMZ <strong>VLAN 80</strong>, static (e.g. <code>10.187.80.10</code>). HAProxy listens here. Default gateway = Firewalla's DMZ interface</td></tr>
-<tr><td>NIC 2 — management</td><td><strong>VLAN 10</strong>. The Silicom box has two NICs — use the second for the pfSense GUI only, so administration never touches the internet-facing interface</td></tr>
-<tr><td>Packages</td><td><strong>HAProxy</strong> + <strong>ACME</strong> (Let's Encrypt via Cloudflare DNS-01)</td></tr>
-<tr><td>Routing</td><td>None. No NAT, no gateway role, no outbound rules for other hosts. It is a host, not a firewall</td></tr>
-<tr><td>Firewalla WAN rule</td><td>Forward 443 → <code>10.187.80.10</code>, <strong>sourced from Cloudflare IP ranges only</strong></td></tr>
-<tr><td>Firewalla DMZ rules</td><td>One allow per backend — specific host, specific port, into VLAN 99. Never a blanket permit</td></tr>
-</tbody>
-</table>
-</div>
+<!-- 8 -->
+<section id="s8">
+  <h2><span class="k">8</span>Guest network</h2>
+  <p class="src">docs/14 · lands in Phase 2 with the AP7s; there is no guest network before that</p>
+  <div class="tw"><table>
+    <thead><tr><th>Item</th><th>Decision</th></tr></thead>
+    <tbody>
+    <tr><td>Reach</td><td>Internet only. No printer, no casting, no local devices</td></tr>
+    <tr><td>Bandwidth</td><td>100 Mb/s down, 10 Mb/s up, Smart Queue priority Low, shared by the whole segment</td></tr>
+    <tr><td>VLAN and SSID</td><td>60, <code>10.187.60.0/24</code>; <code>pinnacle-Guest</code> on 2.4 + 5 GHz, WPA2/WPA3</td></tr>
+    <tr><td>Isolation</td><td>Guests cannot see each other</td></tr>
+    <tr><td>IPv6</td><td>Off on the Guest LAN. Firewalla documents no v4/v6 selector on rules, so this closes the v6 side</td></tr>
+    <tr><td>Sharing</td><td>QR code from the Firewalla app. Rotate the passphrase after a contractor engagement and regenerate the QR</td></tr>
+    </tbody>
+  </table></div>
+  <p>Build order in the Firewalla app: create the VLAN on the same ports as the untagged LAN the AP7 is managed on; block traffic to and from all local networks, bidirectional; create the SSID on the Guest VLAN; create a <code>Guest</code> device group with VqLAN and Device Isolation on and set it as the SSID's group, so new guests land in it automatically; add the Smart Queue rule applied to the Guest network; turn IPv6 off on the LAN. Pi-hole blocklists apply to guests through the Firewalla; the port-53 block and the DoH block are scoped per network, so add Guest to both.</p>
+  <p>If Custom DNS Rules turn out to apply to Guest, guests will resolve the public websites to the DMZ proxy and the local-networks block will drop the connection. The fix, consistent with internet-only, is one allow to the proxy on TCP 443 plus the proxy as an Allowed Device on the Guest group, because the VqLAN group blocks all local segments regardless of rules. Test whether the rule alone suffices first.</p>
+  <p>Acceptance test before Phase 2 is done: a phone on <code>pinnacle-Guest</code> gets a <code>10.187.60.x</code> address, browses, has a known-blocked domain fail, cannot reach the Mac Studio, the printer or a Sonos, cannot ping a second guest, and speed-tests at roughly 100/10.</p>
+</section>
 
-<div class="note crit">
-  <span class="lbl">Port 443 collision — the gotcha that will cost you an evening</span>
-  <p>pfSense's own web GUI binds <strong>443 by default</strong>, which is exactly the port HAProxy needs.
-  <strong>Move the GUI first</strong> — System → Advanced → <em>TCP Port</em>, set <code>8443</code> —
-  <em>before</em> configuring the HAProxy frontend. Netgate's own documentation says moving the GUI
-  "will free up the standard web ports for use with port forwards or other services such as HAProxy."
-  They also warn: <strong>"Do not expose the GUI to untrusted networks such as the Internet even on
-  non-default ports"</strong> — port obscurity is not security. That is precisely why NIC 2 sits on the
-  management VLAN and the GUI binds only there.</p>
-</div>
+<!-- 9 -->
+<section id="s9">
+  <h2><span class="k">9</span>Cellular failover</h2>
+  <p class="src">docs/15</p>
+  <p>A GL.iNet Puli AX (5G, Quectel RM520N-GL, four SMA antenna ports, owned) on a Calyx Institute Sprout SIM (unlimited T-Mobile, $500/yr, active) becomes the Gold Pro's second WAN. It is powered over one of the four spare Cat6A runs so the radio sits at a window or exterior wall where the signal is, not where the rack is, and never in the attic (the Puli is rated to 40 °C).</p>
+  <pre><code>Spectrum modem (On-Q) ───────────────────────────► Gold Pro WAN1
+                                                          ┌── data ──► Puli AX
+Gold Pro WAN2 ──► 802.3bt injector ── one Cat6A spare ────┤   (window / exterior wall)
+                     │ (rack, WPS Pro outlet)          splitter
+                 UPS power                             └── 12 V barrel ──►</code></pre>
+  <ul>
+    <li><strong>WAN2 never touches a switch.</strong> Firewalla switches sit downstream of a LAN port and have no WAN role; patched into Switch X, the Puli would become a second DHCP server on the LAN.</li>
+    <li>The Linovision 802.3bt injector (Type 4, 90 W) powers the AP7 Ceiling until Switch X arrives, then moves here. The splitter is a Type 3 device, so the link runs at 51 W at the splitter and about 45 W after conversion to 12 V, against the Puli's 30 W nameplate. 48 V travels the run; 12 V is made at the radio. Nothing labelled passive PoE at either end.</li>
+    <li>The splitter is a PoE Texas GBT-12V60W (12 V / 4.5 A, indoor, $90) or an L-com POESOD1GBT (IP67 outdoor). Both end in terminal blocks, so a 5.5 × 2.1 mm pigtail is needed, and both pass gigabit data, so WAN2 links at 1G.</li>
+    <li>WAN2 gets <code>192.168.8.x</code> from the Puli, double NAT, which is fine for failover and collides with nothing else in the plan.</li>
+  </ul>
+  <p>On the Gold Pro: create the WAN on port 4, mode Failover with Spectrum primary and Auto Failback on (never load balancing; banks and Wi-Fi calling break when flows split across two source addresses). Connectivity tests against external addresses, not Spectrum's gateway, because most Spectrum outages are link-up-no-transit. Policy routes pinned to WAN1 with drop-when-down for the UNVR cloud and backups, the UNAS off-site backup, the Nest cameras until replaced, the Mac Studio backup, and game and OS updates, so an outage stops them instead of spending the cellular allowance. Set the WAN speeds so Smart Queue knows which pipe it is on.</p>
+  <p>During failover, IPv4 remote access fails: T-Mobile is CGNAT, so WireGuard and AmneziaWG cannot reach the house, DDNS points at the cellular address, and the Firewalla app still works through Firewalla's cloud. T-Mobile is IPv6-native and the Puli offers native and passthrough IPv6 modes, so WAN2 may carry a global v6 prefix; untested, and if it works, WireGuard over v6 survives failover. Do not chase the Puli's bridge mode: it is experimental, SSH-only, disables Wi-Fi, and is pointless behind CGNAT.</p>
+</section>
 
-<p>If pfSense later feels like more machinery than the job needs, the same hardware runs Debian plus Caddy
-with a config file about six lines long — the config sketch below. The hardware choice doesn't lock you in.</p>
+<!-- 10 -->
+<section id="s10">
+  <h2><span class="k">10</span>Publishing websites</h2>
+  <p class="src">docs/07</p>
+  <p>Several websites on separate domains, hosted on different internal machines, DNS in Cloudflare, reachable from the internet through one public IP. NAT works at layer 3/4 and cannot see a hostname; the domain appears only in the TLS handshake (SNI) and the HTTP Host header, so splitting many domains across one address needs something that inspects or terminates at layer 7. Every domain's A record points at the single public IP.</p>
+  <div class="call crit">
+    <span class="t">Placement is the problem, not the software</span>
+    <p>pfSense sits today at <code>192.168.187.99</code> on the flat LAN, in the same broadcast domain as the Macs, the UNAS-Pro, the cameras and 28 cloud-connected plugs. A reverse proxy is the one host built to be reached from the internet. It moves to the DMZ and the garage rack.</p>
+  </div>
+  <div class="tw"><table>
+    <thead><tr><th>Approach</th><th>Inbound</th><th>Assessment</th></tr></thead>
+    <tbody>
+    <tr><td><strong>Cloudflare Tunnel</strong><br><span class="m">cloudflared in the DMZ</span></td><td>None</td><td>The daemon makes an outbound connection; no port opens and the origin IP is never exposed. Free, and Cloudflare already holds the DNS. Routing is configured at Cloudflare rather than locally</td></tr>
+    <tr><td><strong>Reverse proxy + port forward</strong><br><span class="m">Caddy, nginx or Traefik in the DMZ</span></td><td>443 only</td><td>Local control of routing. Restrict the Firewalla forward to Cloudflare's published IP ranges. Caddy gets automatic certificates with the least configuration</td></tr>
+    <tr><td><strong>pfSense + HAProxy</strong><br><span class="m">single-armed on the Silicom box</span></td><td>443 only</td><td><strong>Chosen.</strong> HAProxy does SNI and Host-header routing well, the ACME package handles certificates, and single-armed pfSense (a host on the DMZ, not a gateway) avoids a second NAT layer</td></tr>
+    </tbody>
+  </table></div>
+  <div class="tw"><table>
+    <thead><tr><th>Element</th><th>Configuration</th></tr></thead>
+    <tbody>
+    <tr><td>NIC 1, data</td><td>DMZ, static <code>10.187.80.10</code>, on the garage top-of-rack switch. HAProxy listens here. Default gateway is the Firewalla's DMZ interface</td></tr>
+    <tr><td>NIC 2, management</td><td>Mgmt, on the garage Mgmt switch. The pfSense GUI binds only here; Firewalla rules block anything DMZ-sourced toward it</td></tr>
+    <tr><td>Packages</td><td>HAProxy and ACME (Let's Encrypt, DNS-01 through the Cloudflare API, which needs no inbound connectivity and is the only way to get wildcard certificates)</td></tr>
+    <tr><td>Routing</td><td>None. No NAT, no gateway role. It is a host</td></tr>
+    <tr><td>Firewalla WAN rule</td><td>Forward 443 to <code>10.187.80.10</code>, sourced from Cloudflare IP ranges only</td></tr>
+    <tr><td>Firewalla DMZ rules</td><td>One allow per backend into the lab, specific host and port. DMZ to Trusted is denied without exception. DMZ egress limited to package updates and ACME</td></tr>
+    </tbody>
+  </table></div>
+  <div class="call warn">
+    <span class="t">Port 443 collision</span>
+    <p>pfSense's GUI binds 443 by default. Move it first: System → Advanced → Admin Access → TCP Port, set <code>8443</code>, and untick the WebGUI redirect so port 80 is free too. Netgate's docs say this "will free up the standard web ports for use with port forwards or other services such as HAProxy," and warn against exposing the GUI to untrusted networks even on non-default ports, which is why it lives on the Mgmt NIC.</p>
+  </div>
 
-<h3>DMZ policy</h3>
-
-<div class="tbl-wrap">
-<table>
-<thead><tr><th>Direction</th><th>Rule</th></tr></thead>
-<tbody>
-<tr><td>WAN → DMZ</td><td>Nothing with Cloudflare Tunnel. With a port forward: <strong>443 only, sourced from Cloudflare ranges</strong></td></tr>
-<tr><td>DMZ → Trusted</td><td><strong>Deny.</strong> No exceptions — this is the rule the whole design exists to enforce</td></tr>
-<tr><td>DMZ → Lab</td><td>Only the specific backend ports each site needs, to the specific backend hosts</td></tr>
-<tr><td>DMZ → Internet</td><td>Limited — package updates and ACME. Not general egress</td></tr>
-<tr><td>Trusted → DMZ</td><td>Allowed, for management</td></tr>
-</tbody>
-</table>
-</div>
-
-<h3>Picking the proxy</h3>
-
-<div class="tbl-wrap">
-<table>
-<thead><tr><th>Option</th><th>Best when</th><th>Trade-off</th></tr></thead>
-<tbody>
-<tr><td><strong>Caddy</strong></td><td>Default choice. N domains → N backends, automatic HTTPS, config measured in lines not pages</td><td>Fewer knobs than HAProxy if you later need exotic routing</td></tr>
-<tr><td><strong>Nginx Proxy Manager</strong></td><td>You want a GUI and Let's Encrypt handled for you</td><td>Another web app to keep patched — and it lives in the DMZ</td></tr>
-<tr><td><strong>Traefik</strong></td><td>Backends are Docker containers — it auto-discovers them by label</td><td>Overkill if backends are plain VMs</td></tr>
-<tr><td><strong>HAProxy</strong></td><td>You need <strong>SNI passthrough</strong> — routing by hostname <em>without</em> decrypting, so a backend can present its own certificate</td><td>Most configuration effort</td></tr>
-</tbody>
-</table>
-</div>
-
-<p><strong>Terminate or pass through?</strong> Terminating TLS at the proxy is simpler and lets one wildcard
-certificate cover everything. Use SNI passthrough only where a backend must present its own cert — an
-appliance with a pinned certificate, or something you don't control. Mixing both is fine: HAProxy can
-terminate most hosts and pass through specific ones.</p>
-
-<h3>Verified configuration</h3>
-
-<p><em>Checked against current upstream HAProxy and Caddy documentation.</em></p>
-
-<p><strong>HAProxy — TLS termination with Host-header routing.</strong> This is the shape you want for
-ordinary websites: one certificate set on the frontend, routing by hostname, plain HTTP to the backends.</p>
-
-<pre style="background:var(--surface-2);border:1px solid var(--border);border-radius:8px;padding:14px 16px;overflow-x:auto;font-family:var(--mono);font-size:13px;line-height:1.5"><code>frontend https_in
-    bind *:443 ssl crt /var/etc/haproxy/certs/
-    mode http
-    acl host_one hdr(host) -i site-one.example.com
-    acl host_two hdr(host) -i site-two.example.net
-    use_backend bk_one if host_one
-    use_backend bk_two if host_two
-    default_backend bk_nomatch
-
-backend bk_one
-    mode http
-    server s1 10.99.10.20:8080 check</code></pre>
-
-<p><strong>HAProxy — SNI passthrough,</strong> for the case where a backend must present its own
-certificate. Routes on the TLS ClientHello without decrypting:</p>
-
-<pre style="background:var(--surface-2);border:1px solid var(--border);border-radius:8px;padding:14px 16px;overflow-x:auto;font-family:var(--mono);font-size:13px;line-height:1.5"><code>frontend tls_passthrough
+  <h3>Configuration, checked against the upstream manuals</h3>
+  <p>TLS termination with Host-header routing is the shape for ordinary websites. To also pass a host through untouched (an appliance with its own certificate), the passthrough frontend owns <code>*:443</code> and hands everything else to a local terminating frontend; two frontends cannot both bind <code>*:443</code>. In a TCP frontend only the HTTP/2 preface can be parsed, and in a TLS passthrough the Host header is encrypted anyway, so route on <code>req.ssl_sni</code>, never on <code>hdr(host)</code>. SNI is a routing hint, not access control: Encrypted Client Hello presents a decoy SNI. On pfSense the HAProxy package writes the config from its GUI; these snippets show intent.</p>
+<pre><code>frontend tls_passthrough
     bind *:443
     mode tcp
     tcp-request inspect-delay 5s
     tcp-request content accept if { req.ssl_hello_type 1 }
     use_backend bk_appliance if { req.ssl_sni -i appliance.example.com }
-    default_backend bk_terminate</code></pre>
+    default_backend bk_terminate
 
-<div class="note crit">
-  <span class="lbl">HTTP/2 breaks Host-header routing in TCP mode</span>
-  <p>HAProxy's documentation is explicit: a TCP-mode frontend "cannot parse HTTP/2 beyond the initial
-  preface," which <strong>prevents content-based routing such as selecting a backend based on the Host
-  header</strong>. So in passthrough mode you must route on <code>req.ssl_sni</code> — which works fine —
-  and never on <code>hdr(host)</code>. If you need Host-header routing, terminate TLS and use
-  <code>mode http</code>. Mixing the two in one config is fine; mixing them in one <em>frontend</em> is not.</p>
-</div>
+backend bk_terminate
+    mode tcp
+    server local 127.0.0.1:8443
 
-<p><strong>Caddy alternative</strong> — same job, if pfSense ever feels like more machinery than it's worth:</p>
+frontend https_in
+    bind 127.0.0.1:8443 ssl crt /var/etc/haproxy/certs/
+    mode http
+    acl host_one hdr(host) -i site-one.example.com
+    use_backend bk_one if host_one
+    default_backend bk_nomatch
 
-<pre style="background:var(--surface-2);border:1px solid var(--border);border-radius:8px;padding:14px 16px;overflow-x:auto;font-family:var(--mono);font-size:13px;line-height:1.5"><code>site-one.example.com {
+backend bk_one
+    mode http
+    server s1 10.99.10.20:8080 check</code></pre>
+  <p>If pfSense ever feels like more machinery than the job needs, the same hardware runs Debian plus Caddy. The stock Caddy binary has no DNS providers; wildcard certificates through Cloudflare need a build with <code>github.com/caddy-dns/cloudflare</code>, and without it the Caddyfile fails to load with <code>module not registered: dns.providers.cloudflare</code>. From Caddy 2.10 a <code>*.example.com</code> block's wildcard certificate is shared with sibling subdomain blocks.</p>
+<pre><code>site-one.example.com {
     reverse_proxy 10.99.10.20:8080
-}
-
-site-two.example.net {
-    reverse_proxy 10.99.10.31:3000
 }
 
 *.example.com {
@@ -834,305 +618,173 @@ site-two.example.net {
     }
     reverse_proxy 10.99.10.44:80
 }</code></pre>
+  <p>Internal clients resolving the public domains get the public IP from Cloudflare and would hairpin through the WAN. Firewalla's Custom DNS Rules (Services → Custom DNS Rules) map a domain straight to the internal address for LAN clients; A and AAAA only, and a top-level entry captures its subdomains. Whether a rule applies per network or to every network, guest included, is not documented; test it on a scratch domain once the VLANs exist.</p>
+</section>
 
-<div class="note warn">
-  <span class="lbl">Caddy's DNS challenge needs a custom build</span>
-  <p>The stock Caddy binary <strong>does not include DNS providers</strong>. Wildcard certificates via the
-  Cloudflare DNS challenge require building with the provider module (<code>xcaddy build
-  --with github.com/caddy-dns/cloudflare</code>) or using an image that bundles it. Easy to miss, and it
-  fails at certificate issuance rather than at config load.</p>
-</div>
+<!-- 11 -->
+<section id="s11">
+  <h2><span class="k">11</span>DNS and Pi-hole</h2>
+  <p class="src">docs/08</p>
+  <p>Two Raspberry Pis run Pi-hole v6. Firewalla and Pi-hole both want to own DNS, and per Firewalla's own documentation you cannot fully have both. Clients that point straight at Pi-hole bypass Firewalla's DNS layer; in Firewalla's words the traffic "doesn't go through layer 3 (IP layer) of Firewalla. Therefore, DNS interception on Firewalla doesn't take effect and DNS-based features doesn't work." The plan keeps Firewalla as the resolver for every client and forwards upstream to the Pi-holes: 282 rules and a per-network policy set are worth more than per-client graphs in Pi-hole, and Firewalla already has per-device DNS visibility tied to its inventory.</p>
+  <div class="tw"><table>
+    <thead><tr><th>Item</th><th>Plan</th></tr></thead>
+    <tbody>
+    <tr><td>Placement</td><td>Both Pis on Mgmt, on the closet Mgmt breakout, with static addresses; both configured as Firewalla upstreams so one failing does not take DNS down. Not in the lab: DNS must not depend on the environment built to be torn down, and not on the Firewalla itself</td></tr>
+    <tr><td>What stacks</td><td>Family Protect and Adblock stack on top of Pi-hole. Firewalla's DoH and Unbound do not: a device with DoH enabled uses the DoH server regardless of its DNS setting, so both stay off</td></tr>
+    <tr><td>DNS Booster</td><td>Stays on. Firewalla: "If you turn DNS Booster off, many DNS blocks will NOT work." Pi-hole nominally sees one client, the Firewalla; whether Firewalla emits EDNS Client Subnet upstream is untested</td></tr>
+    <tr><td>Hostnames in reports</td><td><code>revServers</code> (formerly conditional forwarding) pointed at the Firewalla, which is the DHCP authority, so reports show names instead of addresses</td></tr>
+    <tr><td>Keeping two in sync</td><td>nebula-sync, built for the v6 API: Teleporter or selective sync, Docker, cron, webhooks. Give it an application password and enable <code>webserver.api.app_sudo</code> on the replica or the sync fails. Gravity Sync is archived and does not support v6</td></tr>
+    <tr><td>Other clients of the Mgmt Pis</td><td>The closet Pi is also the NUT server for the UPS; the UNVR, UNAS and lab hosts get one allow each to it on TCP 3493. The second Pi runs Uptime Kuma, which needs to reach what it polls</td></tr>
+    </tbody>
+  </table></div>
+  <p>Two leaks to close once the VLANs exist. Hardcoded resolvers: the Orbi already resolves through <code>8.8.8.8</code>, and IoT devices do the same, so a Firewalla rule blocks outbound port 53 to anything except the resolvers, scoped per network. DNS over HTTPS: a client using DoH bypasses both Pi-hole and Firewalla on port 443, so Firewalla's DoH blocking goes on.</p>
+</section>
 
-<h3>Two details that will otherwise bite</h3>
-
-<p><strong>Internal clients resolving your own domains.</strong> Cloudflare returns your public IP, so a
-laptop inside the house tries to reach your site by going out and back in — NAT hairpin, which is fiddly at
-best. The clean fix is <strong>Firewalla's Custom DNS Rules</strong> (Services → Custom DNS Rules), which
-map a domain straight to an internal IP for LAN clients. Firewalla users run exactly this pattern with
-local proxy managers. Two caveats: entering a TLD captures its subdomains automatically, and the rules
-apply <strong>globally across all networks</strong> — including guest — with no per-VLAN scoping in the UI.</p>
-
-<p><strong>Certificates.</strong> Use <strong>Let's Encrypt DNS-01 via the Cloudflare API</strong>, not
-HTTP-01. It needs no inbound connectivity at all, so it works identically whether you're on Tunnel or a
-port forward, and it's the only way to get wildcard certificates.</p>
-
-<h2>12 · The spare Gold — revised</h2>
-
-<p>The spare is an <strong>original Firewalla Gold</strong> (gen 1): quad-core Intel 2.2 GHz, 4 GB RAM,
-3 Gbps of packet processing — but <strong>4 × 1 GbE ports</strong>. That port speed, not the CPU, decides
-where it belongs.</p>
-
-<div class="note crit">
-  <span class="lbl">Don't put it inline as lab edge</span>
-  <p>Earlier drafts of this plan had the Gold routing the lab behind a transit VLAN. With 1 GbE ports that
-  makes it a <strong>1 Gbps chokepoint between a full rack and everything else</strong> — including the
-  UNAS-Pro in the closet. You'd run 10G fiber to the garage and then funnel it through a gigabit port.
-  Moving VM images or backups between lab and NAS would crawl, and you'd be double-NATing to get there.</p>
-</div>
-
-<h3>Better: lab as a VLAN off the Gold Pro</h3>
-
-<p>Put the lab on <strong>VLAN 99, routed directly by the Gold Pro</strong>. That box does 10 Gbps
-<em>with</em> full IDS/IPS, so inter-VLAN routing runs at line rate: lab↔NAS at 10G, lab↔internet at your
-full 1000/35, and a single policy plane instead of chained NAT. Isolation is unchanged — Firewalla enforces
-lab↔house at the VLAN boundary exactly as it would at a separate device, and a rogue DHCP server in the lab
-stays contained to its own VLAN.</p>
-
-<h3>Where the Gold actually earns its keep</h3>
-
-<p>Use it as a <strong>nested firewall inside the lab</strong> — a real device to build test topologies
-against, break, reconfigure and restore. That's the best home-lab use for it, and it's the one role where
-1 GbE ports are completely irrelevant: lab-internal test traffic doesn't need 10G, and having a genuine
-second firewall to experiment on is worth more than using it as a bottleneck in the production path.</p>
-
-<p>Failing that, keep it as a <strong>cold spare for the Gold Pro</strong>. It would cap you at 1 Gbps
-during a failover, which exactly matches your Spectrum downstream anyway — so as an emergency stand-in it
-costs you nothing but multi-gig LAN routing.</p>
-
-<div class="note good">
-  <span class="lbl">Confirmed inputs</span>
-  <p><strong>Spectrum GIG, 1000/35.</strong> The 35 Mb/s upstream ceiling is real, which is what makes the
-  Nest cameras' ~18 GB/day of outbound video worth eliminating. <strong>Cameras: 5 planned, sized for 8</strong>
-  — PoE load is 40 W actual against the Switch SE's 114 W budget, 64 W if you grow into 8. Comfortable
-  either way, and the spare capacity is already accounted for.</p>
-</div>
-
-<h2>13 · Pi-hole</h2>
-
-<p>Two Raspberry Pis running Pi-hole. The useful question isn't where to plug them in — it's that
-<strong>Firewalla and Pi-hole both want to own DNS</strong>, and per Firewalla's own documentation you
-cannot fully have both.</p>
-
-<h3>The tradeoff, stated plainly</h3>
-
-<div class="tbl-wrap">
-<table>
-<thead><tr><th>Architecture</th><th>You gain</th><th>You lose</th></tr></thead>
-<tbody>
-<tr><td><strong>Clients → Pi-hole directly</strong><br><span style="color:var(--text-secondary);font-size:13px">DHCP hands out the Pi-hole address</span></td><td>Pi-hole sees every client individually — per-client groups, per-client rules, real query logs</td><td>Firewalla's DNS layer is bypassed entirely. Its own words: DNS "doesn't go through layer 3 of Firewalla. Therefore DNS interception on Firewalla doesn't take effect and DNS-based features don't work"</td></tr>
-<tr><td><strong>Clients → Firewalla → Pi-hole upstream</strong><br><span style="color:var(--text-secondary);font-size:13px">Firewalla's recommendation</span></td><td>Every Firewalla DNS feature keeps working, on top of Pi-hole's blocklists</td><td>Pi-hole nominally sees one client — the Firewalla — so per-client rules and stats lose meaning. <strong>Possibly recoverable, see EDNS0 below</strong></td></tr>
-</tbody>
-</table>
-</div>
-
-<div class="note good">
-  <span class="lbl">Recommended: Firewalla forwards to Pi-hole</span>
-  <p>For you this isn't close. You have <strong>282 Firewalla rules</strong>, a policy set you've clearly
-  invested in, and a VLAN build ahead that depends on Firewalla enforcing per-network DNS. Trading all of
-  that away for per-client graphs in Pi-hole is the wrong side of the deal. Let Pi-hole do what it's
-  uniquely good at — custom blocklists, regex rules, aggressive filtering — and let Firewalla keep
-  ownership of policy and visibility.</p>
-</div>
-
-<h3>Where they live</h3>
-
-<p>Both Pis on the <strong>Management VLAN (10)</strong>. Under the recommended architecture the Firewalla
-is their <em>only</em> client, which means no other VLAN ever needs a path to them — IoT, Guest, Cameras and
-DMZ get no route to VLAN 10 at all. Give them static addresses and configure both as upstream resolvers on
-the Firewalla so one failing doesn't take DNS down.</p>
-
-<h3>Keeping two Pi-holes in sync</h3>
-
-<p>Use <strong>nebula-sync</strong>, which targets Pi-hole v6.x specifically and works through Pi-hole's
-API. It runs in Docker, syncs either everything via Teleporter or selected areas (adlists, domain lists,
-groups, clients, DNS settings), and supports cron scheduling with webhook notifications. Older guides point
-at Gravity Sync — the existing Pi runs v6.x (confirmed 24 Aug), and the v6 API change is what prompted the
-newer tooling.</p>
-
-<div class="note crit">
-  <span class="lbl">Don't move Pi-hole into the lab</span>
-  <p>With a full rack arriving it's tempting to virtualize these. Don't. <strong>DNS must not depend on the
-  environment you intend to break.</strong> The whole point of the lab is that you can tear it down at
-  will — and the day you do, every device in the house should still resolve names. Two low-power Pis that
-  stay up independently of the rack is exactly the right architecture. Keep them physical, keep them boring.</p>
-</div>
-
-<h3>Three things from the Pi-hole docs worth knowing</h3>
-
-<div class="note crit">
-  <span class="lbl">Don't install Pi-hole on the Firewalla itself</span>
-  <p>Firewalla publishes a (beta) guide for running Pi-hole as a Docker container on the Gold. With two Pis
-  already in hand there is <strong>no version of this that comes out ahead</strong>:</p>
-  <ul class="tight">
-    <li>It <strong>cannot coexist</strong> with Firewalla's Family Protect, Adblock or DNS-over-HTTPS — "Firewalla's features always have a higher priority." You'd be disabling the things you're trying to keep.</li>
-    <li>It <strong>still loses per-device visibility</strong>: with DNS Booster on, every query reaches Pi-hole from <code>172.16.0.1</code>, so "you will only be able to see localhost and Firewalla on the Pi-Hole portal."</li>
-    <li>It <strong>doesn't survive reboots</strong> without hand-written startup scripts in <code>post_main.d/</code>.</li>
-    <li>Firewalla recommends a separate USB/SD disk "to avoid overloading Firewalla's internal storage."</li>
+<!-- 12 -->
+<section id="s12">
+  <h2><span class="k">12</span>Lab and the spare Gold</h2>
+  <p class="src">docs/12 · docs/05</p>
+  <p>The lab is VLAN 99, routed directly by the Gold Pro at 10G with IDS/IPS on: lab to NAS at 10G, lab to internet at the full 1000/35, one policy plane. The spare is an original Firewalla Gold with four 1 GbE ports. Inline as the lab edge it would be a 1 Gbps chokepoint on a 10G fiber, so it becomes a nested firewall inside the lab, a real device to build test topologies against, or a cold spare for the Gold Pro (1 Gbps during a failover matches the Spectrum downstream anyway).</p>
+  <h3>Consoles</h3>
+  <p>Servers with a BMC (iDRAC, iLO, IPMI) use it, on Mgmt at the garage Mgmt switch. Hosts without one get a JetKVM: USB plus HDMI, no ATX board, because the DLI 222 does the hard power cycles, one outlet per server, with the BIOS set to power on after AC loss. Power the JetKVM from a 5 V adapter on an unswitched outlet or the PoE model, not from the host, or the console dies with the host during the cycle you are watching. Past eight hosts, a PiKVM V4 Plus with its switch. The 222's eight outlets also feed the UNVR, the top-of-rack switch, the SE, the UNAS and the Gold gen-1, so budget them.</p>
+  <h3>Also in the plan</h3>
+  <ul>
+    <li>NUT on the closet Pi for graceful shutdown; a garage host does the same for the garage UPS.</li>
+    <li>Scheduled Firewalla config exports and a 3-2-1 backup layout; a whole-home surge protector at the panel with an electrician (~$250).</li>
+    <li>Home Assistant on dedicated hardware, not in the lab, with one allow into IoT; Kasa plugs added by IP, and newer models need TP-Link cloud credentials once for local control.</li>
+    <li>PPSK per-device keys on the IoT SSID; central syslog and Uptime Kuma; an internal DNS zone. The retired HDHomeRun could return on a Cat6A position in Media; its discovery is a UDP 65001 broadcast, so clients outside Media need its address by hand.</li>
   </ul>
-  <p>So you'd take on fragility in your edge router, lose Firewalla's DNS features <em>and</em> lose
-  per-device stats — the worst of both. Your two Pis are strictly the better answer.</p>
+</section>
+
+<!-- 13 -->
+<section id="s13">
+  <h2><span class="k">13</span>Orbi, until it goes</h2>
+  <p class="src">docs/06 · read from the RBE971 admin UI at 192.168.187.230</p>
+  <p>Three units on firmware 9.13.2.1. Netgear released 12.1.10.12 on 13 Jul 2026 and the Orbi's update check reports "Update failed" and "Service unreachable," so it is a release behind and cannot fetch the next one; the likely cause is Firewalla blocking Netgear's update endpoints. AP mode, DHCP off, both satellites on wired backhaul, guest network off, a separate <code>pinnacle-IoT</code> SSID already in place. 63 clients associated at the time of the audit.</p>
+  <div class="tw"><table>
+    <thead><tr><th>Finding</th><th>State</th><th>Handling</th></tr></thead>
+    <tbody>
+    <tr><td>2.4 GHz channel</td><td>Moved from 2 to 11</td><td>Done. Channel 2 overlapped both 1 and 6</td></tr>
+    <tr><td>5 GHz</td><td>160 MHz across 36 to 64, including DFS; UNII-3 absent</td><td>Unfixable. The upper 5 GHz band is reserved for wireless backhaul even when backhaul is wired, and the firmware offers no width control. A radar event drops every client on the band</td></tr>
+    <tr><td>Transmit power</td><td>No control in the UI</td><td>Unfixable. Three APs over-cover 1,860 sq ft; only the AP7 migration solves it</td></tr>
+    <tr><td>240 MHz MLO backhaul</td><td>Enabled</td><td>Leave it. Narrowing it does not reclaim the reserved 5 GHz band and degrades the wireless fallback path, which was observed in use</td></tr>
+    <tr><td>Secondary DNS</td><td><code>8.8.8.8</code></td><td>Change to <code>192.168.187.1</code> on site. The setting shares a page with the Router/AP mode toggle, so not remotely</td></tr>
+    <tr><td>Admin plane</td><td>HTTP Basic Auth over plain HTTP; the Wi-Fi passphrase shows in cleartext</td><td>Disappears when management moves to VLAN 10 behind an AP platform the Firewalla manages. Do not script against it from an untrusted segment</td></tr>
+    </tbody>
+  </table></div>
+  <p>What carries to the AP7 build: the SSID names and passphrases, the two satellite positions as the Ceiling mounts, the RBE971's spot for the Desktop, region United States. One caution from the audit: a Netgear Nighthawk 5G router on the client side intercepts admin traffic bound for other Netgear devices, which once made the Orbi look down when it was healthy. It stays off the network.</p>
+</section>
+
+<!-- 14 -->
+<section id="s14">
+  <h2><span class="k">14</span>Risks</h2>
+  <p class="src">docs/10</p>
+  <div class="tw"><table>
+    <thead><tr><th>Risk</th><th>Why</th><th>Mitigation</th></tr></thead>
+    <tbody>
+    <tr><td><strong>Sonos across VLANs</strong></td><td>The most VLAN-hostile consumer platform; discovery relies on mDNS plus SSDP and a spread of ports. Firewalla notes it may require the controller on the same SSID</td><td>All eight units in Media. Firewalla's built-in mDNS reflector and SSDP Relay Trusted↔Media; IGMP and MLD snooping off on managed switches. Moving Sonos to Trusted is a legitimate retreat</td></tr>
+    <tr><td><strong>Kasa local control</strong></td><td>Cloud control crosses VLANs; local and Home Assistant control does not</td><td>Cloud needs no rule. For local automation, one targeted allow from the automation host into IoT</td></tr>
+    <tr><td><strong>AirPlay and HomeKit</strong></td><td>Apple TVs in Media, HomeKit accessories in IoT, controllers in Trusted; all mDNS-dependent</td><td>mDNS reflection Trusted↔Media and Trusted↔IoT. Test before declaring Phase 2 done</td></tr>
+    <tr><td><strong>AP adoption and updates</strong></td><td>Firewalla ties AP7 updates to NTP and cloud reachability and warns that filtering DNS on the WAN side breaks adoption; pointing the Gold Pro's upstream at the Pi-holes is that case</td><td>After the Pi-hole upstream and the port-53 and DoH rules go in, verify the AP7s still adopt and update</td></tr>
+    <tr><td><strong>SE management across a third-party switch</strong></td><td>Whether the Gold Pro manages the Switch SE, and enforces VqLAN in its ACLs, through a MikroTik or UniFi top-of-rack switch is not documented</td><td>Test with the SE on the ToR before the cameras go live; fallback is the garage Cat6 straight to Switch X Cu 6</td></tr>
+    <tr><td><strong>Camera retention</strong></td><td>Continuous 4K on eight cameras writes 690 to 1,040 GB a day; two 11 TB drives last 21 to 34 days, not 60 to 90. Archiving to the UNAS-Pro is a copy, not extra retention</td><td>Five to seven drives in the UNVR Pro. Set the bitrate in Protect and re-check after the first week</td></tr>
+    <tr><td><strong>Copper headroom on Switch X</strong></td><td>Six drops and two AP runs use seven of eight copper ports</td><td>SFP+ 2 feeds the Mgmt breakout; SFP+ 3 and 4 take 10GBASE-T modules for the terminated spares</td></tr>
+    <tr><td><strong>Rack power and heat</strong></td><td>A rack of enterprise gear in a house is a serious electrical and thermal load; 1 kW+ is an estimate until the host list exists. The closet is 46 cu ft behind a door with three fans</td><td>Dedicated circuit, UPS sizing and a cooling plan before the rack powers on; louvered closet door</td></tr>
+    <tr><td><strong>Re-addressing sprawl</strong></td><td>Static IPs, port forwards or DNS entries pointing at devices that change VLAN will break</td><td>Inventory statics in Phase 0. Trusted keeps its /24, which avoids most of it</td></tr>
+    <tr><td><strong>Cheap PoE injectors</strong></td><td>Firewalla warns that an incompatible injector can cause AP reboots or packet loss, and requires 802.3at or bt</td><td>The Linovision 802.3bt unit qualifies; no unbranded listings</td></tr>
+    </tbody>
+  </table></div>
+</section>
+
+<!-- 15 -->
+<section id="s15">
+  <h2><span class="k">15</span>Open items</h2>
+  <p class="src">knowledge/open-questions.md · everything architectural is decided; these are tests and measurements</p>
+  <ul>
+    <li><strong>Stud bay beside the On-Q.</strong> The body is 14.3 in wide on 16 in stud centers; there may be no cavity to drill into. Measure before drilling; if there is none, the exit moves to a top knockout.</li>
+    <li><strong>Slack on the six existing drops.</strong> 3 to 4 ft is needed to reach the AC106A6 modules; less means a re-pull.</li>
+    <li><strong>AP7 Desktop location.</strong> Confirm an outlet and a data drop at the central spot.</li>
+    <li><strong>Cellular signal survey</strong> at the candidate window and wall spots on n41 and n71 before the spare run is committed; antenna SMA gender at order time.</li>
+    <li><strong>Spectrum high-split.</strong> Upgraded markets get symmetrical tiers; no California market is announced. If Carlsbad flips, the bandwidth case for local cameras weakens (privacy and retention still win). Check the account before the camera order.</li>
+    <li><strong>Firewalla tests once VLANs exist:</strong> whether Custom DNS Rules apply per network or globally; whether each block rule holds in IPv6; whether the Guest to DMZ allow works through the VqLAN group or needs an Allowed Device; whether a network-scoped Smart Queue rule is cumulative; whether Firewalla passes client identity (ECS) upstream to Pi-hole; what is blocking Netgear's update endpoints.</li>
+    <li><strong>Puli IPv6.</strong> Whether WAN2 gets a global v6 prefix, which would keep WireGuard reachable during failover.</li>
+    <li><strong>Switch X in the closet.</strong> Stand in there with the door shut and decide whether three fans are acceptable.</li>
+  </ul>
+</section>
+
+<!-- 16 -->
+<section id="s16">
+  <h2><span class="k">16</span>Sources</h2>
+  <p class="src">reference/sources.md · every URL was opened and read, not cited from a search listing</p>
+  <p>Primary facts come from the equipment itself: the Firewalla MSP dashboard, devices and box settings; the Orbi RBE971 admin pages; tape measurements in the closet. Everything else traces to a vendor page. The ones the plan leans on hardest:</p>
+  <div class="tw"><table>
+    <thead><tr><th>Source</th><th>Supports</th></tr></thead>
+    <tbody>
+    <tr><td><a href="https://help.firewalla.com/hc/en-us/articles/42156726305171-How-to-Set-Up-Firewalla-AP7-Using-VLANs-and-Managed-Switches">Firewalla: AP7 with VLANs and managed switches</a></td><td>Trunk ports with a native LAN for AP management; Wi-Fi VLANs must share that LAN's port set</td></tr>
+    <tr><td><a href="https://help.firewalla.com/hc/en-us/articles/37962250524691-Firewalla-AP7-Datasheet-Desktop-and-Ceiling">Firewalla: AP7 datasheet</a></td><td>Ceiling: PoE+, 25.5 W, 6 GHz 2×2. Desktop: 12 V / 5 A adapter, 30 W, 6 GHz 4×4</td></tr>
+    <tr><td><a href="https://help.firewalla.com/hc/en-us/articles/37151746345491-Getting-Started-with-Firewalla-Access-Point-7">Firewalla: AP7 getting started</a></td><td>Mixed Personal is WPA2 on 2.4/5 GHz and WPA3 on 6 GHz; 6 GHz needs WPA3 or Mixed Personal; bands per SSID; QR sharing</td></tr>
+    <tr><td><a href="https://firewalla.com/products/firewalla-switch-x">Firewalla: Switch X</a> and <a href="https://firewalla.com/products/firewalla-switch-se">Switch SE</a></td><td>Ports, PoE budgets, fans, temperature rating, prices and ship windows</td></tr>
+    <tr><td><a href="https://help.firewalla.com/hc/en-us/articles/360051575473">Firewalla: Multi-WAN</a></td><td>Two WANs, Failover with Auto Failback, ping and DNS tests, policy routes that drop when a WAN is down</td></tr>
+    <tr><td><a href="https://help.firewalla.com/hc/en-us/articles/360062551673-How-to-run-an-external-pi-hole-with-Firewalla">Firewalla: external Pi-hole</a>, <a href="https://help.firewalla.com/hc/en-us/articles/360035362614-What-is-DNS-Booster">DNS Booster</a>, <a href="https://help.firewalla.com/hc/en-us/articles/360056024294-Guide-How-to-configure-Custom-DNS-Rules">Custom DNS Rules</a></td><td>The two DNS architectures; DNS Booster must stay on; domain-to-internal-IP mapping, A/AAAA only</td></tr>
+    <tr><td><a href="https://help.firewalla.com/hc/en-us/articles/360049613014-Firewalla-Gold-When-my-network-is-segmented-will-I-be-able-to-use-AirPlay-and-Chromecast-across-networks">Firewalla: mDNS across segments</a></td><td>Built-in reflector; disable IGMP/MLD snooping on managed switches</td></tr>
+    <tr><td>Legrand datasheet DM0810161R2 and cutsheets (ENP4250, AC106A6, VM1002, F7526, AC1031, AC1040F)</td><td>Every On-Q dimension in the drawing</td></tr>
+    <tr><td><a href="https://media.startech.com/cms/pdfs/wallmount6_datasheet.pdf">StarTech WALLMOUNT6 datasheet</a>, <a href="https://techspecs.ui.com">UniFi tech specs</a></td><td>Rack sizes and load ratings; UNVR Pro and UNAS Pro chassis; the mini rack</td></tr>
+    <tr><td><a href="https://www.gl-inet.com/products/gl-xe3000/">GL.iNet Puli AX</a>, <a href="https://calyxinstitute.org/membership">Calyx Institute</a>, <a href="https://shop.poetexas.com/products/gbt-12v60w">PoE Texas GBT-12V60W</a></td><td>Radio specs and temperature rating; the data plan; the splitter's real output and price</td></tr>
+    <tr><td><a href="https://docs.netgate.com/pfsense/en/latest/config/advanced-admin.html">Netgate: admin access</a>, <a href="https://github.com/haproxy/haproxy/blob/master/doc/configuration.txt">HAProxy manual</a>, <a href="https://caddyserver.com/docs/automatic-https">Caddy docs</a></td><td>Moving the GUI off 443; HTTP/2 in TCP frontends; SNI and ECH; DNS-01 and wildcard sharing from 2.10</td></tr>
+    <tr><td><a href="https://kb.netgear.com/000070829/RBE970-RBE971-Firmware-Version-12-1-10-12-North-America-Only">Netgear KB 000070829</a>, <a href="https://dongknows.com/netgear-orbi-970-series-wi-fi-7-mesh-review/">Orbi 970 review</a></td><td>Firmware 12.1.10.12; the reserved backhaul band</td></tr>
+    </tbody>
+  </table></div>
+  <p>Retractions made during planning are recorded in <code>knowledge/corrections-log.md</code>, and the plan's history in <code>knowledge/changelog.md</code>. This page describes the plan as it stands.</p>
+</section>
+
+<footer>Rendered from the <code>docs/</code> set. Prices and ship dates are as published at the time of checking; Switch X, Switch SE and the AP7 line are pre-sale or beta, so re-verify at purchase.</footer>
+
+</main>
 </div>
 
-<h3>What dedicated Pis actually fix</h3>
-
-<p>Most of the objections to Pi-hole on a Firewalla are objections to <em>co-residency</em>, not to the
-combination. Running them on separate hardware removes nearly all of them.</p>
-
-<div class="tbl-wrap">
-<table>
-<thead><tr><th>Issue</th><th>Pi-hole on the Firewalla</th><th>Dedicated Pis</th></tr></thead>
-<tbody>
-<tr><td>Conflicts with Family Protect / Adblock / DoH</td><td class="n">Cannot coexist — Firewalla's features take priority</td><td class="y"><strong>Solved.</strong> They stack instead: Firewalla filters first, forwards what's left to Pi-hole. Firewalla's own guide confirms "all kinds of DNS-based features work"</td></tr>
-<tr><td>Survives reboot</td><td class="n">Needs hand-written <code>post_main.d</code> scripts</td><td class="y"><strong>Solved.</strong> Not applicable</td></tr>
-<tr><td>Storage pressure on the router</td><td class="n">Firewalla recommends a separate USB/SD disk</td><td class="y"><strong>Solved.</strong> Not applicable</td></tr>
-<tr><td>Support status</td><td class="n">Beta, on your production edge router</td><td class="y"><strong>Solved.</strong> Documented, supported configuration</td></tr>
-<tr><td>Single point of failure</td><td class="n">DNS dies with the router</td><td class="y"><strong>Solved.</strong> Two Pis, both configured as upstreams</td></tr>
-<tr><td><strong>Per-client visibility in Pi-hole</strong></td><td class="n">Lost — all queries appear from <code>172.16.0.1</code></td><td class="c"><strong>Not solved.</strong> Structural to Firewalla forwarding upstream, not to where Pi-hole runs</td></tr>
-</tbody>
-</table>
-</div>
-
-<div class="note crit">
-  <span class="lbl">Correction: do not disable DNS Booster</span>
-  <p>An earlier draft suggested turning DNS Booster off to recover per-client visibility. <strong>That was
-  bad advice.</strong> Firewalla's documentation warns plainly: <em>"If you turn DNS Booster off, many DNS
-  blocks will NOT work"</em> — some protections combine DNS blocking with IP blocking, and losing the cache
-  undermines them. It is also a per-device setting, not global. Trading away DNS blocking on a device to see
-  its name in Pi-hole's log is the same bad bargain in a smaller package. Leave it on.</p>
-</div>
-
-<div class="note good">
-  <span class="lbl">Why losing per-client visibility in Pi-hole doesn't matter</span>
-  <p>You already have per-device DNS visibility — in Firewalla, tied to its device inventory, its 282 rules
-  and the VLANs you're about to build. <strong>You don't need it twice.</strong> The division of labour is
-  clean: Pi-hole contributes blocklists, regex rules and aggressive filtering; Firewalla owns per-device
-  policy, attribution and enforcement. The one capability you give up is one you already have somewhere
-  better.</p>
-</div>
-
-<p><strong>Turn on <code>revServers</code>.</strong> Formerly called conditional forwarding, it lets Pi-hole
-resolve local device names when it isn't the DHCP server — it forwards reverse DNS lookups to your DHCP
-server so reports show hostnames instead of bare IPs. Since the Firewalla is your DHCP authority, point
-<code>revServers</code> at it with your local CIDR. Without this, every Pi-hole report is a list of
-IP addresses.</p>
-
-<p><strong>Pi-hole v6 changed authentication.</strong> The API is now session-based — POST to
-<code>/api/auth</code> for a session ID (SID) rather than a static token, with support for application
-passwords and TOTP. That matters when you configure nebula-sync: generate an <strong>application
-password</strong> for it rather than handing it your admin password. If you run Pi-hole in Docker, note also
-that every v5 environment variable was renamed to an <code>FTLCONF_</code> equivalent in v6.</p>
-
-<h3>Two leaks worth closing</h3>
-
-<p><strong>Hardcoded DNS.</strong> You already found one: the Orbi resolving via <code>8.8.8.8</code>, around
-your Firewalla. That's the same class of problem at scale — plenty of IoT devices ship with hardcoded public
-resolvers and will ignore whatever DHCP hands them. With ~28 Kasa devices and Nest gear, assume some are
-doing it. The fix is a Firewalla rule <strong>blocking outbound port 53 to anything except your resolvers</strong>,
-so a device that insists on Google DNS simply fails and falls back to the address it was given. Worth doing
-once the VLANs exist, since you can scope it per-network.</p>
-
-<p><strong>DNS-over-HTTPS.</strong> A client using DoH bypasses Pi-hole <em>and</em> Firewalla — it's just
-HTTPS on 443, invisible to port-53 rules. Browsers increasingly enable it by default. Firewalla can block
-DoH; turn that on, or the filtering you've built is optional from the client's point of view.</p>
-
-<h2>14 · Sources &amp; verification log</h2>
-
-<h3>Primary — read directly from your equipment</h3>
-
-<p>The bulk of the situational analysis came from your own devices during this session, not from
-documentation. These are first-hand observations, timestamped 19–20 Aug 2026.</p>
-
-<div class="tbl-wrap">
-<table>
-<thead><tr><th>Source</th><th>What it established</th></tr></thead>
-<tbody>
-<tr><td><strong>Firewalla MSP — Dashboard</strong><br><code>my.firewalla.net/box-f4729119…/dashboard</code></td><td>116 devices, 282 rules, 3,839 alarms; 2.77 TB/month, 103 GB/day; top talkers (Nest-Cam 11.4 GB up, Nest-5B38 6.8 GB up); <code>googleapis.com</code> at 20.7 GB of 30 GB daily upload; 23% of flows blocked</td></tr>
-<tr><td><strong>Firewalla MSP — Devices</strong></td><td>Full inventory with IP / MAC / network. Established the flat <code>192.168.187.0/24</code> on <code>LAN 1</code>, plus WireGuard and AmneziaWG tunnels. Device census by class</td></tr>
-<tr><td><strong>Firewalla MSP — Box Settings</strong></td><td>Gold Pro, firmware 1.983, Router Mode, public IP, Carlsbad, MSP Lite plan (Networks page gated)</td></tr>
-<tr><td><strong>Orbi RBE971 — Advanced Home</strong><br><code>192.168.187.230</code></td><td>Operation Mode AP, DHCP off, gateway <code>.1</code>, DNS <code>.1</code> + <code>8.8.8.8</code>; 2.4 GHz on channel 2; 5 GHz 36–64 at 160 MHz incl. DFS; 6 GHz 320 MHz; guest SSID present but <strong>off</strong></td></tr>
-<tr><td><strong>Orbi — Attached Devices</strong></td><td>Both satellites (MB <code>.2</code>, G <code>.192</code>) on <strong>wired</strong> backhaul, status Good. 63–64 clients with per-band and per-AP attribution</td></tr>
-<tr><td><strong>Orbi — Wireless Settings</strong></td><td>SSID <code>pinnacle</code> (WPA2+WPA3 transition); existing IoT SSID <code>pinnacle-IoT</code>, 2.4 GHz only, WPA2-PSK</td></tr>
-<tr><td><strong>Orbi — Advanced Wireless</strong></td><td><strong>No transmit power control exists</strong> — only region, 20/40 coexistence, preamble mode, MLO backhaul width</td></tr>
-<tr><td><strong>Orbi — Firmware Update</strong></td><td>All three units on V9.13.2.1; update check failing: router "Update failed", Satellite-MB "Service unreachable"; auto-update enabled</td></tr>
-<tr><td><strong>5 GHz channel dropdown</strong> (DOM read)</td><td>Selectable channels are <strong>36, 40, 44, 48, 52–64 (DFS) only</strong> — no UNII-3, no width control. This is what proved the DFS problem unfixable</td></tr>
-</tbody>
-</table>
-</div>
-
-<h3>External sources</h3>
-
-<div class="tbl-wrap">
-<table>
-<thead><tr><th>Source</th><th>Supports</th></tr></thead>
-<tbody>
-<tr><td><a href="https://help.firewalla.com/hc/en-us/community/posts/35914081837459-Security-Hole-with-Guest-Wifi-Network-of-Netgear-Orbi-970-Series-Quad-Band-Mesh-WiFi-7">Firewalla community — Orbi 970 guest Wi-Fi hole</a></td><td>Orbi 970 cannot tag VLANs in AP mode; guest NATs behind the Orbi and is invisible to Firewalla (§1)</td></tr>
-<tr><td><a href="https://help.firewalla.com/hc/en-us/articles/360010465893-Guide-How-to-Choose-between-Different-Firewalla-Products">Firewalla — model comparison</a></td><td>Gold Pro 10 Gbps <em>with</em> IDS/IPS; methodology note that published figures include inspection (§2)</td></tr>
-<tr><td><a href="https://help.firewalla.com/hc/en-us/articles/42156726305171-How-to-Set-Up-Firewalla-AP7-Using-VLANs-and-Managed-Switches">Firewalla — AP7 with VLANs &amp; managed switches</a></td><td>Trunk port and native-VLAN requirements; Wi-Fi VLANs must share the management LAN's port set (§5)</td></tr>
-<tr><td><a href="https://firewalla.com/products/firewalla-switch-x">Firewalla — Switch X</a></td><td>8×10G PoE++, 4×SFP+, 410 W, 240 Gbps, 256 VLANs, 3 fans, $649.20 pre-sale as of 28 Aug 2026 ($709 list), ships Sept/Oct tentative</td></tr>
-<tr><td><a href="https://firewalla.com/products/firewalla-switch-se">Firewalla — Switch SE</a></td><td>8×2.5G, 2×10G SFP+, <strong>802.3af/at</strong>, 114 W, 80 Gbps, fanless, $319 / $299.30, <strong>early access sold out</strong>, Oct/Nov 2026 (§4)</td></tr>
-<tr><td><a href="https://help.firewalla.com/hc/en-us/articles/37962250524691-Firewalla-AP7-Datasheet-Desktop-and-Ceiling">Firewalla — AP7 datasheet</a></td><td>AP7C: PoE+, 25.5 W, 6 GHz <strong>2×2</strong>. AP7D: DC only, 30 W, 6 GHz <strong>4×4</strong> (§4, §5)</td></tr>
-<tr><td><a href="https://firewalla.com/products/firewalla-ap7">Firewalla — AP7</a></td><td>$369 sale / $399 regular; 10G + 2.5G ports; ships 1–2 days, US only (§4)</td></tr>
-<tr><td><a href="https://help.firewalla.com/hc/en-us/articles/360056024294-Guide-How-to-configure-Custom-DNS-Rules">Firewalla — Custom DNS Rules</a></td><td>Domain→internal-IP mapping; A/AAAA only; TLD captures subdomains; applies globally across networks (§11)</td></tr>
-<tr><td><a href="https://community.netgear.com/kb/en-home-orbi-firmware-releases/new---rbe970--rbe971-firmware-version-9-13-2-1-released/2469286">Netgear — RBE970/971 firmware 9.13.2.1</a></td><td>Released 31 Oct 2025 for eight RBE97x models; includes an <strong>authentication bypass fix</strong>; no newer release indicated as of the article's June 2026 revision (§9)</td></tr>
-<tr><td><a href="https://www.homedepot.com/p/Legrand-On-Q-42-in-45-28-in-Total-Wi-Fi-Ready-Structured-Media-Plastic-Enclosure-with-Trim-Ring-and-Hinged-Door-ENP4250NA/336117051">Legrand On-Q 42" enclosure</a></td><td>45.28 × 17.48 × <strong>5.52 in</strong>, ABS plastic, passively vented door (§10)</td></tr>
-<tr><td><a href="https://dongknows.com/firewalla-gold-review/">Firewalla Gold gen-1 review</a></td><td>4× 1 GbE, quad-core 2.2 GHz, 4 GB RAM, 3 Gbps processing — the 1G ports that moved the lab off it (§12)</td></tr>
-<tr><td><a href="https://ifeeltech.com/blog/can-unifi-protect-use-a-nas-unas-vs-unvr">UNAS vs UNVR for Protect</a></td><td>UNAS-Pro <strong>cannot</strong> run UniFi Protect; a UniFi OS console is required (§4)</td></tr>
-<tr><td><a href="https://ifeeltech.com/blog/unifi-unvr-vs-unvr-pro-comparison">UNVR model comparison</a></td><td>UNVR Instant caps at 6 cameras; UNVR G2 $699, 4 bays, 30 cameras. Storage corrected 22 Aug: 4K continuous ≈ 80–105 GB/day per camera (§4)</td></tr>
-<tr><td><a href="https://www.connectcalifornia.com/internet-service/spectrum-pricing">ConnectCalifornia — Spectrum pricing</a></td><td>GIG = <strong>1000/35</strong>; no symmetrical or multi-gig tier; upload upgrade to 150–500 Mb/s targeted 2025–26 (§1)</td></tr>
-<tr><td><a href="https://documentation.meraki.com/Wireless/Design_and_Configure/Architecture_and_Best_Practices/Wi-Fi_7_(802.11be)_Technical_Guide">Cisco Meraki — Wi-Fi 7 guide</a></td><td>3 non-overlapping 320 MHz channels in US 6 GHz <strong>in LPi mode</strong>; only 1 in Standard Power (§5)</td></tr>
-<tr><td><a href="https://dongknows.com/netgear-orbi-970-series-wi-fi-7-mesh-review/">Orbi 970 series review — band architecture</a></td><td>5GHz-1 upper band permanently reserved for backhaul, unavailable to clients even with wired backhaul; MLO combines 5GHz-1 + 6 GHz (§9)</td></tr>
-<tr><td><a href="https://help.firewalla.com/hc/en-us/articles/360062551673-How-to-run-an-external-pi-hole-with-Firewalla">Firewalla — external Pi-hole</a></td><td>Two architectures and their tradeoffs; direct-to-Pi-hole bypasses Firewalla's DNS layer; upstream mode means Pi-hole sees only Firewalla (§13)</td></tr>
-<tr><td><a href="https://help.firewalla.com/hc/en-us/articles/360049613014-Firewalla-Gold-When-my-network-is-segmented-will-I-be-able-to-use-AirPlay-and-Chromecast-across-networks">Firewalla — mDNS across segments</a></td><td>Built-in mDNS reflector, on by default; disable IGMP/MLD snooping on managed switches (§3, §7 risks)</td></tr>
-<tr><td><a href="https://help.firewalla.com/hc/en-us/articles/37151746345491-Getting-Started-with-Firewalla-Access-Point-7">Firewalla — AP7 getting started</a></td><td>"Mixed Personal" = WPA2 on 2.4/5 GHz + WPA3 on 6 GHz per SSID; "6 GHz only works with WPA3 or Mixed Personal"; per-SSID band selection; 6 GHz disabled with personal keys (§5)</td></tr>
-<tr><td><a href="https://help.firewalla.com/hc/en-us/community/posts/36637938357779-AP7-Beta-Known-Facts-and-Issues">Firewalla — AP7 known facts &amp; issues</a></td><td>PPSK is WPA2-only; some legacy IoT joins only WPA2-only SSIDs; hidden SSIDs can't be 6 GHz-only (§5)</td></tr>
-<tr><td><a href="https://www.ezurio.com/support/faqs/in-6ghz-band-is-wpa3-able-to-run-in-transition-mode">Ezurio — WPA3 on 6 GHz</a></td><td>"In 6GHz band, WPA2 is no longer supported, but just WPA3, and no support of transition mode" (§5)</td></tr>
-<tr><td><a href="https://github.com/lovelaze/nebula-sync">nebula-sync</a></td><td>Syncs Pi-hole v6.x config to replicas via API; Teleporter or selective; Docker, cron, webhooks (§13)</td></tr>
-<tr><td><a href="https://en.wikipedia.org/wiki/Category_6_cable">Category 6 cable — TIA distances</a></td><td>Cat6 → 10GBASE-T at <strong>55 m</strong>, ~37 m under alien crosstalk; Cat6A → 100 m (§10)</td></tr>
-<tr><td><a href="https://docs.netgate.com/pfsense/en/latest/config/advanced-admin.html">Netgate — pfSense admin access</a></td><td>GUI defaults to HTTPS/443; moving it frees ports "for other services such as HAProxy"; do not expose GUI even on non-default ports (§11)</td></tr>
-<tr><td><a href="https://github.com/haproxy/haproxy/blob/master/doc/configuration.txt">HAProxy — upstream configuration docs</a> <em>(via Context7)</em></td><td><code>req.ssl_sni</code> backend selection; TCP-mode frontends cannot parse HTTP/2 for Host-header routing (§11)</td></tr>
-<tr><td><a href="https://caddyserver.com/docs/caddyfile/directives/reverse_proxy">Caddy — Caddyfile directives</a> <em>(via Context7)</em></td><td><code>reverse_proxy</code> syntax; <code>tls { dns … }</code> for the DNS challenge; implicit wildcard-cert inheritance across site blocks (§11)</td></tr>
-<tr><td><a href="https://github.com/pi-hole/docs">Pi-hole — official docs</a> <em>(via Context7)</em></td><td><code>dns.EDNS0ECS</code> recovers client IPs behind NAT (default on); <code>revServers</code> for hostname resolution; v6 session-based API auth; v5→v6 <code>FTLCONF_</code> variable rename (§13)</td></tr>
-<tr><td><a href="https://help.firewalla.com/hc/en-us/articles/360035362614-What-is-DNS-Booster">Firewalla — What is DNS Booster</a></td><td>In-memory DNS cache; per-device setting; <strong>"If you turn DNS Booster off, many DNS blocks will NOT work"</strong> (§13)</td></tr>
-<tr><td><a href="https://help.firewalla.com/hc/en-us/articles/360051625034-Guide-How-to-install-Pi-Hole-on-Gold-Purple-Orange-Beta">Firewalla — Pi-hole on the box (beta)</a></td><td>Conflicts with Family Protect/Adblock/DoH; DNS Booster collapses client identity to <code>172.16.0.1</code>; no reboot persistence without scripts; storage warning (§13)</td></tr>
-</tbody>
-</table>
-</div>
-
-<h3>Corrections &amp; retractions</h3>
-
-<div class="tbl-wrap">
-<table>
-<thead><tr><th>Originally claimed</th><th>Outcome</th><th>Why it was wrong</th></tr></thead>
-<tbody>
-<tr><td>Orbi admin daemon had failed</td><td class="n">Retracted</td><td>A Netgear Nighthawk 5G router on the client side was intercepting admin traffic bound for the Orbi. The RBE971 was healthy throughout</td></tr>
-<tr><td>25–30 home runs → need 3–4 switches</td><td class="n">Retracted</td><td>Assumed drop count instead of asking. Actual: 6 live drops, 8 patch positions</td></tr>
-<tr><td>AP7C draws 30 W, 6 GHz 4×4</td><td class="c">Corrected</td><td>Carried from memory. Datasheet: 25.5 W and 2×2 — the 4×4 radio is the Desktop model</td></tr>
-<tr><td>Switch SE $299, "PoE+"</td><td class="c">Corrected</td><td>$319 regular; 802.3af/at with no PoE++ headroom; early access sold out</td></tr>
-<tr><td>Move 5 GHz to channel 149</td><td class="n">Retracted</td><td>Firmware offers no UNII-3 channels and no width control. Not achievable on this hardware</td></tr>
-<tr><td>Per-AP channel planning on the Orbi</td><td class="c">Corrected</td><td>Orbi sets one channel per band mesh-wide. Per-AP planning applies to the AP7 build only</td></tr>
-<tr><td>Disable DNS Booster for per-client Pi-hole stats</td><td class="n">Retracted</td><td>Firewalla warns it breaks DNS blocking. Bad trade, and per-device only</td></tr>
-<tr><td>Disable 240 MHz MLO backhaul</td><td class="n">Retracted</td><td>Would not reclaim the reserved 5GHz-1 band, and narrows a wireless fallback path we observed in use. Leave enabled</td></tr>
-</tbody>
-</table>
-</div>
-
-<div class="note">
-  <span class="lbl">Reference integrity</span>
-  <p>Every URL in the table above was <strong>opened and read</strong>, not cited from a search-result
-  listing. Three entries (HAProxy, Caddy, Pi-hole docs) were retrieved through Context7 against upstream
-  documentation. One citation was replaced during this audit: a <code>kb.netgear.com</code> firmware page
-  that turned out to be unreadable (robots-disallowed) and had been cited from search results without being
-  opened — it now points at the Netgear community release note, which was read in full.</p>
-  <p>Where a claim rests on observation of your own equipment rather than a document, it is listed under
-  <em>Primary</em> above rather than given a URL. Anything not traceable to either table should be treated
-  as unverified.</p>
-</div>
-
-<div class="note warn">
-  <span class="lbl">Watch item: Spectrum upload upgrade</span>
-  <p>Spectrum has been targeting an upstream upgrade from the current 35 Mb/s cap to
-  <strong>150–500 Mb/s</strong>, signalled for 2025–2026. Not live on your plan today, and the camera-migration
-  argument rests on that 35 Mb/s ceiling. If it lands in Carlsbad before you buy, the bandwidth urgency drops
-  — though local recording still wins on privacy, retention and subscription cost. Check your account before
-  committing to the UNVR.</p>
-</div>
-
-<footer>
-  Compiled from live Firewalla MSP telemetry and the Orbi RBE971 admin UI (19 Aug 2026), plus current vendor documentation.
-  Prices and ship dates are as published at drafting and should be re-verified at purchase —
-  Switch X, Switch SE and the AP7 line are all beta or pre-sale.
-</footer>
-
-</div>
+<dialog class="lightbox" aria-label="Drawing, full size">
+  <button class="lb-close" type="button">Close (Esc)</button>
+  <div class="lb-scroll"><img alt=""></div>
+</dialog>
+<script>
+(function () {
+  var dlg = document.querySelector('dialog.lightbox');
+  if (dlg && typeof dlg.showModal === 'function') {
+    var img = dlg.querySelector('img');
+    document.querySelectorAll('a.zoom').forEach(function (a) {
+      a.addEventListener('click', function (e) {
+        if (e.metaKey || e.ctrlKey || e.shiftKey) return;
+        e.preventDefault();
+        img.src = a.getAttribute('href');
+        img.alt = a.querySelector('img').alt;
+        dlg.showModal();
+      });
+    });
+    dlg.querySelector('.lb-close').addEventListener('click', function () { dlg.close(); });
+    dlg.querySelector('.lb-scroll').addEventListener('click', function (e) { if (e.target !== img) dlg.close(); });
+    dlg.addEventListener('close', function () { img.src = ''; });
+  }
+  // index: mark the section in view
+  var links = Array.prototype.slice.call(document.querySelectorAll('.index a[href^="#"]'));
+  var byId = {};
+  links.forEach(function (a) { byId[a.getAttribute('href').slice(1)] = a; });
+  if ('IntersectionObserver' in window) {
+    var current = null;
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) {
+          if (current) current.classList.remove('on');
+          current = byId[en.target.id];
+          if (current) {
+            current.classList.add('on');
+            if (window.innerWidth <= 1080 && current.scrollIntoView) current.scrollIntoView({ block: 'nearest', inline: 'center' });
+          }
+        }
+      });
+    }, { rootMargin: '-10% 0px -75% 0px', threshold: 0 });
+    document.querySelectorAll('main section[id]').forEach(function (s) { io.observe(s); });
+  }
+})();
+</script>
 </body>
 </html>
