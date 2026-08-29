@@ -74,16 +74,17 @@
   <rect x="25" y="71" width="139" height="27" class="part-d" rx="2"/>
   <text x="94" y="82" class="t-in" text-anchor="middle">UNAS-Pro</text>
   <g fill="#ffffff" stroke="#3b4252" stroke-width="0.5"><rect x="31" y="87" width="16" height="6"/><rect x="49" y="87" width="16" height="6"/><rect x="67" y="87" width="16" height="6"/><rect x="85" y="87" width="16" height="6"/><rect x="103" y="87" width="16" height="6"/><rect x="121" y="87" width="16" height="6"/><rect x="139" y="87" width="16" height="6"/></g>
-  <!-- U36-32 DXP8800 Plus on a shelf: 10.2 x 7.4 in = 82 x 59 -->
+  <!-- U36-32: one heavy shelf, DXP8800 Plus (10.2 x 7.4 in = 82 x 59) and DXP4800 Plus (7.0 x 7.0 in = 56 x 56) side by side, 17.2 in of 19 -->
   <rect x="21" y="99" width="147" height="69" class="part"/>
-  <rect x="53" y="103" width="82" height="59" class="part-d" rx="2"/>
-  <text x="94" y="128" class="t-in" text-anchor="middle">DXP8800 Plus</text>
-  <text x="94" y="140" class="t-in2" text-anchor="middle">8-bay · production NAS</text>
-  <!-- U31-28 DXP4800 Plus on a shelf -->
-  <rect x="21" y="169" width="147" height="55" class="part"/>
-  <rect x="62" y="173" width="64" height="47" class="part-d" rx="2"/>
-  <text x="94" y="194" class="t-in" text-anchor="middle">DXP4800 Plus</text>
-  <text x="94" y="206" class="t-in2" text-anchor="middle">backup target</text>
+  <rect x="24" y="103" width="82" height="59" class="part-d" rx="2"/>
+  <text x="65" y="128" class="t-in" text-anchor="middle">DXP8800 Plus</text>
+  <text x="65" y="140" class="t-in2" text-anchor="middle">production NAS</text>
+  <rect x="110" y="106" width="56" height="56" class="part-d" rx="2"/>
+  <text x="138" y="131" class="t-in" text-anchor="middle">DXP4800</text>
+  <text x="138" y="143" class="t-in2" text-anchor="middle">backup</text>
+  <!-- U31-28 free -->
+  <rect x="21" y="169" width="147" height="55" class="ghost" rx="1"/>
+  <text x="94" y="200" class="t-in2" text-anchor="middle">U31 to U28 free · production growth</text>
   <!-- U27 Plex, U26 Pi/pfSense, U25 DLI 222, U24 TPE -->
   <rect x="21" y="225" width="147" height="13" class="ghost" rx="1"/>
   <text x="94" y="234" class="t-in2" text-anchor="middle">Plex host · form factor pending</text>
@@ -133,17 +134,16 @@
     <circle cx="-40" cy="57" r="8"/><text x="-40" y="60.5">2</text>
     <circle cx="-40" cy="85" r="8"/><text x="-40" y="88.5">3</text>
     <circle cx="-40" cy="133" r="8"/><text x="-40" y="136.5">4</text>
-    <circle cx="-40" cy="196" r="8"/><text x="-40" y="199.5">5</text>
-    <circle cx="-40" cy="238" r="8"/><text x="-40" y="241.5">6</text>
-    <circle cx="-40" cy="266" r="8"/><text x="-40" y="269.5">7</text>
-    <circle cx="-40" cy="301" r="8"/><text x="-40" y="304.5">8</text>
-    <circle cx="-40" cy="364" r="8"/><text x="-40" y="367.5">9</text>
-    <circle cx="-40" cy="434" r="8"/><text x="-40" y="437.5">10</text>
-    <circle cx="-40" cy="476" r="8"/><text x="-40" y="479.5">11</text>
-    <circle cx="-40" cy="575" r="8"/><text x="-40" y="578.5">12</text>
+    <circle cx="-40" cy="238" r="8"/><text x="-40" y="241.5">5</text>
+    <circle cx="-40" cy="266" r="8"/><text x="-40" y="269.5">6</text>
+    <circle cx="-40" cy="301" r="8"/><text x="-40" y="304.5">7</text>
+    <circle cx="-40" cy="364" r="8"/><text x="-40" y="367.5">8</text>
+    <circle cx="-40" cy="434" r="8"/><text x="-40" y="437.5">9</text>
+    <circle cx="-40" cy="476" r="8"/><text x="-40" y="479.5">10</text>
+    <circle cx="-40" cy="575" r="8"/><text x="-40" y="578.5">11</text>
   </g>
   <g class="lead">
-    <line x1="-32" y1="35" x2="21" y2="35"/><line x1="-32" y1="57" x2="25" y2="57"/><line x1="-32" y1="85" x2="25" y2="85"/><line x1="-32" y1="133" x2="21" y2="133"/><line x1="-32" y1="196" x2="21" y2="196"/><line x1="-32" y1="238" x2="21" y2="238"/><line x1="-32" y1="266" x2="21" y2="266"/><line x1="-32" y1="301" x2="21" y2="301"/><line x1="-32" y1="364" x2="21" y2="364"/><line x1="-32" y1="434" x2="21" y2="434"/><line x1="-32" y1="476" x2="21" y2="476"/><line x1="-32" y1="575" x2="21" y2="575"/>
+    <line x1="-32" y1="35" x2="21" y2="35"/><line x1="-32" y1="57" x2="25" y2="57"/><line x1="-32" y1="85" x2="25" y2="85"/><line x1="-32" y1="133" x2="21" y2="133"/><line x1="-32" y1="238" x2="21" y2="238"/><line x1="-32" y1="266" x2="21" y2="266"/><line x1="-32" y1="301" x2="21" y2="301"/><line x1="-32" y1="364" x2="21" y2="364"/><line x1="-32" y1="434" x2="21" y2="434"/><line x1="-32" y1="476" x2="21" y2="476"/><line x1="-32" y1="575" x2="21" y2="575"/>
   </g>
 
   <line x1="-60" y1="642" x2="250" y2="642" stroke="#1f2430" stroke-width="1.5"/>
@@ -159,31 +159,30 @@
   <text x="14" y="38" class="t-sub">SE #1: the eight camera runs and the UNVR at 10G, fiber pair B. SE #2: production hosts, pair C</text>
   <text x="0" y="60" class="t-key"><tspan font-weight="600">2</tspan>  UNVR Pro · U40 to U39 · 2U, 17.4 × 12.8 × 3.4, 7 bays; 10G SFP+ to SE #1</text>
   <text x="0" y="82" class="t-key"><tspan font-weight="600">3</tspan>  UNAS-Pro · U38 to U37 · Protect archive target; 1G to SE #2</text>
-  <text x="0" y="104" class="t-key"><tspan font-weight="600">4</tspan>  UGREEN DXP8800 Plus · U36 to U32, on a shelf · 14.4 × 10.2 × 7.4</text>
-  <text x="14" y="118" class="t-sub">8-bay, i5-1235U, 2 × 10GbE: one to SE #2 at 10G (module), one to the storage net</text>
-  <text x="0" y="140" class="t-key"><tspan font-weight="600">5</tspan>  UGREEN DXP4800 Plus · U31 to U28, on a shelf</text>
-  <text x="14" y="154" class="t-sub">4-bay, 10GbE + 2.5GbE: backup target for the 8800; 2.5G to SE #2, 10G to the storage net</text>
-  <text x="0" y="176" class="t-key"><tspan font-weight="600">6</tspan>  Plex host, Pi #2, pfSense · U27 to U26</text>
-  <text x="14" y="190" class="t-sub">Plex host form factor pending. Pi #2: Pi-hole, NUT for the rack UPS, PoE from the TPE-1020WS</text>
-  <text x="0" y="212" class="t-key"><tspan font-weight="600">7</tspan>  DLI 222 (production PDU) and TRENDnet TPE-1020WS · U25 to U24</text>
-  <text x="14" y="226" class="t-sub">TPE-1020WS: 8 × GbE PoE+, 75 W, Mgmt only, off SE #2: Pi #2, BMCs, JetKVMs, OOB Cat6</text>
-  <text x="0" y="248" class="t-key"><tspan font-weight="600">8</tspan>  Lab switches · U23 to U21, all owned</text>
-  <text x="14" y="262" class="t-sub">QNAP QSW-M408-4C ToR on pair A; GP-2100 #1 for copper-NIC hosts; GP-2100 #2 storage net</text>
-  <text x="0" y="284" class="t-key"><tspan font-weight="600">9</tspan>  Three Xeon hosts · U20 to U15, drawn at 2U each · specs pending</text>
-  <text x="14" y="298" class="t-sub">The rails adjust 25.7 to 34.5 in deep, which rack servers need and the mini racks could not give</text>
-  <text x="0" y="320" class="t-key"><tspan font-weight="600">10</tspan>  QNAP TS-932PX and TS-563 · U14 to U11, on a shelf</text>
-  <text x="14" y="334" class="t-sub">Lab NAS on the ToR at 10G, VLAN 99; both still hold Plex data until it is consolidated on the 8800</text>
-  <text x="0" y="356" class="t-key"><tspan font-weight="600">11</tspan>  Gold gen-1 (nested lab firewall) and the lab PDU · U10 to U9</text>
-  <text x="0" y="378" class="t-key"><tspan font-weight="600">12</tspan>  Rack UPS · U4 to U1 · 2U to 4U, sized once the servers are known</text>
+  <text x="0" y="104" class="t-key"><tspan font-weight="600">4</tspan>  UGREEN DXP8800 Plus and DXP4800 Plus on one 5U shelf · U36 to U32</text>
+  <text x="14" y="118" class="t-sub">8800: 14.4 × 10.2 × 7.4, 8-bay, i5, 2 × 10GbE (one to SE #2 by module, one to the storage net).</text>
+  <text x="14" y="130" class="t-sub">4800: 10.1 × 7.0 × 7.0, backup target, 2.5G to SE #2, 10G to the storage net. 17.2 in side by side</text>
+  <text x="0" y="154" class="t-key"><tspan font-weight="600">5</tspan>  Plex host, Pi #2, pfSense · U27 to U26</text>
+  <text x="14" y="168" class="t-sub">Plex host form factor pending. Pi #2: Pi-hole, NUT for the rack UPS, PoE from the TPE-1020WS</text>
+  <text x="0" y="190" class="t-key"><tspan font-weight="600">6</tspan>  DLI 222 (production PDU) and TRENDnet TPE-1020WS · U25 to U24</text>
+  <text x="14" y="204" class="t-sub">TPE-1020WS: 8 × GbE PoE+, 75 W, Mgmt only, off SE #2: Pi #2, BMCs, JetKVMs, OOB Cat6</text>
+  <text x="0" y="226" class="t-key"><tspan font-weight="600">7</tspan>  Lab switches · U23 to U21, all owned</text>
+  <text x="14" y="240" class="t-sub">QNAP QSW-M408-4C ToR on pair A; GP-2100 #1 for copper-NIC hosts; GP-2100 #2 storage net</text>
+  <text x="0" y="262" class="t-key"><tspan font-weight="600">8</tspan>  Three Xeon hosts · U20 to U15, drawn at 2U each · specs pending</text>
+  <text x="14" y="276" class="t-sub">The rails adjust 25.7 to 34.5 in deep, which rack servers need and the mini racks could not give</text>
+  <text x="0" y="298" class="t-key"><tspan font-weight="600">9</tspan>  QNAP TS-932PX and TS-563 · U14 to U11, on a shelf</text>
+  <text x="14" y="312" class="t-sub">Lab NAS on the ToR at 10G, VLAN 99; both still hold Plex data until it is consolidated on the 8800</text>
+  <text x="0" y="334" class="t-key"><tspan font-weight="600">10</tspan>  Gold gen-1 (nested lab firewall) and the lab PDU · U10 to U9</text>
+  <text x="0" y="356" class="t-key"><tspan font-weight="600">11</tspan>  Rack UPS · U4 to U1 · 2U to 4U, sized once the servers are known</text>
 
-  <text x="0" y="414" class="t-h">TWO FABRICS, ONE CABINET · PLUS A STORAGE NETWORK · 38 OF 42 U USED</text>
-  <text x="0" y="434" class="t-key">Each garage switch has its own fiber pair to Switch X; production (top) and lab</text>
-  <text x="0" y="448" class="t-key">(bottom) each have their own PDU. The cameras, the NAS and the Pi never touch</text>
-  <text x="0" y="462" class="t-key">the lab switch. The storage switch is a non-routed 10G segment between second</text>
-  <text x="0" y="476" class="t-key">NICs in the NAS and the Xeons; NFS and iSCSI only, no gateway, no firewall.</text>
+  <text x="0" y="392" class="t-h">TWO FABRICS, ONE CABINET · PLUS A STORAGE NETWORK · 34 OF 42 U USED</text>
+  <text x="0" y="412" class="t-key">Each garage switch has its own fiber pair to Switch X; production (top) and lab</text>
+  <text x="0" y="426" class="t-key">(bottom) each have their own PDU. The cameras, the NAS and the Pi never touch</text>
+  <text x="0" y="440" class="t-key">the lab switch. The storage switch is a non-routed 10G segment between second</text>
+  <text x="0" y="454" class="t-key">NICs in the NAS and the Xeons; NFS and iSCSI only, no gateway, no firewall.</text>
 
-  <text x="0" y="512" class="t-h">DEPTH · 34.5 in max rail depth · 6 px = 1 in</text>
-  <g transform="translate(0 522)">
+  <text x="0" y="490" class="t-h">DEPTH · 34.5 in max rail depth · 6 px = 1 in</text>
+  <g transform="translate(0 500)">
     <line x1="0" y1="0" x2="0" y2="64" stroke="#1f2430" stroke-width="1.5"/>
     <line x1="207" y1="-4" x2="207" y2="68" stroke="#6b7280" stroke-width="0.7" stroke-dasharray="3 2"/>
     <rect x="0" y="4" width="76.8" height="12" class="depth-bar"/><text x="82" y="14" class="t-in">UNVR / UNAS-Pro 12.8</text>
