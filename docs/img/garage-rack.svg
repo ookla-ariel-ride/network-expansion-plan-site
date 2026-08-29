@@ -109,9 +109,9 @@
   <text x="94" y="304" class="t-in2" text-anchor="middle">GP-2100 #1 · lab 10GBASE-T</text>
   <rect x="21" y="309" width="147" height="13" class="part-d" rx="1"/>
   <text x="94" y="318" class="t-in2" text-anchor="middle">GP-2100 #2 · storage net</text>
-  <rect x="21" y="323" width="147" height="27" class="part-d" rx="1"/><text x="94" y="334" class="t-in" text-anchor="middle">Supermicro SC216 · X10DRH-iT</text><text x="94" y="345" class="t-in2" text-anchor="middle">2U · 24 + 2 × 2.5 in · 2 × 10GBASE-T · IPMI</text>
-  <rect x="21" y="351" width="147" height="27" class="part-d" rx="1"/><text x="94" y="362" class="t-in" text-anchor="middle">Supermicro 6028U-TR4+</text><text x="94" y="373" class="t-in2" text-anchor="middle">2U · 12 × 3.5 in · 4 × 1GbE · IPMI</text>
-  <rect x="21" y="379" width="147" height="13" class="part-d" rx="1"/><text x="94" y="388" class="t-in2" text-anchor="middle">Chenbro NR12001 · 1U · 12 × 3.5 in · SFP+</text>
+  <rect x="21" y="323" width="147" height="27" class="part-d" rx="1"/><text x="94" y="334" class="t-in" text-anchor="middle">SC216 · X10DRH-iT</text><text x="94" y="345" class="t-in2" text-anchor="middle">2U · 26 × 2.5 in · 2 × 10GBASE-T · IPMI</text>
+  <rect x="21" y="351" width="147" height="27" class="part-d" rx="1"/><text x="94" y="362" class="t-in" text-anchor="middle">SYS-6028U-TR4+</text><text x="94" y="373" class="t-in2" text-anchor="middle">2U · 12 × 3.5 in · 4 × 1GbE · IPMI</text>
+  <rect x="21" y="379" width="147" height="13" class="part-d" rx="1"/><text x="94" y="388" class="t-in2" text-anchor="middle">Chenbro NR12001 · 1U · SFP+</text>
   <rect x="21" y="393" width="147" height="13" class="ghost" rx="1"/><text x="94" y="402" class="t-in2" text-anchor="middle">U15 free</text>
   <!-- U14-11 lab NAS shelf -->
   <rect x="21" y="407" width="147" height="55" class="part"/>
@@ -169,7 +169,7 @@
   <text x="14" y="204" class="t-sub">TPE-1020WS: 8 × GbE PoE+, 75 W, Mgmt only, off SE #2: Pi #2, BMCs, JetKVMs, OOB Cat6</text>
   <text x="0" y="226" class="t-key"><tspan font-weight="600">7</tspan>  Lab switches · U23 to U21, all owned</text>
   <text x="14" y="240" class="t-sub">QNAP QSW-M408-4C ToR on pair A; GP-2100 #1 for copper-NIC hosts; GP-2100 #2 storage net</text>
-  <text x="0" y="262" class="t-key"><tspan font-weight="600">8</tspan>  Three lab servers · U20 to U16 · Supermicro SC216 (24.8 in deep), 6028U-TR4+ (28.5 in), Chenbro NR12001 (1U)</text>
+  <text x="0" y="262" class="t-key"><tspan font-weight="600">8</tspan>  Three lab servers · U20 to U16 · SC216 (24.8 in deep), 6028U-TR4+ (28.5 in), Chenbro NR12001 (1U)</text>
   <text x="14" y="276" class="t-sub">The rails adjust 25.7 to 34.5 in deep; both Supermicros fit. Draw still depends on the CPUs fitted</text>
   <text x="0" y="298" class="t-key"><tspan font-weight="600">9</tspan>  QNAP TS-932PX and TS-563 · U14 to U11, on a shelf</text>
   <text x="14" y="312" class="t-sub">Lab NAS on the ToR at 10G, VLAN 99; both still hold Plex data until it is consolidated on the 8800</text>
