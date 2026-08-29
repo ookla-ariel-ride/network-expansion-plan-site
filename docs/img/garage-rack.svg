@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1020 800" style="background:#f7f7f5" role="img" aria-label="Shop drawing of the garage cabinet: a UniFi 42U 1,000 mm rack holding two fabrics. Production at the top: Switch SE 1 and Switch SE 2 on their own shelves, the UNVR Pro, the UNAS-Pro, the UGREEN DXP8800 Plus and DXP4800 Plus side by side on a 5U shelf, the Plex host, a Raspberry Pi and the pfSense box, a DLI 222 PDU, a basic strip and the TRENDnet TPE-1020WS console switch. Lab below: the QNAP QSW-M408-4C top-of-rack switch, two GiGaPlus 10GBASE-T switches, the Supermicro SC216 and 6028U-TR4 plus servers, the Chenbro NR12001, a Tripp Lite rack LCD console, two QNAP lab NAS units, the Gold gen-1, a second DLI 222 and a strip. A rack UPS at the base. Three fiber pairs from the closet and the eight camera runs from the attic enter at the top.">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1020 800" style="background:#f7f7f5" role="img" aria-label="Shop drawing of the garage cabinet: a UniFi 42U 1,000 mm rack holding two fabrics. Production at the top: Switch SE 1 and Switch SE 2 on their own shelves, the UNVR Pro, the UNAS-Pro, the UGREEN DXP8800 Plus and DXP4800 Plus side by side on a 5U shelf, the BOSGAME M4 Plex server and two Beelink Mini S13 container hosts on a shelf, a Raspberry Pi and the pfSense box, a DLI 222 PDU, a basic strip and the TRENDnet TPE-1020WS console switch. Lab below: the QNAP QSW-M408-4C top-of-rack switch, two GiGaPlus 10GBASE-T switches, the Supermicro SC216 and 6028U-TR4 plus servers, the Chenbro NR12001, a Tripp Lite rack LCD console, two QNAP lab NAS units, the Gold gen-1, a second DLI 222, a strip and two Beelink mini PCs. A rack UPS at the base. Three fiber pairs from the closet and the eight camera runs from the attic enter at the top.">
 <style>
   svg { font-family: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; }
   .t-title { font-size: 15px; font-weight: 600; fill: #1f2430; }
@@ -74,20 +74,22 @@
   <rect x="110" y="120" width="56" height="56" class="part-d" rx="2"/>
   <text x="138" y="145" class="t-in" text-anchor="middle">DXP4800</text>
   <text x="138" y="157" class="t-in2" text-anchor="middle">backup</text>
-  <rect x="21" y="183" width="147" height="12" class="ghost" rx="1"/>
-  <text x="94" y="192" class="t-in2" text-anchor="middle">Plex host &#183; pending</text>
-  <rect x="21" y="197" width="147" height="12" class="part"/>
-  <rect x="24" y="198" width="30" height="9" class="part-d" rx="1"/><text x="39" y="205" class="t-in2" text-anchor="middle">Pi #2</text>
-  <rect x="60" y="198" width="56" height="9" class="part-d" rx="1"/><text x="88" y="205" class="t-in2" text-anchor="middle">pfSense</text>
-  <rect x="21" y="211" width="147" height="12" class="part-d" rx="1"/>
-  <g fill="#ffffff" stroke="#3b4252" stroke-width="0.5"><rect x="26" y="214" width="6" height="6"/><rect x="35" y="214" width="6" height="6"/><rect x="44" y="214" width="6" height="6"/><rect x="53" y="214" width="6" height="6"/><rect x="62" y="214" width="6" height="6"/><rect x="71" y="214" width="6" height="6"/><rect x="80" y="214" width="6" height="6"/><rect x="89" y="214" width="6" height="6"/></g>
-  <text x="128" y="220" class="t-in2" text-anchor="middle">DLI 222</text>
+  <rect x="21" y="183" width="147" height="26" class="part"/>
+  <rect x="24" y="186" width="52" height="20" class="part-d" rx="1"/><text x="50" y="194" class="t-in2" text-anchor="middle">M4 &#183; Plex</text><text x="50" y="203" class="t-in2" text-anchor="middle">dual 2.5G</text>
+  <rect x="80" y="186" width="42" height="20" class="part-d" rx="1"/><text x="101" y="194" class="t-in2" text-anchor="middle">S13</text><text x="101" y="203" class="t-in2" text-anchor="middle">Traefik</text>
+  <rect x="126" y="186" width="42" height="20" class="part-d" rx="1"/><text x="147" y="194" class="t-in2" text-anchor="middle">S13</text><text x="147" y="203" class="t-in2" text-anchor="middle">utility</text>
+  <rect x="21" y="211" width="147" height="12" class="part"/>
+  <rect x="24" y="212" width="30" height="9" class="part-d" rx="1"/><text x="39" y="219" class="t-in2" text-anchor="middle">Pi #2</text>
+  <rect x="60" y="212" width="56" height="9" class="part-d" rx="1"/><text x="88" y="219" class="t-in2" text-anchor="middle">pfSense</text>
   <rect x="21" y="225" width="147" height="12" class="part-d" rx="1"/>
-  <text x="94" y="234" class="t-in2" text-anchor="middle">strip &#183; switch bricks</text>
+  <g fill="#ffffff" stroke="#3b4252" stroke-width="0.5"><rect x="26" y="228" width="6" height="6"/><rect x="35" y="228" width="6" height="6"/><rect x="44" y="228" width="6" height="6"/><rect x="53" y="228" width="6" height="6"/><rect x="62" y="228" width="6" height="6"/><rect x="71" y="228" width="6" height="6"/><rect x="80" y="228" width="6" height="6"/><rect x="89" y="228" width="6" height="6"/></g>
+  <text x="128" y="234" class="t-in2" text-anchor="middle">DLI 222</text>
   <rect x="21" y="239" width="147" height="12" class="part-d" rx="1"/>
-  <text x="94" y="248" class="t-in2" text-anchor="middle">TPE-1020WS &#183; consoles</text>
-  <rect x="21" y="253" width="147" height="26" class="ghost" rx="1"/>
-  <text x="94" y="269" class="t-in2" text-anchor="middle">U25 to U24 free</text>
+  <text x="94" y="248" class="t-in2" text-anchor="middle">strip &#183; switch bricks</text>
+  <rect x="21" y="253" width="147" height="12" class="part-d" rx="1"/>
+  <text x="94" y="262" class="t-in2" text-anchor="middle">TPE-1020WS &#183; consoles</text>
+  <rect x="21" y="267" width="147" height="12" class="ghost" rx="1"/>
+  <text x="94" y="276" class="t-in2" text-anchor="middle">U24 free</text>
 
   <line x1="21" y1="280" x2="168" y2="280" stroke="#1f2430" stroke-width="1" stroke-dasharray="3 3"/>
   <text x="196" y="276" class="t-h" font-size="8">PRODUCTION</text>
@@ -120,8 +122,11 @@
   <text x="128" y="486" class="t-in2" text-anchor="middle">DLI 222</text>
   <rect x="21" y="491" width="147" height="12" class="part-d" rx="1"/>
   <text x="94" y="500" class="t-in2" text-anchor="middle">strip &#183; switch bricks</text>
-  <rect x="21" y="505" width="147" height="40" class="ghost" rx="1"/>
-  <text x="94" y="529" class="t-in2" text-anchor="middle">U7 to U5 free</text>
+  <rect x="21" y="505" width="147" height="26" class="part"/>
+  <rect x="30" y="508" width="60" height="20" class="part-d" rx="1"/><text x="60" y="521" class="t-in2" text-anchor="middle">Beelink EQ12</text>
+  <rect x="98" y="508" width="60" height="20" class="part-d" rx="1"/><text x="128" y="521" class="t-in2" text-anchor="middle">Beelink EQ13</text>
+  <rect x="21" y="533" width="147" height="12" class="ghost" rx="1"/>
+  <text x="94" y="542" class="t-in2" text-anchor="middle">U5 free</text>
   <rect x="21" y="547" width="147" height="55" class="ghost" rx="1"/>
   <text x="94" y="571" class="t-in2" text-anchor="middle">rack UPS &#183; 2U to 4U</text>
   <text x="94" y="582" class="t-in2" text-anchor="middle">sized after a measured draw</text>
@@ -161,36 +166,37 @@
   <text x="14" y="134" class="t-sub">8800: 14.4 &#215; 10.2 &#215; 7.4, 8-bay, i5, 2 &#215; 10GbE (one to SE #2 by module,</text>
   <text x="14" y="146" class="t-sub">one to the storage net). 4800: 10.1 &#215; 7.0 &#215; 7.0, backup target, 2.5G to</text>
   <text x="14" y="158" class="t-sub">SE #2 and 10G to the storage net. 17.2 in side by side</text>
-  <text x="0" y="182" class="t-key"><tspan font-weight="600">5</tspan>  Plex host, Pi #2, pfSense &#183; U30 to U29</text>
-  <text x="14" y="196" class="t-sub">Plex host pending. Pi #2: Pi-hole and NUT for the rack UPS, PoE from the TPE</text>
-  <text x="0" y="220" class="t-key"><tspan font-weight="600">6</tspan>  DLI 222 and a basic strip, production &#183; U28 to U27</text>
-  <text x="14" y="234" class="t-sub">222: UNVR, UNAS, both UGREENs, Plex, pfSense, two spare. The strip takes</text>
-  <text x="14" y="246" class="t-sub">the switch bricks, which never need remote cycling</text>
-  <text x="0" y="270" class="t-key"><tspan font-weight="600">7</tspan>  TRENDnet TPE-1020WS &#183; U26 &#183; 8 &#215; GbE PoE+, 75 W, Mgmt only, off SE #2</text>
-  <text x="14" y="284" class="t-sub">Pi #2, three IPMI ports, both 222s, the OOB Cat6 (unpatched at Switch X</text>
-  <text x="14" y="296" class="t-sub">while pair C is lit, or it closes an L2 loop on Mgmt)</text>
-  <text x="0" y="320" class="t-key"><tspan font-weight="600">8</tspan>  Lab switches &#183; U23 to U21, all owned</text>
-  <text x="14" y="334" class="t-sub">QNAP QSW-M408-4C ToR on pair A (4 &#215; 10G combo, 8 &#215; GbE); GP-2100 #1 for</text>
-  <text x="14" y="346" class="t-sub">copper-NIC hosts; GP-2100 #2 as the isolated storage network</text>
-  <text x="0" y="370" class="t-key"><tspan font-weight="600">9</tspan>  Three lab servers &#183; U20 to U16, and the Tripp Lite LCD console &#183; U15</text>
-  <text x="14" y="384" class="t-sub">SC216 24.8 in deep, 6028U-TR4+ 28.46 in, Chenbro 1U. The rails adjust</text>
-  <text x="14" y="396" class="t-sub">25.7 to 34.5 in, so both Supermicros fit. The console needs 27 in of rail depth</text>
-  <text x="0" y="420" class="t-key"><tspan font-weight="600">10</tspan>  QNAP TS-932PX and TS-563 &#183; U14 to U11, on a shelf</text>
-  <text x="14" y="434" class="t-sub">TS-932PX on the ToR at 10G, VLAN 99; TS-563 on GP-2100 #1. Both hold Plex</text>
-  <text x="14" y="446" class="t-sub">data until the library consolidates on the 8800</text>
-  <text x="0" y="470" class="t-key"><tspan font-weight="600">11</tspan>  Gold gen-1, the lab DLI 222 and a strip &#183; U10 to U8</text>
-  <text x="14" y="484" class="t-sub">Gold gen-1 on the ToR's GbE ports as the nested lab firewall. The lab 222</text>
-  <text x="14" y="496" class="t-sub">takes both Supermicros' four supplies, the Chenbro, both QNAPs, the Gold</text>
-  <text x="0" y="520" class="t-key"><tspan font-weight="600">12</tspan>  Rack UPS &#183; U4 to U1 &#183; 2U to 4U, sized once the draw is measured</text>
+  <text x="0" y="182" class="t-key"><tspan font-weight="600">5</tspan>  DMZ mini PCs &#183; U30 to U29, and Pi #2 with pfSense &#183; U28</text>
+  <text x="14" y="196" class="t-sub">BOSGAME M4 is the Plex server (dual 2.5GbE: DMZ and the storage net); the two</text>
+  <text x="14" y="208" class="t-sub">Beelink S13s are container hosts, one running Traefik v3. All three in VLAN 80</text>
+  <text x="0" y="232" class="t-key"><tspan font-weight="600">6</tspan>  DLI 222 and a basic strip, production &#183; U27 to U26</text>
+  <text x="14" y="246" class="t-sub">222 is full: UNVR, UNAS, both UGREENs, the three DMZ mini PCs, pfSense. The</text>
+  <text x="14" y="258" class="t-sub">strip takes the switch bricks, which never need remote cycling</text>
+  <text x="0" y="282" class="t-key"><tspan font-weight="600">7</tspan>  TRENDnet TPE-1020WS &#183; U25 &#183; 8 &#215; GbE PoE+, 75 W, Mgmt only, off SE #2</text>
+  <text x="14" y="296" class="t-sub">Pi #2, three IPMI ports, both 222s, the OOB Cat6 (unpatched at Switch X</text>
+  <text x="14" y="308" class="t-sub">while pair C is lit, or it closes an L2 loop on Mgmt)</text>
+  <text x="0" y="332" class="t-key"><tspan font-weight="600">8</tspan>  Lab switches &#183; U23 to U21, all owned</text>
+  <text x="14" y="346" class="t-sub">QNAP QSW-M408-4C ToR on pair A (4 &#215; 10G combo, 8 &#215; GbE); GP-2100 #1 for</text>
+  <text x="14" y="358" class="t-sub">copper-NIC hosts; GP-2100 #2 as the isolated storage network</text>
+  <text x="0" y="382" class="t-key"><tspan font-weight="600">9</tspan>  Three lab servers &#183; U20 to U16, and the Tripp Lite LCD console &#183; U15</text>
+  <text x="14" y="396" class="t-sub">SC216 24.8 in deep, 6028U-TR4+ 28.46 in, Chenbro 1U. The rails adjust</text>
+  <text x="14" y="408" class="t-sub">25.7 to 34.5 in, so both Supermicros fit. The console needs 27 in of rail depth</text>
+  <text x="0" y="432" class="t-key"><tspan font-weight="600">10</tspan>  QNAP TS-932PX and TS-563 &#183; U14 to U11, on a shelf</text>
+  <text x="14" y="446" class="t-sub">TS-932PX on the ToR at 10G, VLAN 99; TS-563 on GP-2100 #1. Both hold Plex</text>
+  <text x="14" y="458" class="t-sub">data until the library consolidates on the 8800</text>
+  <text x="0" y="482" class="t-key"><tspan font-weight="600">11</tspan>  Gold gen-1, the lab DLI 222 and a strip &#183; U10 to U8; Beelink EQ12 and EQ13 &#183; U7 to U6</text>
+  <text x="14" y="496" class="t-sub">Gold gen-1 on the ToR's GbE ports as the nested lab firewall. The lab 222</text>
+  <text x="14" y="508" class="t-sub">takes both Supermicros' four supplies, the Chenbro, both QNAPs, the Gold</text>
+  <text x="0" y="532" class="t-key"><tspan font-weight="600">12</tspan>  Rack UPS &#183; U4 to U1 &#183; 2U to 4U, sized once the draw is measured</text>
 
-  <text x="0" y="556" class="t-h">TWO FABRICS, ONE CABINET &#183; PLUS A STORAGE NETWORK &#183; 37 OF 42 U USED</text>
-  <text x="0" y="576" class="t-key">Each garage switch has its own fiber pair to Switch X; production (top) and lab</text>
-  <text x="0" y="590" class="t-key">(bottom) each have their own switched PDU. The cameras, the NAS units and the Pi</text>
-  <text x="0" y="604" class="t-key">never touch a lab switch. The storage network is a non-routed 10G segment between</text>
-  <text x="0" y="618" class="t-key">second NICs in the NAS units and the servers; NFS and iSCSI only, no gateway.</text>
+  <text x="0" y="568" class="t-h">TWO FABRICS, ONE CABINET &#183; PLUS A STORAGE NETWORK &#183; 40 OF 42 U USED</text>
+  <text x="0" y="588" class="t-key">Each garage switch has its own fiber pair to Switch X; production (top) and lab</text>
+  <text x="0" y="602" class="t-key">(bottom) each have their own switched PDU. The cameras, the NAS units and the Pi</text>
+  <text x="0" y="616" class="t-key">never touch a lab switch. The storage network is a non-routed 10G segment between</text>
+  <text x="0" y="630" class="t-key">second NICs in the NAS units and the servers; NFS and iSCSI only, no gateway.</text>
 
-  <text x="0" y="654" class="t-h">DEPTH &#183; 34.5 in max rail depth &#183; 8 px = 1 in</text>
-  <g transform="translate(0 664)">
+  <text x="0" y="666" class="t-h">DEPTH &#183; 34.5 in max rail depth &#183; 8 px = 1 in</text>
+  <g transform="translate(0 676)">
     <line x1="0" y1="0" x2="0" y2="76" stroke="#1f2430" stroke-width="1.5"/>
     <line x1="276" y1="-4" x2="276" y2="80" stroke="#6b7280" stroke-width="0.7" stroke-dasharray="3 2"/>
     <rect x="0" y="4" width="227.7" height="12" class="depth-bar"/><text x="284" y="14" class="t-in">6028U-TR4+ 28.46</text>
