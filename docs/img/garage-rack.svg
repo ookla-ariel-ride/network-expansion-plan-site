@@ -74,10 +74,12 @@
   <rect x="110" y="120" width="56" height="56" class="part-d" rx="2"/>
   <text x="138" y="145" class="t-in" text-anchor="middle">DXP4800</text>
   <text x="138" y="157" class="t-in2" text-anchor="middle">backup</text>
-  <rect x="21" y="183" width="147" height="26" class="part"/>
-  <rect x="24" y="186" width="52" height="20" class="part-d" rx="1"/><text x="50" y="194" class="t-in2" text-anchor="middle">M4 &#183; Plex</text><text x="50" y="203" class="t-in2" text-anchor="middle">dual 2.5G</text>
-  <rect x="80" y="186" width="42" height="20" class="part-d" rx="1"/><text x="101" y="194" class="t-in2" text-anchor="middle">S13</text><text x="101" y="203" class="t-in2" text-anchor="middle">Traefik</text>
-  <rect x="126" y="186" width="42" height="20" class="part-d" rx="1"/><text x="147" y="194" class="t-in2" text-anchor="middle">S13</text><text x="147" y="203" class="t-in2" text-anchor="middle">utility</text>
+  <rect x="21" y="183" width="147" height="12" class="part"/>
+  <rect x="24" y="184" width="44" height="10" class="part-d" rx="1"/><text x="46" y="192" class="t-in2" text-anchor="middle">S13 Traefik</text>
+  <rect x="72" y="184" width="44" height="10" class="part-d" rx="1"/><text x="94" y="192" class="t-in2" text-anchor="middle">S13 utility</text>
+  <rect x="120" y="184" width="44" height="10" class="ghost" rx="1"/><text x="142" y="192" class="t-in2" text-anchor="middle">spare bay</text>
+  <rect x="21" y="197" width="147" height="12" class="part"/>
+  <rect x="24" y="198" width="92" height="10" class="part-d" rx="1"/><text x="70" y="206" class="t-in2" text-anchor="middle">BOSGAME M4 &#183; Plex</text>
   <rect x="21" y="211" width="147" height="12" class="part"/>
   <rect x="24" y="212" width="30" height="9" class="part-d" rx="1"/><text x="39" y="219" class="t-in2" text-anchor="middle">Pi #2</text>
   <rect x="60" y="212" width="56" height="9" class="part-d" rx="1"/><text x="88" y="219" class="t-in2" text-anchor="middle">pfSense</text>
@@ -167,8 +169,9 @@
   <text x="14" y="146" class="t-sub">one to the storage net). 4800: 10.1 &#215; 7.0 &#215; 7.0, backup target, 2.5G to</text>
   <text x="14" y="158" class="t-sub">SE #2 and 10G to the storage net. 17.2 in side by side</text>
   <text x="0" y="182" class="t-key"><tspan font-weight="600">5</tspan>  DMZ mini PCs &#183; U30 to U29, and Pi #2 with pfSense &#183; U28</text>
-  <text x="14" y="196" class="t-sub">BOSGAME M4 is the Plex server (dual 2.5GbE: DMZ and the storage net); the two</text>
-  <text x="14" y="208" class="t-sub">Beelink S13s are container hosts, one running Traefik v3. All three in VLAN 80</text>
+  <text x="14" y="196" class="t-sub">U30 is a three-bay S12-class tray holding both Beelink S13 container hosts, one</text>
+  <text x="14" y="208" class="t-sub">running Traefik v3. U29 is a shelf for the BOSGAME M4 Plex server, too wide for</text>
+  <text x="14" y="220" class="t-sub">the tray; its two 2.5GbE go to the DMZ and the storage network. All three in VLAN 80</text>
   <text x="0" y="232" class="t-key"><tspan font-weight="600">6</tspan>  DLI 222 and a basic strip, production &#183; U27 to U26</text>
   <text x="14" y="246" class="t-sub">222 is full: UNVR, UNAS, both UGREENs, the three DMZ mini PCs, pfSense. The</text>
   <text x="14" y="258" class="t-sub">strip takes the switch bricks, which never need remote cycling</text>
