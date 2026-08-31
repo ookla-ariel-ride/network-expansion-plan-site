@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 880" style="background:#f7f7f5" role="img" aria-label="Shop drawing of the On-Q 42 enclosure back panel, interior 14 by 41.75 inches, with nine numbered parts placed to scale, inch rulers on the top and left edges, the top and bottom knockouts, the drilled exit hole on the left wall, and a side-view depth section showing every part clears the 4.31 inch usable depth.">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 880" style="background:#f7f7f5" role="img" aria-label="Shop drawing of the On-Q 42 enclosure back panel, interior 14 by 41.75 inches, with eight numbered parts placed to scale, inch rulers on the top and left edges, the top and bottom knockouts, the drilled exit hole on the left wall, and a side-view depth section showing every part clears the 4.31 inch usable depth.">
 <style>
   svg { font-family: -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; }
   .t-title { font-size: 15px; font-weight: 600; fill: #1f2430; letter-spacing: 0.01em; }
@@ -88,14 +88,12 @@
   <text x="54" y="-46" class="t-in2" text-anchor="middle">3 AP · 4 spare</text>
   <text x="118" y="-36" class="t-in2" text-anchor="middle">OM4</text>
   <text x="86" y="-58" class="t-in2" text-anchor="middle">5 room coax</text>
-  <text x="150" y="-36" class="t-in2" text-anchor="middle">coax</text>
+  <text x="150" y="-46" class="t-in2" text-anchor="middle">street coax</text>
 
-  <!-- 1 SPD -->
-  <rect x="149" y="10" width="18" height="32" class="part-d" rx="1"/>
-  <path d="M158,42 L158,275 L118,275 L118,257" class="co" stroke-width="1.8" fill="none"/>
-  <path d="M167,26 L170,26 L170,470 L162,470" stroke="#2f855a" stroke-width="1" stroke-dasharray="3 2" fill="none"/>
+  <!-- street coax jumper: top knockout straight down to the modem coax port -->
+  <path d="M150,-6 L150,275 L118,275 L118,257" class="co" stroke-width="1.8" fill="none"/>
 
-  <!-- 2 AC106A6 x2 -->
+  <!-- 1 AC106A6 x3 -->
   <rect x="6" y="60" width="34.8" height="76.9" class="part-d" rx="1"/>
   <rect x="40.8" y="60" width="34.8" height="76.9" class="part-d" rx="1"/>
   <rect x="75.6" y="60" width="34.8" height="76.9" class="part-d" rx="1"/>
@@ -113,7 +111,7 @@
   <text x="23" y="118" class="t-in2" text-anchor="middle">A</text>
   <text x="58" y="118" class="t-in2" text-anchor="middle">B</text>
 
-  <!-- 3 modem rotated -->
+  <!-- 2 modem rotated -->
     <path d="M86,-6 L86,20 L118,20 L118,145 L27,145 L27,156" class="co" stroke-width="1.2" fill="none"/>
     <rect x="55" y="156" width="80.4" height="101.5" class="part" rx="2"/>
   <text x="95" y="204" class="t-in" text-anchor="middle">EU2251</text>
@@ -125,51 +123,49 @@
   <path d="M72,257 L72,287 L12,287" class="cu" stroke-width="1.6" fill="none"/>
   <path d="M100,257 L100,290 L30,290 L30,296" class="co" stroke-width="1" stroke-dasharray="2 2" fill="none"/>
 
-  <!-- 4 exit hole -->
+  <!-- 3 exit hole -->
   <circle cx="-3" cy="291" r="15" fill="#ffffff" stroke="#b5652b" stroke-width="1.5"/>
   <path d="M-18,287 L-46,287" class="cu" stroke-width="3" marker-end="url(#ar)"/>
   <path d="M-18,295 L-46,295" class="fb" stroke-width="1.6" marker-end="url(#ar)"/>
 
-  <!-- 5a OM4: continuous from the top knockout, down the right edge, into the coil, across to the exit hole -->
+  <!-- 4a OM4: continuous from the top knockout, down the right edge, into the coil, across to the exit hole -->
   <path d="M118,-6 L118,4 L142,4 L142,314 L80,314 L42,322" class="fb" stroke-width="1.6" fill="none"/>
   <g class="fb" stroke-width="1.6"><ellipse cx="42" cy="352" rx="30" ry="30"/><ellipse cx="42" cy="357" rx="30" ry="30"/></g>
   <path d="M12,352 L8,348 L8,295 L-18,295" class="fb" stroke-width="1.6" fill="none"/>
-  <!-- 5b spare Cat6A: from the top knockout, coiled, dead end -->
+  <!-- 4b spare Cat6A: from the top knockout, coiled, dead end -->
   <g class="cu" stroke-width="2"><ellipse cx="124" cy="352" rx="30" ry="30"/><ellipse cx="124" cy="357" rx="30" ry="30"/></g>
   <path d="M124,322 L124,300 L142,300 L142,150 L112,140" class="cu" stroke-width="2" fill="none"/>
 
-  <!-- 6 brick -->
+  <!-- 5 brick -->
   <rect x="86" y="394" width="77" height="47" class="part-d" rx="2"/>
   <g fill="#ffffff" stroke="#3b4252" stroke-width="0.6"><rect x="94" y="400" width="10" height="10"/><rect x="110" y="400" width="10" height="10"/><rect x="126" y="400" width="10" height="10"/><rect x="94" y="418" width="10" height="10"/><rect x="110" y="418" width="10" height="10"/><rect x="126" y="418" width="10" height="10"/></g>
   <text x="150" y="420" class="t-in2" text-anchor="middle" font-size="6.5" transform="rotate(-90 150 420)">AC1031</text>
   <rect x="12" y="296" width="36" height="20" class="part" rx="2"/>
   <path d="M12,312 L4,312 L4,430 L86,430" class="co" stroke-width="1.2" fill="none"/>
 
-  <!-- 7 kit outlet -->
+  <!-- 6 kit outlet -->
   <rect x="6" y="450" width="58" height="48" class="part-d" rx="1"/>
   <circle cx="35" cy="465" r="4" fill="none" stroke="#1f2430"/><circle cx="35" cy="483" r="4" fill="none" stroke="#1f2430"/>
   <line x1="35" y1="498" x2="35" y2="501" class="co" stroke-width="1.8"/>
 
-  <!-- 8 house duplex (assumed) -->
+  <!-- 7 house duplex (assumed) -->
   <rect x="104" y="450" width="58" height="48" class="part-d" rx="1"/>
   <circle cx="133" cy="465" r="4" fill="none" stroke="#1f2430"/><circle cx="133" cy="483" r="4" fill="none" stroke="#1f2430"/>
   <line x1="133" y1="498" x2="133" y2="501" class="co" stroke-width="1.8"/>
 
   <!-- callouts -->
   <g class="callout">
-    <circle cx="188" cy="26" r="8"/><text x="188" y="29.5">1</text>
-    <circle cx="-30" cy="98" r="8"/><text x="-30" y="101.5">2</text>
-    <circle cx="188" cy="206" r="8"/><text x="188" y="209.5">3</text>
-    <circle cx="-30" cy="322" r="8"/><text x="-30" y="325.5">4</text>
-    <circle cx="-30" cy="189" r="8"/><text x="-30" y="192.5">9</text>
-    <circle cx="-36" cy="352" r="8"/><text x="-36" y="355.5">5a</text>
-    <circle cx="188" cy="352" r="8"/><text x="188" y="355.5">5b</text>
-    <circle cx="188" cy="417" r="8"/><text x="188" y="420.5">6</text>
-    <circle cx="-30" cy="458" r="8"/><text x="-30" y="461.5">7</text>
-    <circle cx="188" cy="474" r="8"/><text x="188" y="477.5">8</text>
+    <circle cx="-30" cy="98" r="8"/><text x="-30" y="101.5">1</text>
+    <circle cx="188" cy="206" r="8"/><text x="188" y="209.5">2</text>
+    <circle cx="-30" cy="322" r="8"/><text x="-30" y="325.5">3</text>
+    <circle cx="-30" cy="189" r="8"/><text x="-30" y="192.5">8</text>
+    <circle cx="-36" cy="352" r="8"/><text x="-36" y="355.5">4a</text>
+    <circle cx="188" cy="352" r="8"/><text x="188" y="355.5">4b</text>
+    <circle cx="188" cy="417" r="8"/><text x="188" y="420.5">5</text>
+    <circle cx="-30" cy="458" r="8"/><text x="-30" y="461.5">6</text>
+    <circle cx="188" cy="474" r="8"/><text x="188" y="477.5">7</text>
   </g>
   <g class="lead">
-    <line x1="167" y1="26" x2="180" y2="26"/>
     <line x1="-22" y1="98" x2="6" y2="98"/>
     <line x1="135" y1="206" x2="180" y2="206"/>
     <line x1="-22" y1="322" x2="-3" y2="306"/>
@@ -185,36 +181,34 @@
 <!-- ================= KEY ================= -->
 <g transform="translate(320 124)">
   <text x="0" y="0" class="t-h">PART · POSITION (in, from top-left inside) · SIZE (in)</text>
-  <text x="0" y="20" class="t-key"><tspan font-weight="600">1</tspan>  TII 212 coax surge arrestor · x 12.4  y 0.8 · 1.5 × 2.7, upright</text>
-  <text x="14" y="34" class="t-sub">coax in from the top knockout · F jumper out to the modem's coax port (3)</text>
-  <text x="14" y="46" class="t-sub">ground lug bonded to the house-circuit box (8), dashed green</text>
-  <text x="0" y="64" class="t-key"><tspan font-weight="600">2</tspan>  Legrand AC106A6 × 3 · x 0.5  y 5.0 · 8.7 × 6.41</text>
-  <text x="14" y="78" class="t-sub">A: 6 drops · B: 3 AP runs + 3 spares · C: 4th spare, 5 free</text>
-  <text x="0" y="96" class="t-key"><tspan font-weight="600">3</tspan>  Ubee EU2251 modem, rotated, hung by its keyholes · x 4.6  y 13 · 6.7 × 8.46 × 2.8</text>
-  <text x="14" y="110" class="t-sub">coax from 1 · WAN patch to the exit (4) · DC from the brick (6); ports face down</text>
-  <text x="0" y="128" class="t-key"><tspan font-weight="600">4</tspan>  Drilled exit, left wall · y 24 · 2.5 in + F2242 ring</text>
-  <text x="14" y="142" class="t-sub">8 patch + WAN + fiber → brush plate → rack</text>
-  <text x="0" y="160" class="t-key"><tspan font-weight="600">5a</tspan>  OM4 fiber, pass-through · coil y 27 to 32 · 5 in dia</text>
-  <text x="14" y="174" class="t-sub">attic → coil → exit hole → Switch X SFP+ 1; other end in the garage</text>
-  <text x="0" y="192" class="t-key"><tspan font-weight="600">5b</tspan>  Slack of the 13 terminated runs · coil y 27 to 32</text>
-  <text x="14" y="206" class="t-sub">every run is punched down now (18 positions); this is the</text>
-  <text x="14" y="218" class="t-sub">excess length before the modules, clipped with AC103520</text>
-  <text x="0" y="236" class="t-key"><tspan font-weight="600">6</tspan>  AC1031 strip · x 7.2  y 32.8 · 6.4 × 3.9 × 2.5 · modem brick x 1  y 24.7</text>
-  <text x="0" y="256" class="t-key"><tspan font-weight="600">7</tspan>  Kit receptacle + USB in an F7526 box · x 0.5  y 37.5 · box 4.8 × 4.0 × 3.25</text>
-  <text x="14" y="270" class="t-sub">left cutout · UPS-backed, switched · feeds the AC1031 strip</text>
-  <text x="0" y="288" class="t-key"><tspan font-weight="600">8</tspan>  House-circuit GaN 65 W USB-C duplex in an F7526 box · x 8.7  y 37.5 · same box</text>
-  <text x="14" y="302" class="t-sub">always on, not UPS-backed</text>
-  <text x="0" y="320" class="t-key"><tspan font-weight="600">9</tspan>  On-Q VM1002 1×8 passive splitter · x 0.5  y 13 · 3.6 × 6.42 × 1.85</text>
-  <text x="14" y="334" class="t-sub">the five room coax runs park here, off the modem path (internet only, no TV)</text>
-  <text x="0" y="362" class="t-h">KNOCKOUTS</text>
-  <text x="0" y="382" class="t-key">Top: 5 × 2 in knockouts (all 5 used, AC1034 grommets) · Bottom: 2 F7526 boxes</text>
-  <text x="0" y="396" class="t-key">Sides: none</text>
-  <text x="0" y="410" class="t-sub">Copper-outlined knockouts are the ones in use.</text>
-  <text x="0" y="438" class="t-h">WIDTH CHECK · 14 in inside</text>
-  <text x="0" y="458" class="t-key">Three modules = 8.7 in. Below them: VM1002 3.6 + 0.5 gap + modem 6.7 = 10.8 in.</text>
-  <text x="0" y="472" class="t-key">No plate under the modem: the AC1040F (15.8 × 12) would cover the splitter.</text>
-  <text x="0" y="502" class="t-h">STILL TO MEASURE</text>
-  <text x="0" y="522" class="t-key">Slack on the six existing drops (3 to 4 ft to reach the modules)</text>
+  <text x="0" y="20" class="t-key"><tspan font-weight="600">1</tspan>  Legrand AC106A6 × 3 · x 0.5  y 5.0 · 8.7 × 6.41</text>
+  <text x="14" y="34" class="t-sub">A: 6 drops · B: 3 AP runs + 3 spares · C: 4th spare, 5 free</text>
+  <text x="0" y="52" class="t-key"><tspan font-weight="600">2</tspan>  Ubee EU2251 modem, rotated, hung by its keyholes · x 4.6  y 13 · 6.7 × 8.46 × 2.8</text>
+  <text x="14" y="66" class="t-sub">street coax straight from the top knockout · WAN patch to the exit (3)</text>
+  <text x="14" y="78" class="t-sub">DC from the brick (5); ports face down</text>
+  <text x="0" y="96" class="t-key"><tspan font-weight="600">3</tspan>  Drilled exit, left wall · y 24 · 2.5 in + F2242 ring</text>
+  <text x="14" y="110" class="t-sub">8 patch + WAN + fiber → brush plate → rack</text>
+  <text x="0" y="128" class="t-key"><tspan font-weight="600">4a</tspan>  OM4 fiber, pass-through · coil y 27 to 32 · 5 in dia</text>
+  <text x="14" y="142" class="t-sub">attic → coil → exit hole → Switch X SFP+ 1; other end in the garage</text>
+  <text x="0" y="160" class="t-key"><tspan font-weight="600">4b</tspan>  Slack of the 13 terminated runs · coil y 27 to 32</text>
+  <text x="14" y="174" class="t-sub">every run is punched down now (18 positions); this is the</text>
+  <text x="14" y="186" class="t-sub">excess length before the modules, clipped with AC103520</text>
+  <text x="0" y="204" class="t-key"><tspan font-weight="600">5</tspan>  AC1031 strip · x 7.2  y 32.8 · 6.4 × 3.9 × 2.5 · modem brick x 1  y 24.7</text>
+  <text x="0" y="224" class="t-key"><tspan font-weight="600">6</tspan>  Kit receptacle + USB in an F7526 box · x 0.5  y 37.5 · box 4.8 × 4.0 × 3.25</text>
+  <text x="14" y="238" class="t-sub">left cutout · UPS-backed, switched · feeds the AC1031 strip</text>
+  <text x="0" y="256" class="t-key"><tspan font-weight="600">7</tspan>  House-circuit GaN 65 W USB-C duplex in an F7526 box · x 8.7  y 37.5 · same box</text>
+  <text x="14" y="270" class="t-sub">always on, not UPS-backed</text>
+  <text x="0" y="288" class="t-key"><tspan font-weight="600">8</tspan>  On-Q VM1002 1×8 passive splitter · x 0.5  y 13 · 3.6 × 6.42 × 1.85</text>
+  <text x="14" y="302" class="t-sub">the five room coax runs park here, off the modem path (internet only, no TV)</text>
+  <text x="0" y="330" class="t-h">KNOCKOUTS</text>
+  <text x="0" y="350" class="t-key">Top: 5 × 2 in knockouts (all 5 used, AC1034 grommets) · Bottom: 2 F7526 boxes</text>
+  <text x="0" y="364" class="t-key">Sides: none</text>
+  <text x="0" y="378" class="t-sub">Copper-outlined knockouts are the ones in use.</text>
+  <text x="0" y="406" class="t-h">WIDTH CHECK · 14 in inside</text>
+  <text x="0" y="426" class="t-key">Three modules = 8.7 in. Below them: VM1002 3.6 + 0.5 gap + modem 6.7 = 10.8 in.</text>
+  <text x="0" y="440" class="t-key">No plate under the modem: the AC1040F (15.8 × 12) would cover the splitter.</text>
+  <text x="0" y="470" class="t-h">STILL TO MEASURE</text>
+  <text x="0" y="490" class="t-key">Slack on the six existing drops (3 to 4 ft to reach the modules)</text>
 </g>
 
 <!-- ================= DEPTH SECTION ================= -->
@@ -229,17 +223,19 @@
   <text x="66.1" y="138" class="t-dim" text-anchor="middle">+1.2 door</text>
   <!-- bars: modem 2.8 + 0.6 plug; modules 1.5 + 1.0 plug; outlet 0.4 + 1.2 plug -->
   <rect x="0" y="4" width="33.6" height="14" class="depth-bar"/>
-  <text x="76" y="15" class="t-in">3  modem 2.8, ports face down</text>
+  <text x="76" y="15" class="t-in">2  modem 2.8, ports face down</text>
   <rect x="0" y="26" width="18" height="14" class="depth-bar"/><rect x="18" y="26" width="12" height="14" class="depth-plug"/>
-  <text x="76" y="37" class="t-in">2  AC106A6 ≈ 1.5 + patch plug</text>
+  <text x="76" y="37" class="t-in">1  AC106A6 ≈ 1.5 + patch plug</text>
   <rect x="0" y="48" width="39" height="14" class="depth-bar"/>
-  <text x="76" y="59" class="t-in">7  F7526 box 3.25</text>
+  <text x="76" y="59" class="t-in">6  F7526 box 3.25</text>
   <rect x="0" y="70" width="30" height="14" class="depth-bar"/><rect x="30" y="70" width="12" height="14" class="depth-plug"/>
-  <text x="76" y="81" class="t-in">6  AC1031 2.5 + plugs</text>
+  <text x="76" y="81" class="t-in">5  AC1031 2.5 + plugs</text>
   <rect x="0" y="92" width="22.2" height="14" class="depth-bar"/><rect x="22.2" y="92" width="12" height="14" class="depth-plug"/>
-  <text x="76" y="103" class="t-in">9  VM1002 1.85 + F plugs</text>
+  <text x="76" y="103" class="t-in">8  VM1002 1.85 + F plugs</text>
 </g>
 <text x="360" y="770" class="t-sub">Not in the box: Web Power Switch Pro (rack shelf),</text>
 <text x="360" y="784" class="t-sub">UPS (floor by the rack), the Zyxel XMG-105HP Mgmt breakout</text>
 <text x="360" y="798" class="t-sub">(on the rack). Cords never pass through the wall.</text>
+<text x="360" y="816" class="t-sub">No coax arrestor here: the arrestor and bonded ground block sit at</text>
+<text x="360" y="830" class="t-sub">the point of entrance, on the cable company's side (NEC 820.93).</text>
 </svg>
